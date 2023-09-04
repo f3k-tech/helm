@@ -3,12 +3,12 @@ entries:
   libretranslate:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-04T15:17:41.388652+02:00"
+    created: "2023-09-04T17:39:48.896349+02:00"
     description: A Helm chart for Kubernetes
-    digest: 4255fbea9efd5b0e0a798a227f74ee6d21663b22290c18126b612365734e08fb
+    digest: c173be5f04818d82f2fa7e3288aa58bc5c8d9451f198e4368c26798c8f119a72
     name: libretranslate
     type: application
     urls:
     - libretranslate-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-04T15:17:41.387696+02:00"
+generated: "2023-09-04T17:39:48.895976+02:00"
