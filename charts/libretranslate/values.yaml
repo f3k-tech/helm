@@ -11,8 +11,8 @@ image:
 
 
 imagePullSecrets: []
-nameOverride: "libretranslate"
-fullnameOverride: "libretranslate"
+nameOverride: ""
+fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
