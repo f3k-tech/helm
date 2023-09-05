@@ -3,9 +3,9 @@ entries:
   libretranslate:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-05T11:43:56.176678+02:00"
+    created: "2023-09-05T11:46:41.23242+02:00"
     description: A Helm chart for Kubernetes
-    digest: 5125b37d3bb4ec2802f3740459619fee9a0493a6e26e9d915d487ff3e685b447
+    digest: 9f1ba5de0b38b85e61e103a7611ec8ca85f3a9829012b0ab088072ffa782391a
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
     name: libretranslate
     type: application
@@ -14,7 +14,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-05T11:43:56.176197+02:00"
+    created: "2023-09-05T11:46:41.231885+02:00"
     description: A Helm chart for Kubernetes
     digest: 96e1b53982ca725896654548049c96973fd8b15143b54b9b2b9dc75ba0120192
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -23,4 +23,4 @@ entries:
     urls:
     - libretranslate-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-05T11:43:56.174731+02:00"
+generated: "2023-09-05T11:46:41.229633+02:00"
