@@ -3,5 +3,5 @@ name: libretranslate
 description: A Helm chart for Kubernetes
 icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "1.16.0"
