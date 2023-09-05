@@ -69,8 +69,8 @@ resources: {}
   #   memory: 128Mi
 
 args: []
-  # - "--require-api-key-origin"
-  # - "chart-example.local"
+  # - --load-only
+  # - en,de,fr,hu,nl,tr
 
 autoscaling:
   enabled: false
