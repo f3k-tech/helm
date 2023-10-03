@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: libretranslate/libretranslate
-  tag: v1.3.11
+  tag: v1.3.12
   pullPolicy: IfNotPresent
 
 
