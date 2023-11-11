@@ -36,7 +36,6 @@ spec:
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
-              targetPort: 5000
               protocol: TCP
           livenessProbe:
             httpGet:
