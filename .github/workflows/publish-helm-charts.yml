@@ -42,8 +42,7 @@ jobs:
         done
         cd ..
         rm -r charts
-        rm ./get_helm.sh
-
+        
     - name: Copy Artifact Hub and README files
       run: |
         git checkout gh-pages
