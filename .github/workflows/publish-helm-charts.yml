@@ -31,12 +31,11 @@ jobs:
         git checkout gh-pages
         git checkout main -- charts
         cd charts
-        mkdir ./packages
         for d in */ ; do
           chart_name=$(basename "$d")
           chart_version=$(grep 'version:' "$d/Chart.yaml" | cut -d " " -f 2)
           if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
-            helm package "$d" -d ./packages
+            helm package "$d"
           else
             echo "Chart $chart_name-$chart_version already exists, skipping."
           fi
@@ -50,10 +49,9 @@ jobs:
 
     - name: Publish Charts to GitHub Pages
       run: |
-        helm repo index --url https://<username>.github.io/<repository>/ ./packages
-        mv ./charts/packages/* .
-        git config user.name "<your-name>"
-        git config user.email "<your-email>"
+        helm repo index --url https://f3k-tech.github.io/helm/ .
+        git config user.name "FreekO"
+        git config user.email "freek@olgers.com"
         git add .
         git commit -m "Publish Helm charts and additional files"
         git push origin gh-pages
