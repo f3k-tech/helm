@@ -53,6 +53,7 @@ jobs:
     - name: Publish Charts to GitHub Pages
       run: |
         helm repo index --url https://f3k-tech.github.io/helm/ .
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         git config user.name "FreekO"
         git config user.email "freek@olgers.com"
         git add .
