@@ -5,3 +5,25 @@ icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libret
 type: application
 version: 0.2.0
 appVersion: "1.5.1"
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Persistent Volume Claim (PVC) template for dynamic storage provisioning, enabling persistent storage attachment to containers.
+    - kind: added
+      description: Volume mount configuration in container specification, allowing containers to access persistent storage at specified mount path.
+    - kind: added
+      description: Configuration options in values.yaml for PVC size and access modes, allowing customization of storage requirements.
+    - kind: added
+      description: Persistence enable/disable flag in values.yaml, providing flexibility for environments where persistent storage might not be required.
+    - kind: added
+      description: Volumes section in pod specification of deployment template, ensuring correct linkage of PVCs to pods.
+    - kind: changed
+      description: Updated values.yaml and deployment templates to integrate new persistent storage features.
+    - kind: fixed
+      description: No specific fixes in this release.
+    - kind: deprecated
+      description: No deprecations in this release.
+    - kind: removed
+      description: No features removed in this release.
+    - kind: security
+      description: No security updates in this release.
