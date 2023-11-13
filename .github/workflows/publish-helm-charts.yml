@@ -6,7 +6,8 @@ on:
       - main
     paths:
       - 'charts/**'
-      - '.github/workflows/**'
+      - 'artifacthub-repo.yml'
+      - 'README.md'
 
 jobs:
   publish-charts:
@@ -15,6 +16,8 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Install Helm
       run: |
@@ -40,6 +43,11 @@ jobs:
         done
         cd ..
 
+    - name: Copy Artifact Hub and README files
+      run: |
+        git checkout gh-pages
+        git checkout main -- artifacthub-repo.yml README.md
+
     - name: Publish Charts to GitHub Pages
       run: |
         helm repo index --url https://<username>.github.io/<repository>/ ./packages
@@ -47,8 +55,7 @@ jobs:
         git config user.name "<your-name>"
         git config user.email "<your-email>"
         git add .
-        git commit -m "Publish Helm charts"
+        git commit -m "Publish Helm charts and additional files"
         git push origin gh-pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
