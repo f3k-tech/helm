@@ -4,12 +4,14 @@
 
 f3k-tech on artifacthub: [https://artifacthub.io/packages/search?repo=f3k-tech](https://artifacthub.io/packages/search?repo=f3k-tech)
 
-### Add repository
+## LibreTranslate
+
+**Add repository**
 
 ```
 helm repo add f3k-tech https://f3k-tech.github.io/helm/
 ```
-### Install chart
+**Install chart**
 
 ```
 helm install my-libretranslate f3k-tech/libretranslate
