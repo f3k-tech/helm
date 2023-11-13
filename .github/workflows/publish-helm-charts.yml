@@ -12,7 +12,8 @@ on:
 
 jobs:
   publish-charts:
-    permissions: write-all
+    permissions:
+      pages: write
     runs-on: ubuntu-22.04
 
     steps:
