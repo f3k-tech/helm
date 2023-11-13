@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 'charts/**'
       - 'artifacthub-repo.yml'
       - 'README.md'
