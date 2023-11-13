@@ -27,6 +27,11 @@ jobs:
       with:
         version: v3.11.1
 
+    - name: Import GPG Key
+      run: echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+
     - name: Package and Check Charts
       run: |
         git fetch origin gh-pages
@@ -37,7 +42,7 @@ jobs:
           chart_name=$(basename "$d")
           chart_version=$(grep 'version:' "$d/Chart.yaml" | cut -d " " -f 2)
           if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
-            helm package "$d" -d ..
+            helm package --sign --key [YourEmail] --keyring ~/.gnupg/private-keys-v1.d "$d" -d ..
           else
             echo "Chart $chart_name-$chart_version already exists, skipping."
           fi
