@@ -1,5 +1,9 @@
 # LibreTranslate Helm Chart
 
+> URL WARNING: From now on, f3k.tech helm charts will be published via github pages: [https://f3k-tech.github.io/helm/](https://f3k-tech.github.io/helm/).
+> Please change your deployment to the new URL.
+> Old charts will be served from github pages as well.
+
 | Name       | Url                                                              |
 |------------|------------------------------------------------------------------|
 | Contribute | https://github.com/f3k-tech/helm/tree/main/charts/libretranslate |
