@@ -1,0 +1,27 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v2
+appVersion: 1.5.1
+description: Libretranslate Helm chart for Kubernetes
+icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
+name: libretranslate
+type: application
+version: 0.2.0
+
+...
+files:
+  libretranslate-0.2.0.tgz: sha256:d96f28942f4df77d2df0e2ff099feaf7b468835a7b4a1784612313bf7838880c
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlUp9bCRBVfFCgAnZIiQAAnmIMAHTRUSAk+l2Ce7OMnCOCWscH
+y36urgp4H3DIW/wFnJYWfLufoBdLf0oAEgrZZ5QHm/El7Y9igvNA+me+JhcArLlk
+oGPCXXjjHEbYIx4IT+BPfZv6yi5ZREYpxMgP3HFq8u+3g0VPWLBaXWzgUOY/2TZd
+DT3PSuFT5qKL4dUCmTBuSMsC81IKqucoR+OmVyoIK/F3vxzL8Pj6c1w7NRiMGqTq
+k2wQb5nUlPEeRqkfIF9XxEZi4ijBfjPVaWLfyXYnXrR1pRh3oPAWiP4jQeOaefMS
+hF8ma0iMal284CyL6gAk3hQqj0TiKhTrh2mH02izRNB2QxvF/cbvoeHhs8v66NbV
+t7+bONjVkxDVrgKCxMIx3XCWHVn/gHlEJW14q1PPZj56OHvUsMRkgNg1eI02XPWs
+Dkx/F2SgSGUTReyhM8Se2rlPha8uEijuylnUcjgQ2CJU0GIAQVjOowknCyASurNA
+VEUAJuA3SHxrp5IXXgaY6I42rmYVdcSOtlNkhzWiRg==
+=VSZn
+-----END PGP SIGNATURE-----
