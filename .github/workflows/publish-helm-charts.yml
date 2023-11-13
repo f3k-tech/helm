@@ -12,6 +12,7 @@ on:
 
 jobs:
   publish-charts:
+    permissions: write-all
     runs-on: ubuntu-22.04
 
     steps:
@@ -42,7 +43,7 @@ jobs:
         done
         cd ..
         rm -r charts
-        
+
     - name: Copy Artifact Hub and README files
       run: |
         git checkout gh-pages
