@@ -1,0 +1,52 @@
+name: Publish Helm Charts to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'charts/**'
+
+jobs:
+  publish-charts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Fetch all history for all branches and tags
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v1
+
+    - name: Package and Check Charts
+      run: |
+        git fetch origin gh-pages
+        git checkout gh-pages
+        git checkout main -- charts
+        cd charts
+        mkdir ./packages
+        for d in */ ; do
+          chart_name=$(basename "$d")
+          chart_version=$(grep 'version:' "$d/Chart.yaml" | cut -d " " -f 2)
+          if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
+            helm package "$d" -d ./packages
+          else
+            echo "Chart $chart_name-$chart_version already exists, skipping."
+          fi
+        done
+        cd ..
+
+    - name: Publish Charts to GitHub Pages
+      run: |
+        helm repo index --url https://<username>.github.io/<repository>/ ./packages
+        mv ./charts/packages/* .
+        git config user.name "<your-name>"
+        git config user.email "<your-email>"
+        git add .
+        git commit -m "Publish Helm charts"
+        git push origin gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
