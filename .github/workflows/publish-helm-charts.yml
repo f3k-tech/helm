@@ -28,9 +28,9 @@ jobs:
         version: v3.11.1
 
     - name: Import GPG Key
-      run: /
+      run: |
         echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --import
-        gpg --export-secret-keys >~/secring.gpg
+        gpg --export-secret-keys >~/.gnupg/secring.gpg
       env:
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
@@ -44,7 +44,7 @@ jobs:
           chart_name=$(basename "$d")
           chart_version=$(grep 'version:' "$d/Chart.yaml" | cut -d " " -f 2)
           if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
-            helm package --sign --key info@f3k.tech --keyring ~/secring.gpg "$d" -d ..
+            helm package --sign --key info@f3k.tech --keyring ~/.gnupg/secring.gpg "$d" -d ..
           else
             echo "Chart $chart_name-$chart_version already exists, skipping."
           fi
