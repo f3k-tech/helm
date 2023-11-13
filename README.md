@@ -2,7 +2,7 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/f3k-tech)](https://artifacthub.io/packages/search?repo=f3k-tech)
 
-f3k.tech on artifacthub: [https://artifacthub.io/packages/search?repo=f3k-tech](https://artifacthub.io/packages/search?repo=f3k-tech)
+f3k-tech on artifacthub: [https://artifacthub.io/packages/search?repo=f3k-tech](https://artifacthub.io/packages/search?repo=f3k-tech)
 
 ### Add repository
 
