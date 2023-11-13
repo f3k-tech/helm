@@ -14,10 +14,13 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v3  # Updated to the latest version
+      uses: actions/checkout@v3
 
-    - name: Set up Helm
-      uses: azure/setup-helm@v1  # This action should be compatible with Node.js 16
+    - name: Install Helm
+      run: |
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        chmod 700 get_helm.sh
+        ./get_helm.sh
 
     - name: Package and Check Charts
       run: |
