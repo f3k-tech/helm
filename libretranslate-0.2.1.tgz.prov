@@ -1,0 +1,41 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: No added features in this release.
+    - kind: changed
+      description: Changed database PVC name to libretranslate-db to make the name less ambigious.
+    - kind: fixed
+      description: No specific fixes in this release.
+    - kind: deprecated
+      description: No deprecations in this release.
+    - kind: removed
+      description: No features removed in this release.
+    - kind: security
+      description: No security updates in this release.
+apiVersion: v2
+appVersion: 1.5.1
+description: Libretranslate Helm chart for Kubernetes
+icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
+name: libretranslate
+type: application
+version: 0.2.1
+
+...
+files:
+  libretranslate-0.2.1.tgz: sha256:030d8dc2ed7b1f9f53cdeffb88b4511186387e8de3196e6a83d4218f9f221d64
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlUy46CRBVfFCgAnZIiQAAY5MMAJHW2YOhv8SiHb+GJTX5gBwN
+ffqYX65aFrnhHwAs+xwjKrAajKnvtN+WT4r98M0Qx/Th6WWics8zo48OfCfzBwp2
+gTfawBxpvZ6H9z4ix5so0wGcjb4e/gTPz83bQc91G5G4K5sdGtZtaS1KnsjbD2P7
+C5NZbsi7p75Hd6sI7fCCvasDz0mCK+l1GxJJFKuGyzbcr9TS+bS2u/jVNo//cTUc
+hPLsWPV7JOD1hxFtUNsrQTDmZfiZVn/47xmQqMhW993EWhS92tjEWmv3hqGsUHr9
+r4GOme1yQn1lknpqp034xzHz0wzxTtU3afY7paNXjVZZ6y5hhsRmUt63WehPUAm2
+jvBQ+8rax63WpMeFj1LUEnoC7IEPJqs+VKBZ1HIWCvucy83260USWKHvZyw/bhxq
+g8zouUMEgl/ZdeN8XbDOeWOgzbZPlhbvunkZJwNa+ihKuxmKETlMQVpFW0wpqvQh
+PXITCfwDPp8oI1ZH4u4GfSrkoDmoe+IHdErHg75dFA==
+=GcPg
+-----END PGP SIGNATURE-----
