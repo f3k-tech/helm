@@ -16,7 +16,7 @@ annotations:
     - kind: changed
       description: Added default values for new PVC's.
     - kind: fixed
-      description: No specific fixes in this release.
+      description: Fixed permission for ~/.local/db.
     - kind: deprecated
       description: persistence.enabled use persistence.db.enabled instead
     - kind: deprecated
@@ -29,7 +29,3 @@ annotations:
       description: persistence.size use persistence.db.size instead
     - kind: deprecated
       description: persistence.annotations use persistence.db.annotations instead
-    - kind: removed
-      description: No features removed in this release.
-    - kind: security
-      description: No security updates in this release.
