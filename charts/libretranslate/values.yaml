@@ -59,7 +59,7 @@ ingress:
 persistence:
   enabled: false
   # storageClass: "-"
-  # existingClaim: libretranslate-pvc
+  # existingClaim: libretranslate-libretranslate
   accessMode: ReadWriteOnce
   size: 1Gi
   annotations: {}
