@@ -26,7 +26,7 @@ If the webserver is not ready within 16 minutes, the **readinessProbe** and **li
 Here are some numbers to get you started:
 _You can use the same numbers for both readiness and liveliness._
 
-### 10Mb/s
+#### 10Mb/s
 
 ```yml
   initialDelaySeconds: 60
@@ -36,7 +36,7 @@ _You can use the same numbers for both readiness and liveliness._
   timeoutSeconds: 5
 ```
 
-### 100Mb/s
+#### 100Mb/s
 
 ```yml
   initialDelaySeconds: 60
@@ -46,7 +46,7 @@ _You can use the same numbers for both readiness and liveliness._
   timeoutSeconds: 5
 ```
 
-### 1000Mb/s
+#### 1000Mb/s
 
 ```yml
   initialDelaySeconds: 60
