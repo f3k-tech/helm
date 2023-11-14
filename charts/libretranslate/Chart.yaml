@@ -14,7 +14,7 @@ annotations:
     - kind: changed
       description: values.yaml
     - kind: added
-     description: Instructions for livenessProbe and readinessProbe in the docs. 
+      description: Instructions for livenessProbe and readinessProbe in the docs. 
     - kind: changed
       description: README.md
    
