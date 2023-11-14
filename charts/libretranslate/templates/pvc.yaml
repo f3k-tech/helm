@@ -1,9 +1,31 @@
-apiVersion: v1
+{{- if .Values.persistence.enabled -}}
+{{- if not .Values.persistence.existingClaim -}}
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
   name: {{ .Release.Name }}-pvc
+  labels:
+    app.kubernetes.io/name: {{ include "libretranslate.name" . }}
+    helm.sh/chart: {{ include "libretranslate.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: app
+{{- if .Values.persistence.annotations }}
+  annotations:
+{{ toYaml .Values.persistence.annotations | indent 4 }}
+{{- end }}
 spec:
-  accessModes: {{ toYaml .Values.persistence.accessModes | nindent 6 }}
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.persistence.size }}
+      storage: {{ .Values.persistence.size | quote }}
+{{- if .Values.persistence.storageClass }}
+{{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end -}}
+{{- end -}}

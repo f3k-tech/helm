@@ -58,9 +58,11 @@ ingress:
 
 persistence:
   enabled: false
-  accessModes:
-    - ReadWriteOnce
+  # storageClass: "-"
+  # existingClaim: libretranslate-pvc
+  accessMode: ReadWriteOnce
   size: 1Gi
+  annotations: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
