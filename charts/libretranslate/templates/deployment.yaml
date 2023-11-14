@@ -41,7 +41,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
           - name: db-volume
-            mountPath: /app/db
+            mountPath: /home/libretranslate/.local/db
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
