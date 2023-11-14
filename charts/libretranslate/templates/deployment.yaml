@@ -29,19 +29,19 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: libretranslate-cache
-          {{- if .Values.persistence.enabled }}
+          {{- if .Values.persistence.cache.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-cache{{- end }}
+            claimName: {{ if .Values.persistence.cache.existingClaim }}{{ .Values.persistence.cache.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-cache{{- end }}
           {{- end }}
         - name: libretranslate-db
-          {{- if .Values.persistence.enabled }}
+          {{- if .Values.persistence.db.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-db{{- end }}
+            claimName: {{ if .Values.persistence.db.existingClaim }}{{ .Values.persistence.db.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-db{{- end }}
           {{- end }}
         - name: libretranslate-share
-          {{- if .Values.persistence.enabled }}
+          {{- if .Values.persistence.share.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-share{{- end }}
+            claimName: {{ if .Values.persistence.share.existingClaim }}{{ .Values.persistence.share.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-share{{- end }}
           {{- end }}
       containers:
         - name: {{ .Chart.Name }}
