@@ -57,17 +57,17 @@ ingress:
   #      - chart-example.local
 
 persistence:
-  db:
-    enabled: false
-    # storageClass: "-"
-    # existingClaim: libretranslate-db
-    accessMode: ReadWriteOnce
-    size: 1Gi
-    annotations: {}
   cache:
     enabled: false
     # storageClass: "-"
     # existingClaim: libretranslate-cache
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    annotations: {}
+  db:
+    enabled: false
+    # storageClass: "-"
+    # existingClaim: libretranslate-db
     accessMode: ReadWriteOnce
     size: 1Gi
     annotations: {}
