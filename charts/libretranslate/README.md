@@ -23,4 +23,37 @@ args:
 
 ## Readiness/liveliness probes fail
 
-If the webserver is not ready within 15 minutes, the readiness and liveliness probes will fail. This is most likely because downloading the language files took too long. Please raise in issue or create a pull request if 15 minutes is too short. 
+If the webserver is not ready within 16 minutes, the readinessProbe and livelinessProbe will fail. This is most likely because downloading the language files took too long. Please adjust the values to accomodate your connection. Don't set the initalDelaySeconds to if you use persistent storage as it won't download the language files everytime.
+
+Here are some numbers to get you started:
+_You can use the same numbers for both readiness and liveliness._
+
+### 10Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 600
+  successThreshold: 1
+  timeoutSeconds: 5
+```
+
+### 100Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 60
+  successThreshold: 1
+  timeoutSeconds: 5
+```
+
+### 1000Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 15
+  failureThreshold: 12
+  successThreshold: 1
+  timeoutSeconds: 5
+```
