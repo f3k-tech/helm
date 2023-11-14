@@ -1,0 +1,31 @@
+{{- if .Values.persistence.share.enabled -}}
+{{- if not .Values.persistence.share.existingClaim -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "libretranslate.fullname" . }}-share
+  labels:
+    app.kubernetes.io/name: {{ include "libretranslate.name" . }}
+    helm.sh/chart: {{ include "libretranslate.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: app
+{{- if .Values.persistence.share.annotations }}
+  annotations:
+{{ toYaml .Values.persistence.share.annotations | indent 4 }}
+{{- end }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.share.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.share.size | quote }}
+{{- if .Values.persistence.share.storageClass }}
+{{- if (eq "-" .Values.persistence.share.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.share.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end -}}
+{{- end -}}
