@@ -27,6 +27,17 @@ spec:
       serviceAccountName: {{ include "libretranslate.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: init-chown
+          image: busybox
+          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share']
+          volumeMounts:
+            - name: libretranslate-cache
+              mountPath: /home/libretranslate/.local/cache
+            - name: libretranslate-db
+              mountPath: /home/libretranslate/.local/db
+            - name: libretranslate-share
+              mountPath: /home/libretranslate/.local/share
       volumes:
         - name: libretranslate-cache
           {{- if .Values.persistence.cache.enabled }}
