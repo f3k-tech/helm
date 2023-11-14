@@ -9,7 +9,7 @@ on:
       - 'charts/**'
       - 'artifacthub-repo.yml'
       - 'README.md'
-
+      
 jobs:
   publish-charts:
     permissions: write-all
@@ -54,7 +54,7 @@ jobs:
     - name: Copy Artifact Hub and README files
       run: |
         git checkout gh-pages
-        git checkout main -- artifacthub-repo.yml README.md
+        git checkout main -- artifacthub-repo.yml README.md .gitattributes .gitignore
 
     - name: Publish Charts to GitHub Pages
       run: |
