@@ -1,0 +1,33 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Default livenessProbe values.
+    - kind: changed
+      description: Updated values.yaml
+apiVersion: v2
+appVersion: 1.5.1
+description: Libretranslate Helm chart for Kubernetes
+icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
+name: libretranslate
+type: application
+version: 1.0.0
+
+...
+files:
+  libretranslate-1.0.0.tgz: sha256:e8d02eac476117e34100ad4789f325c0a27e4a03d01125e7ad3063c1c08e44cd
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlU7t8CRBVfFCgAnZIiQAAYjAMAGspUafsBqdn4oDpE05vo7/y
+XdjEUSDGtExmwKD25vp3qMQ5pbtaRq5Wu87EbfulqnzP5s4NtXRMEZ2ai9rRPliD
+4mhr2Utplt/hCQAsl78QIeV7Mi7u5N4yv6OpGPPtJojtDWMiMDiP8cKJMhcaQ3os
+BZYvJ14rzyNqPb1C2mqAoDUysNq+OW0bV9rGiR+1JPdfnwU89M0QJjKpk0/grkwR
+R3i6q4Z4OwYD/4OL6Skfn2ytflzG796/Nxs/fW0ClyJSWmmbH2PlvnKigyF2jYey
+uadEIt+AofS4ie2FK/lvLucQi7M1JTfwCNXtnFGDkc5aU67lR6GOv4tRcKBtXQ0X
+pZPCvP4DyxvtzcPojLcWw5LhXzKuvtLvmqqZHNtxSwdd6L4adjepOLkYnoXRbWcu
+zJJex2UxpF6uZrBK9wBtSu1naNt6YnvKXqA8U8Otip7bpJ7ES5Ej0wslFBWTo072
+VOaBeRXoiysSD5wGUoHpQruihPp9DvV9KRe/XcGeKw==
+=gd5E
+-----END PGP SIGNATURE-----
