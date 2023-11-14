@@ -1,0 +1,49 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Persistent Volume Claim (PVC) template for dynamic storage provisioning, enabling persistent storage attachment to containers.
+    - kind: added
+      description: Volume mount configuration in container specification, allowing containers to access persistent storage at specified mount path.
+    - kind: added
+      description: Configuration options in values.yaml for PVC size and access modes, allowing customization of storage requirements.
+    - kind: added
+      description: Persistence enable/disable flag in values.yaml, providing flexibility for environments where persistent storage might not be required.
+    - kind: added
+      description: Volumes section in pod specification of deployment template, ensuring correct linkage of PVCs to pods.
+    - kind: changed
+      description: Updated values.yaml and deployment templates to integrate new persistent storage features.
+    - kind: fixed
+      description: No specific fixes in this release.
+    - kind: deprecated
+      description: No deprecations in this release.
+    - kind: removed
+      description: No features removed in this release.
+    - kind: security
+      description: No security updates in this release.
+apiVersion: v2
+appVersion: 1.5.1
+description: Libretranslate Helm chart for Kubernetes
+icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
+name: libretranslate
+type: application
+version: 0.2.0
+
+...
+files:
+  libretranslate-0.2.0.tgz: sha256:45c23f7e62378a888ce56f93ecc3e8838779a4041a2bb7ec91c8862ceda28976
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlUylrCRBVfFCgAnZIiQAAbyEMAJKyhRbw+EpHf0cVFmyptuIg
+FYg1b39RtfGEcgHaqoGh/YwDa2Ozms6x5ipk4DM8UjdDkhHmrAcQuP0GESUHOV9l
+UIxCToZrYm+hc5E3vDwVyrN0izLQXrKbbohE1MxlJweAEF5UMoHmPi3MeDdzZe79
+tARAV1e4U3+IkQedbflAEkgeSs/275k5f3ELUeONNLJRYZFfPkXFIrmKEVit7L1a
+36Q8UJGluNYr0cnweYhQc4J2QyEctGWPldWuIVuUNDjOEqv4NveWiVIT003HX7h1
+0HzB3NnpnxBRnAr6CcPcWtMb2Rn1u7cfDH1jiIsljmm/2PaVAtL+cWvrfr1EKHr6
+C3c5otj3nMnlA7jdmESplizY0mopbIntl6jkxKh6vNFW6e6u2gt4ydua1I6RzjWD
+Vgb+Yy0xrK3l0VvaynDP2xzwwAiGu6d+/pXbH94Jn0Pk3Q9UX+DVkwIyC6pxX/9i
+bneM/gyHB6vQ6G02dxIvTCO+ZfgsCsOkBc8XpkaQBA==
+=ZhBN
+-----END PGP SIGNATURE-----
