@@ -3,7 +3,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ template "libretranslate.fullname" . }}-libretranslate
+  name: {{ template "libretranslate.fullname" . }}-db
   labels:
     app.kubernetes.io/name: {{ include "libretranslate.name" . }}
     helm.sh/chart: {{ include "libretranslate.chart" . }}

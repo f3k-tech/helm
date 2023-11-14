@@ -31,7 +31,7 @@ spec:
         - name: libretranslate-db
           {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-libretranslate{{- end }}
+            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-db{{- end }}
           {{- end }}
       containers:
         - name: {{ .Chart.Name }}
