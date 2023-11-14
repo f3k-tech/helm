@@ -20,13 +20,13 @@ annotations:
     - kind: deprecated
       description: persistence.enabled use persistence.db.enabled instead
     - kind: deprecated
-          description: persistence.storageClass use persistence.db.storageClass instead
+      description: persistence.storageClass use persistence.db.storageClass instead
     - kind: deprecated
-          description: persistence.existingClaim use persistence.db.existingClaim instead
+      description: persistence.existingClaim use persistence.db.existingClaim instead
     - kind: deprecated
-          description: persistence.accessMode use persistence.db.accessMode instead
+      description: persistence.accessMode use persistence.db.accessMode instead
     - kind: deprecated
-          description: persistence.size use persistence.db.size instead
+      description: persistence.size use persistence.db.size instead
     - kind: deprecated
       description: persistence.annotations use persistence.db.annotations instead
     - kind: removed
