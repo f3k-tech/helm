@@ -23,7 +23,7 @@ args:
 
 If the webserver is not ready within 16 minutes, the **readinessProbe** and **livenessProbe** will fail. This is most likely because downloading the language files took too long. Please adjust the values to accomodate your connection. Don't set the 'initalDelaySeconds' to if you use persistent storage as it won't download the language files everytime.
 
-Here are some numbers to get you started:
+Here are some numbers to get you started:  
 _You can use the same numbers for both readiness and liveliness._
 
 #### 10Mb/s
