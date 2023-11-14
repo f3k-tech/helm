@@ -3,29 +3,16 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
 type: application
-version: 0.3.0
+version: 0.3.1
 appVersion: "1.5.1"
 annotations:
   artifacthub.io/changes: |
     - kind: added
-      description: Persistent storage for share and cache.
+      description: Added livelinessProbe to values.
     - kind: added
-      description: pvc-share.yaml and pvc-cache.yaml.
+      description: Added readinessProbe to values.
     - kind: changed
-      description: pvc.yaml is now pvc-db.yaml.
+      description: deployment.yaml
     - kind: changed
-      description: Added default values for new PVC's.
-    - kind: fixed
-      description: Fixed permission for ~/.local/db.
-    - kind: deprecated
-      description: persistence.enabled use persistence.db.enabled instead
-    - kind: deprecated
-      description: persistence.storageClass use persistence.db.storageClass instead
-    - kind: deprecated
-      description: persistence.existingClaim use persistence.db.existingClaim instead
-    - kind: deprecated
-      description: persistence.accessMode use persistence.db.accessMode instead
-    - kind: deprecated
-      description: persistence.size use persistence.db.size instead
-    - kind: deprecated
-      description: persistence.annotations use persistence.db.annotations instead
+      description: values.yaml
+   

@@ -107,3 +107,19 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 900
+  periodSeconds: 15
+  failureThreshold: 5
+  successThreshold: 1
+  timeoutSeconds: 5
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 28
+  successThreshold: 1
+  timeoutSeconds: 5
