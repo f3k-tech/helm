@@ -28,10 +28,20 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
+        - name: libretranslate-cache
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-cache{{- end }}
+          {{- end }}
         - name: libretranslate-db
           {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-db{{- end }}
+          {{- end }}
+        - name: libretranslate-share
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-share{{- end }}
           {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -40,8 +50,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-          - name: libretranslate-db
-            mountPath: /home/libretranslate/.local/db
+            - name: libretranslate-cache
+              mountPath: /home/libretranslate/.local/cache
+            - name: libretranslate-db
+              mountPath: /home/libretranslate/.local/db
+            - name: libretranslate-share
+              mountPath: /home/libretranslate/.local/share
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
