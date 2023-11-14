@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: db-volume
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-pvc
+            claimName: {{ .Values.persistence.existingClaim }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
