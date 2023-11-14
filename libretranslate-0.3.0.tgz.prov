@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Persistent storage for share and cache.
+    - kind: added
+      description: pvc-share.yaml and pvc-cache.yaml.
+    - kind: changed
+      description: pvc.yaml is now pvc-db.yaml.
+    - kind: changed
+      description: Added default values for new PVC's.
+    - kind: fixed
+      description: Fixed permission for ~/.local/db.
+    - kind: deprecated
+      description: persistence.enabled use persistence.db.enabled instead
+    - kind: deprecated
+      description: persistence.storageClass use persistence.db.storageClass instead
+    - kind: deprecated
+      description: persistence.existingClaim use persistence.db.existingClaim instead
+    - kind: deprecated
+      description: persistence.accessMode use persistence.db.accessMode instead
+    - kind: deprecated
+      description: persistence.size use persistence.db.size instead
+    - kind: deprecated
+      description: persistence.annotations use persistence.db.annotations instead
+apiVersion: v2
+appVersion: 1.5.1
+description: Libretranslate Helm chart for Kubernetes
+icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
+name: libretranslate
+type: application
+version: 0.3.0
+
+...
+files:
+  libretranslate-0.3.0.tgz: sha256:1b970393a1617b8f58bebee504402133127068c421461494a29162a86aeecfbc
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlU5E4CRBVfFCgAnZIiQAA7qgMAKk1AlwT2ySedSGRwkPKGeLU
+eSZUudeaqRoc2l8YZ7SjB3p/S6Jr0o6g3y+Vl8k/uf/v7cLm4w2sHs0RJ7QjcWkU
+EYthImsKk/Z4IygTDzC7H4SCgKVlZyf33HxmTZpi1fNRVYqqMMx7RPDk2FoeHrCd
+lJezCsVjrkuMnD2k/wdH26D6gG0BFJgEIVIHJ49LCWxDf6AP3pbXkF+XxRiX2g0F
+B5Lmd5iWtgEODa/T1fmXATckbo3b5SdTX/h6boVgXlBqJnQuxxTF+CDJqqLx3sEt
+EWUiYbHz3Ky0vVctpFR5IPUnCg+mLAFBx+UQVJjSHzBS8sgEAQi1wdRIPAcDGtth
+xmnuT4lwPvk3RWWOlb10YynI5FjOoV3//QMLceU0Xeq6Z73VOJX34R5ftMr5IwI1
+qlVHnatCCVg5sGfw7xvvZql6hjyXTcoZoJ0+J4P5HqNxZzoA3DEGYABfua0jyDIL
+9+YJMun9nI6m7jTxdvvb9WrVBDd7Uao/ZYpSrpekCQ==
+=kevv
+-----END PGP SIGNATURE-----
