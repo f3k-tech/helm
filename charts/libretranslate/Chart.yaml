@@ -8,13 +8,27 @@ appVersion: "1.5.1"
 annotations:
   artifacthub.io/changes: |
     - kind: added
-      description: No added features in this release.
+      description: Persistent storage for share and cache.
+    - kind: added
+      description: pvc-share.yaml and pvc-cache.yaml.
     - kind: changed
-      description: Changed database PVC name to libretranslate-db to make the name less ambigious.
+      description: pvc.yaml is now pvc-db.yaml.
+    - kind: changed
+      description: Added default values for new PVC's.
     - kind: fixed
       description: No specific fixes in this release.
     - kind: deprecated
-      description: No deprecations in this release.
+      description: persistence.enabled use ersistence.db.enabled instead
+    - kind: deprecated
+          description: persistence.storageClass use persistence.db.storageClass instead
+    - kind: deprecated
+          description: persistence.existingClaim use persistence.db.existingClaim instead
+    - kind: deprecated
+          description: persistence.accessMode use persistence.db.accessMode instead
+    - kind: deprecated
+          description: persistence.size use persistence.db.size instead
+    - kind: deprecated
+      description: persistence.annotations use persistence.db.annotations instead
     - kind: removed
       description: No features removed in this release.
     - kind: security
