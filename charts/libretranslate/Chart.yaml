@@ -10,11 +10,5 @@ annotations:
     - kind: changed
       description: Default livenessProbe values.
     - kind: changed
-      description: Default readinessProbe values.
-    - kind: changed
-      description: values.yaml
-    - kind: added
-      description: Instructions for livenessProbe and readinessProbe in the docs. 
-    - kind: changed
-      description: README.md
+      description: Updated values.yaml
    

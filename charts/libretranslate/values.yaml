@@ -62,7 +62,7 @@ persistence:
     # storageClass: "-"
     # existingClaim: libretranslate-cache
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 8Gi
     annotations: {}
   db:
     enabled: false
@@ -76,7 +76,7 @@ persistence:
     # storageClass: "-"
     # existingClaim: libretranslate-share
     accessMode: ReadWriteOnce
-    size: 1Gperi
+    size: 20Gi
     annotations: {}
 
 resources: {}
