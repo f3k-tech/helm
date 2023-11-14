@@ -29,8 +29,10 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
         - name: db-volume
+          {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim }}
+            claimName: {{ if .Values.persistence.existingClaim }}{{ .Values.persistence.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-pvc{{- end }}
+          {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
