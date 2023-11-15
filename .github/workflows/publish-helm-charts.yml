@@ -35,6 +35,7 @@ jobs:
 
     - name: Package and Check Charts
       run: |
+        which yq || apt-get install yq -y
         ./process-charts.sh
       
 
