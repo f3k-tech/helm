@@ -3,12 +3,10 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: v0.0.0 # appVersion will be copied from .image.tag from values.yaml
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Default livenessProbe values.
-    - kind: changed
-      description: Updated values.yaml
+      description: Update LibreTranslate container to 1.5.2
    
