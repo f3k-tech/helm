@@ -1,19 +1,13 @@
 #!/bin/bash
 
-# Fetching necessary branches and checking out charts
-git fetch origin gh-pages
-git checkout gh-pages
-git checkout main -- charts
-cd charts
-
 # Loop through all chart directories
 for d in */ ; do
   chart_name=$(basename "$d")
-  chart_version=$(grep 'version:' "$d/Chart.yaml" | cut -d " " -f 2)
-  app_version=$(grep 'appVersion:' "$d/Chart.yaml" | cut -d " " -f 2)
+  chart_version=$(yq e '.version' "$d/Chart.yaml")
+  app_version=$(yq e '.appVersion' "$d/Chart.yaml")
 
-  # Update the image.tag in values.yaml
-  sed -i "s/^image\.tag:.*$/image\.tag: $app_version/" "$d/values.yaml"
+  # Update the image.tag in values.yaml using yq
+  yq e -i '.image.tag = strenv(app_version)' "$d/values.yaml" app_version="$app_version"
 
   if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
     helm package --sign --key info@f3k.tech --keyring ~/.gnupg/secring.gpg "$d" -d ..
@@ -25,4 +19,3 @@ done
 # Cleaning up
 cd ..
 rm -r charts
-
