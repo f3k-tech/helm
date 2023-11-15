@@ -4,7 +4,7 @@
 for d in */ ; do
   chart_name=$(basename "$d")
   chart_version=$(yq e '.version' "$d/Chart.yaml")
-  ./update-chart-version.sh
+  ../scripts/update-chart-version.sh
 
   if [ ! -f "../$chart_name-$chart_version.tgz" ]; then
     helm package --sign --key info@f3k.tech --keyring ~/.gnupg/secring.gpg "$d" -d ..
