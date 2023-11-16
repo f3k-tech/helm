@@ -6,6 +6,8 @@ f3k-tech on artifacthub: [https://artifacthub.io/packages/search?repo=f3k-tech](
 
 ## LibreTranslate
 
+![icon](icons/libretranslate.png)
+
 **Add repository**
 
 ```
