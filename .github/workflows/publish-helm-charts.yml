@@ -37,11 +37,11 @@ jobs:
       run: |
         which yq || apt-get install yq -y
         git checkout gh-pages
-        git checkout main -- charts
+        git checkout main -- charts scripts
         cd charts
         ../scripts/process-charts.sh
         cd ..
-        rm -r charts
+        rm -r charts scripts
       
 
     - name: Copy Artifact Hub and README files
