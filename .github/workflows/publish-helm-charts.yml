@@ -36,8 +36,12 @@ jobs:
     - name: Package and Check Charts
       run: |
         which yq || apt-get install yq -y
+        git checkout gh-pages
+        git checkout main -- charts
         cd charts
         ../scripts/process-charts.sh
+        cd ..
+        rm -r charts
       
 
     - name: Copy Artifact Hub and README files

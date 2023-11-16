@@ -13,7 +13,3 @@ for d in */ ; do
     echo "Chart $chart_name-$chart_version already exists, skipping."
   fi
 done
-
-# Cleaning up
-cd ..
-rm -r charts
