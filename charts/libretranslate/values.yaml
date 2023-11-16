@@ -92,6 +92,7 @@ resources: {}
   #   memory: 128Mi
 
 args: []
+  # - --update-models
   # - --load-only
   # - en,de,fr,hu,nl,tr
 
