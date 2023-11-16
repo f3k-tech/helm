@@ -1,0 +1,31 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Update LibreTranslate container to 1.5.2
+apiVersion: v2
+appVersion: v1.5.2
+description: Libretranslate Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+name: libretranslate
+type: application
+version: 1.0.1
+
+...
+files:
+  libretranslate-1.0.1.tgz: sha256:823bfcd1362136094639cf5446840b11b91620dcaa0c10f58ee22b1426d88345
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJlVj03CRBVfFCgAnZIiQAA8GUMALjF+iQzjiZW500riq8E8IHR
+znggE3USFqrl6XNAaoMI2fsEYWG/maiA5nCeKDExZTKF6rcLYaPGFDOmk8ZG5Acs
+OstRMP0o6/5iMGCE6vFgP1lUkA9okLj9czdvgc6NuWUayhIuTxWzZ8mtBsiutt7V
+Gh3NZRKHHaD9rbEtl4j84oRP3DzWpMl49RjTLYITD5yJz6lJfh2yOhX1UHx9Q3jq
+9j0Gvno4TffHeo9z50yduLTMi7J7nLdTAkKxkfMEN5AHE3COzYwXHvjDh4jEU/8n
+UzsM3j/TFlxu4VstDx7SXPfYauUqb9k8cjlAKxMqRNe/4NZXkryLUoW2fy5GPqru
+mOpHN6eqiYCb4zLY5SZ9aJe07N3s3NFciNmrYUuKcQEUiRGTI+h/yvPB1j1+hOYk
+4hXBcV3Nyr6c70qDHtCqggtazV/5+8pYO7pSFHlhqhP/ydQrSo6vEG3+jhTeyZV0
+auZS6SloyLdSWjqO1BsRMzElLoNDy3lYSNXTj/VVKw==
+=0rxi
+-----END PGP SIGNATURE-----
