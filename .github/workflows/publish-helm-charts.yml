@@ -43,7 +43,7 @@ jobs:
     - name: Copy Artifact Hub and README files
       run: |
         git checkout gh-pages
-        git checkout main -- icons artifacthub-repo.yml README.md .gitattributes .gitignore
+        git checkout main -- icons artifacthub-repo.yml README.md .gitignore
 
     - name: Publish Charts to GitHub Pages
       run: |
