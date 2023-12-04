@@ -15,43 +15,18 @@ You can add arguments like this:
 
 ```yaml
 args:
+  - --update-models
   - --load-only
   - en,de,fr,hu,nl,tr
 ```
 
-## Readiness/liveness probes fail
+## Autoscaling (HPA)
 
-If the webserver is not ready within 16 minutes, the **readinessProbe** and **livenessProbe** will fail. This is most likely because downloading the language files took too long. Consider turning them off for the first run (with persistent storage) or adjust the values to accomodate your connection.
+> **Important:** When using persistent storage make sure to deploy a single pod to download the language files. Once the language files have been downloaded you can deploy more pods. 
 
-Here are some numbers to get you started:  
-_You can use the same numbers for both readiness and liveliness._
+* Make sure to use ReadWriteMany (RWX) when using the autoscaler in combination with persistent storage. 
+* If you experience problems with languages not showing or want to make sure to have the latest language files, use the ```--update-models``` flag.
 
-#### 10Mb/s
+## Readiness/liveness probes
 
-```yml
-  initialDelaySeconds: 60
-  periodSeconds: 30
-  failureThreshold: 600
-  successThreshold: 1
-  timeoutSeconds: 5
-```
-
-#### 100Mb/s
-
-```yml
-  initialDelaySeconds: 60
-  periodSeconds: 30
-  failureThreshold: 60
-  successThreshold: 1
-  timeoutSeconds: 5
-```
-
-#### 1000Mb/s
-
-```yml
-  initialDelaySeconds: 60
-  periodSeconds: 15
-  failureThreshold: 12
-  successThreshold: 1
-  timeoutSeconds: 5
-```
+The Readiness and Liveness probes are disabled by default. This is because the initial download takes very long and most likely make them fail. I suggest to enable them after you've downloaded the language files (with persistent storage).
