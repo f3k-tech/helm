@@ -6,26 +6,29 @@ annotations:
     - kind: changed
       description: Update LibreTranslate container to 1.5.2
 apiVersion: v2
-appVersion: v1.5.2
+appVersion: v0.0.0
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
 name: libretranslate
 type: application
 version: 1.0.1
 
 ...
 files:
-  libretranslate-1.0.1.tgz: sha256:823bfcd1362136094639cf5446840b11b91620dcaa0c10f58ee22b1426d88345
+  libretranslate-1.0.1.tgz: sha256:6df46fe4935c46b611c8f8a1e97e2fb0051969233066262f9597fa648d6af286
 -----BEGIN PGP SIGNATURE-----
 
-wsDcBAEBCgAQBQJlVj03CRBVfFCgAnZIiQAA8GUMALjF+iQzjiZW500riq8E8IHR
-znggE3USFqrl6XNAaoMI2fsEYWG/maiA5nCeKDExZTKF6rcLYaPGFDOmk8ZG5Acs
-OstRMP0o6/5iMGCE6vFgP1lUkA9okLj9czdvgc6NuWUayhIuTxWzZ8mtBsiutt7V
-Gh3NZRKHHaD9rbEtl4j84oRP3DzWpMl49RjTLYITD5yJz6lJfh2yOhX1UHx9Q3jq
-9j0Gvno4TffHeo9z50yduLTMi7J7nLdTAkKxkfMEN5AHE3COzYwXHvjDh4jEU/8n
-UzsM3j/TFlxu4VstDx7SXPfYauUqb9k8cjlAKxMqRNe/4NZXkryLUoW2fy5GPqru
-mOpHN6eqiYCb4zLY5SZ9aJe07N3s3NFciNmrYUuKcQEUiRGTI+h/yvPB1j1+hOYk
-4hXBcV3Nyr6c70qDHtCqggtazV/5+8pYO7pSFHlhqhP/ydQrSo6vEG3+jhTeyZV0
-auZS6SloyLdSWjqO1BsRMzElLoNDy3lYSNXTj/VVKw==
-=0rxi
+wsDcBAEBCgAQBQJleaSNCRBVfFCgAnZIiQAANSkMAIo4OWMquXMOUe1zhA7bPjnr
+/6MJtCT6dnsZh7rt/Bc0qbc4HMd7AKB1d7U4Bpd/VbuhNYGdICdd3L3ZIfy2pf0e
+QMuLzc7vsmCzFZbEF+13tfjBYKw35XoqqSFJoEHchoBr+tLG57Jqboz3HyO6DxNq
+pRq+XDQGfsuGQWfjFPCfEN8xb3fg/7NTECFL3VTcxbSfZUVgDNTP6O1CRLMjPHQL
+mkFkgkvXgNGpEkMcD5iC6NTxgd7zyoMvIb5A43ZseOXoQMlY7KfHIO9zN3e8MgRl
+FoqM91Q4VG4xs9npX+QCObarma72jvk26bSyt9TbiaNN2jkxtHY7BinlUM/ofBJI
+SpKf8P2YApLVBKoZVgsdUWzE9ACiQ5ySUV7+1rBfx4dBWm8WAVlyWxXc8lH2wbx3
+aQU65ZvRDridM54povp3KsjrzJFR2syrxm9vSk1LqhgOlukOsDJqarPM4pVPQ+kV
+xM9ysN1SvPgr0cLlReVxBkIMljFBBs0jNXvOeZwCJw==
+=eQgs
 -----END PGP SIGNATURE-----
