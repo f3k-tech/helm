@@ -27,6 +27,39 @@ args:
 * Make sure to use ReadWriteMany (RWX) when using the autoscaler in combination with persistent storage. 
 * If you experience problems with languages not showing or want to make sure to have the latest language files, use the ```--update-models``` flag.
 
-## Readiness/liveness probes
 
-The Readiness and Liveness probes are disabled by default. This is because the initial download takes very long and most likely make them fail. I suggest to enable them after you've downloaded the language files (with persistent storage).
+## Readiness/liveness probes fail
+
+If the webserver is not ready within 16 minutes, the default **readinessProbe** and **livenessProbe** will fail. This is most likely because downloading the language files took too long. Consider turning them off for the first run (with persistent storage) or adjust the values to accomodate your connection.
+Here are some numbers to get you started:  
+_You can use the same numbers for both readiness and liveliness._
+
+#### 10Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 600
+  successThreshold: 1
+  timeoutSeconds: 5
+```
+
+#### 100Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 60
+  successThreshold: 1
+  timeoutSeconds: 5
+```
+
+#### 1000Mb/s
+
+```yml
+  initialDelaySeconds: 60
+  periodSeconds: 15
+  failureThreshold: 12
+  successThreshold: 1
+  timeoutSeconds: 5
+```

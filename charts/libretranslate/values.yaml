@@ -1,11 +1,8 @@
-# Default values for libretranslate.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 replicaCount: 1
 
 image:
   repository: libretranslate/libretranslate
+  tag: ""
   pullPolicy: IfNotPresent
 
 
@@ -109,7 +106,7 @@ tolerations: []
 affinity: {}
 
 livenessProbe:
-  enabled: false
+  enabled: true
   initialDelaySeconds: 60
   periodSeconds: 30
   failureThreshold: 30
@@ -117,7 +114,7 @@ livenessProbe:
   timeoutSeconds: 5
 
 readinessProbe:
-  enabled: false
+  enabled: true
   initialDelaySeconds: 60
   periodSeconds: 30
   failureThreshold: 30
