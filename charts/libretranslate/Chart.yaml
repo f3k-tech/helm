@@ -3,14 +3,12 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
 type: application
-version: 1.0.2
-appVersion: v1.5.2
+version: 1.0.3
+appVersion: v1.5.3
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: Fix appVersion
-    - kind: changed
-      description: Update readme
+      description: appVersion
 maintainers:
   - name: FreekO
     email: info@f3k.tech
