@@ -8,7 +8,7 @@ appVersion: v1.5.3
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: appVersion
+      description: Updated appVersion to v1.5.3
 maintainers:
   - name: FreekO
     email: info@f3k.tech
