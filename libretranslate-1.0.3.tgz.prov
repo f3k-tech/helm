@@ -4,7 +4,7 @@ Hash: SHA512
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: appVersion
+      description: Updated appVersion to v1.5.3
 apiVersion: v2
 appVersion: v1.5.3
 description: Libretranslate Helm chart for Kubernetes
@@ -18,17 +18,17 @@ version: 1.0.3
 
 ...
 files:
-  libretranslate-1.0.3.tgz: sha256:bfdc59b46ade2885c9482578375f2e58eb927b2d8dc35daba38b0433070c0039
+  libretranslate-1.0.3.tgz: sha256:b06af7e89c47eee1718a2c9719b208daed8ef3067336ed2b93589696f3cf6687
 -----BEGIN PGP SIGNATURE-----
 
-wsDcBAEBCgAQBQJlleCoCRBVfFCgAnZIiQAAc/IMAHEJzdfVoIl9lDmOikvbPojG
-t5u5N0lPSMt9DfIZECMGSTXs8Fs+cVxAShmf2sGjq3JDMTnaW4TuCATnWiOecBn/
-nkNF8aQjDADhtCtXoZa5RtG7cgtCjB/rqc/k81E4BD2MqW82Iyrpu/ofdKw1Hsm6
-07dE52WFogfHahp0IwBN7mcAnxaPNILogHUGgaiwcGEXxjwsnSIjFjVVpNeUTado
-x5XccOZ8ccGdjNijPBQNyJC4+DaxrS2u5lYF1KwgWoyqdYEkAS7k0MuFjCKOvnfJ
-HUBP8JBz01cEOedjpg1TZMfvpf8RpksuaKVm+CKrg4qoqkCUx9bvkLexxWW1YhSF
-szDGuJrymVEJAoZWpSu4L58WobRIZ0W8Wzg1I3rCQLeI8vYyAx72V2s1Lkz15rUB
-feGJgfHq3QtV7saGEf4tUc0iLxePrNUjJEz3XLOr8A4mqxpFmcdgcDCwlwl9CY5x
-bPgs6C2Xuk25pGDWC6BM6z2ahU8lausl7PN2IALCVQ==
-=Tubl
+wsDcBAEBCgAQBQJllmBLCRBVfFCgAnZIiQAACCAMAKQatUpQRc9jPBMO2n7fIzhT
+22DzRVKXa6JbBqG4ndxgCm+DRTQNj1uDn6jS3FgrV2b3x9cp2IgZR6fpyNGJVmRD
+oE6adc33u7YpR6Xyp8zxj3pt1twj+x4ZF8kS7y2smQmdxxZVtb4MXwVEyoQzw87U
+qvPUwz/yDh/DTpQ4rmidYBAr0CcFv5JYZd3D4HewQ+yh+qakRlA9iw7ndoqFqvWc
+k/6WE2tAH/77LMw65v8IEaxsfJC96jvv1pRt4qOUXzFNUp2DVLqEaY076v8dNkPh
+sdWCGjbdYQGG74W3l4+W7ABWoHTGnfGku2oj6tmyUMuWa1mE4w5VtF7EiueQbaQv
+PFfo0zRdEtzhAlXcZ9cT70NOeJWtbellP6UOvXU3Hfj61xGNOQKbuzPQP5ydafEA
+3r2QygPpJT9xinBf9TQn/OmVy171Jt0hdYf06uhrZ0oeo1yohTWOtjnMPSaUPcWK
+oO8550oWogMuc7Ci/PLV4aQni8MDvk2RiXqGikYWRw==
+=cboL
 -----END PGP SIGNATURE-----
