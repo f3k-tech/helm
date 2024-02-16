@@ -42,24 +42,6 @@ entries:
   - annotations:
       artifacthub.io/changes: |
         - kind: changed
-          description: Update LibreTranslate container to 1.5.2
-    apiVersion: v2
-    appVersion: v0.0.0
-    created: "2024-01-04T07:37:47.758979454Z"
-    description: Libretranslate Helm chart for Kubernetes
-    digest: 6df46fe4935c46b611c8f8a1e97e2fb0051969233066262f9597fa648d6af286
-    icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
-    maintainers:
-    - email: info@f3k.tech
-      name: FreekO
-    name: libretranslate
-    type: application
-    urls:
-    - https://f3k-tech.github.io/helm/libretranslate-1.0.1.tgz
-    version: 1.0.1
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: changed
           description: Default livenessProbe values.
         - kind: changed
           description: Updated values.yaml
