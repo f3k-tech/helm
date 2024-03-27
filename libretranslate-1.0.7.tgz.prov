@@ -18,17 +18,17 @@ version: 1.0.7
 
 ...
 files:
-  libretranslate-1.0.7.tgz: sha256:cc6f74bd54008ca438ed9aaf5662ea00ed988fd516420f9d86b64d3cc4e8826f
+  libretranslate-1.0.7.tgz: sha256:2875eb9baad2baf4feac1957d846ea49f367897c48bf430f815bd524eff236b8
 -----BEGIN PGP SIGNATURE-----
 
-wsDcBAEBCgAQBQJmBGeVCRBVfFCgAnZIiQAAZ7kMAE4fCLc9cdEBrgfce6L+sL8Y
-mPNSOY1q9+RmFHQBxHpgTcXKXlS4Y9v/eruJK59q6xj9p6YUAZyNq5TYxZdtvHs6
-x8e9vlUri6x3fLv2oGVPQgOZ0GYAmNlU/p7kCwgh58aAg04x8sEcDEn/ejmy1Laf
-CwhaGB8kyeyqyNmcIN0TpnH1gFOv9rpjQM78pa+oqWwgUsitTpMFTjLxAgQL3vrr
-aumvEWgF/2Gf+7x6AeglfknH/wSzVPWdsHGMEeEwS1QJvTSDeLis2GNva4wxK/Gk
-4VxfX+76ZyIZDFPkX6eP2BMpmq51fcNaBkaXP/qftbSoT5ioWd9pIF0x2Qys2e0F
-DKT8mcxmgi8kGtgbmIIqoeVgN18BTkt8FJSZ6lvvCU11Ef3khh32oE6HwE9pkXxC
-UUTuoupwkidRNdObsxlKobsu2Rl3QRbZyGXM/A/Zmtp8Ls0do5YDyZVCoA0m8aZB
-wFMx/Z0+fqivPyk84iwjDWGtkbo8QxQzbrZesS0jeA==
-=JeKH
+wsDcBAEBCgAQBQJmBG4MCRBVfFCgAnZIiQAAur8MAKz1o5DABmGHY4Jnl8WFSNTq
+MmB0nJYATgxYJiI8w+VM+Xt56Mz0CmtqdwUQjTCmrJfXspmFIW5OSdOoubSgcyk/
+z1xqfZnutm6K0nmi9mKtmqIA+BC+rkXvbptvhjTmK/whRddz1LyMNIgeVcHs9/Rl
+DYcVakSWqmPVgUVaAD5fRQMFFeavkX8XhVd0kyo+4OICnKPmG/uSRzXcdaCifzsZ
+GN8/45Cb82YKZT3sxIRfa73uaGt4P7QRy7kLF6mz1lw7YlFx7L+dNUY9hNnPd0wB
+er/ePG+DttEE+A54KhhsjtwItiwLIYUKFVD5tZPIRT0FHJIBKzgNC3sp/MEs8xqt
+tSzz/iKOMIlDf0I1J9qmki9f1WgrVikC54fnUQqex0mJfXBccHTiAOd/+59fqQgq
+9FlWSKAiMNQ/WwLnMOX+hbk8UTZE/YRbjapvGV9LyHzP0jAz4JiGDy/+gP5AMrLD
+VbBaY+1wxmWihEGkun0eDzIg71viRHBD/9k4bW9xqg==
+=ScFa
 -----END PGP SIGNATURE-----
