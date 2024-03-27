@@ -74,6 +74,13 @@ persistence:
     accessMode: ReadWriteOnce
     size: 20Gi
     annotations: {}
+  tmp:
+    enabled: false
+    # storageClass: "-"
+    # existingClaim: libretranslate-tmp
+    accessMode: ReadWriteOnce
+    size: 3Gi
+    annotations: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
