@@ -1,9 +1,5 @@
 # LibreTranslate Helm Chart
 
-> **NEW REPO URL:** From now on, f3k.tech helm charts will be published via github pages: [https://f3k-tech.github.io/helm/](https://f3k-tech.github.io/helm/).
-> Please change your deployment to the new URL.
-> Old charts will be served from the new repo as well.
-
 | Name       | Url                                                              |
 |------------|------------------------------------------------------------------|
 | Contribute | https://github.com/f3k-tech/helm/tree/main/charts/libretranslate |
@@ -20,19 +16,60 @@ args:
   - en,de,fr,hu,nl,tr
 ```
 
-## Autoscaling (HPA)
+## Autoscaling and Persistent Storage
 
-> **Important:** When using persistent storage make sure to deploy a single pod to download the language files. Once the language files have been downloaded you can deploy more pods. 
+> **Important:** When using HPA with persistent storage, it's recommended to deploy a single pod to download the initial language files. Once the language files have been downloaded you can deploy more pods. 
 
 * Make sure to use ReadWriteMany (RWX) when using the autoscaler in combination with persistent storage. 
 * If you experience problems with languages not showing or want to make sure to have the latest language files, use the ```--update-models``` flag.
 
+### Sticky Sessions and Persistent Volumes
 
-## Readiness/liveness probes fail
+To manage translated files stored in `/tmp/libretranslate-files-translate`, you can use sticky sessions or mount a Persistent Volume. This is crucial for maintaining access to temporary files generated during file translation.
 
-If the webserver is not ready within 16 minutes, the default **readinessProbe** and **livenessProbe** will fail. This is most likely because downloading the language files took too long. Consider turning them off for the first run (with persistent storage) or adjust the values to accomodate your connection.
-Here are some numbers to get you started:  
-_You can use the same numbers for both readiness and liveliness._
+>Sticky sessions provide an easier, straightforward solution for maintaining user session consistency, especially for stateful applications. However, they can constrain the flexibility and efficiency of autoscaling by tying sessions to specific pods, potentially leading to uneven load distribution and reduced fault tolerance. For scenarios requiring optimal autoscaling and resilience, leveraging shared persistent storage might be a more suitable approach, despite its greater complexity.
+
+#### Sticky Sessions
+
+Enable sticky sessions to route requests from the same client to the same pod, ensuring consistent access to temporary stateful data across requests. 
+
+- **Traefik:** Add to `service.annotations` in values:
+
+```yaml
+service:
+  annotations:
+    traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+```
+
+- **Nginx:** Add to `ingress.annotations` in values:
+
+```yaml
+ingress:
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "libretranslate-session"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+```
+
+#### Persistent Volumes
+
+For applications using Horizontal Pod Autoscaling (HPA), attach a Persistent Volume with ReadWriteMany (RWX) access to your pods. This allows all pods to share language files, facilitating consistent translations and quick scaling.
+
+To ensure new pods have immediate access to language files, enable `persistence.filesTranslate`:
+
+```yml
+persistence:
+  filesTranslate:
+    enabled: true
+    accessMode: ReadWriteMany
+```
+
+## Health Checks
+
+If language file downloads extend beyond the initial startup, readiness and liveness probes may fail. Adjust probe settings according to your network speed or disable them temporarily during the first deployment with persistent storage.
+
+### Sample Probe Configurations
 
 #### 10Mb/s
 

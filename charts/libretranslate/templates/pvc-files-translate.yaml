@@ -1,0 +1,31 @@
+{{- if .Values.persistence.filesTranslate.enabled -}}
+{{- if not .Values.persistence.filesTranslate.existingClaim -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "libretranslate.fullname" . }}-filesTranslate
+  labels:
+    app.kubernetes.io/name: {{ include "libretranslate.name" . }}
+    helm.sh/chart: {{ include "libretranslate.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: app
+{{- if .Values.persistence.filesTranslate.annotations }}
+  annotations:
+{{ toYaml .Values.persistence.filesTranslate.annotations | indent 4 }}
+{{- end }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.filesTranslate.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.filesTranslate.size | quote }}
+{{- if .Values.persistence.filesTranslate.storageClass }}
+{{- if (eq "-" .Values.persistence.filesTranslate.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.filesTranslate.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end -}}
+{{- end -}}

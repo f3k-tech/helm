@@ -8,7 +8,13 @@ appVersion: v1.5.6
 annotations:
   artifacthub.io/changes: |
     - kind: added
-      description: Shared volume for /tmp
+      description: service.sessionAffinity is now a configurable value
+    - kind: added
+      description: Instructions for sticky sessions and mounting translated files
+    - kind: added
+      description: service.annotations is now a configurable value
+    - kind: changed
+      description: Mount /tmp/libretranslate-files-translate instead of entire /tmp directory.
 maintainers:
   - name: FreekO
     email: info@f3k.tech

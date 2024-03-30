@@ -30,7 +30,7 @@ spec:
       initContainers:
         - name: init-chown
           image: busybox
-          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share /tmp']
+          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share']
           volumeMounts:
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
@@ -38,8 +38,8 @@ spec:
               mountPath: /home/libretranslate/.local/db
             - name: libretranslate-share
               mountPath: /home/libretranslate/.local/share
-            - name: libretranslate-tmp
-              mountPath: /tmp
+            - name: libretranslate-files-translate
+              mountPath: /tmp/libretranslate-files-translate
       volumes:
         - name: libretranslate-cache
           {{- if .Values.persistence.cache.enabled }}
@@ -56,10 +56,10 @@ spec:
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.share.existingClaim }}{{ .Values.persistence.share.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-share{{- end }}
           {{- end }}
-        - name: libretranslate-tmp
-          {{- if .Values.persistence.tmp.enabled }}
+        - name: libretranslate-files-translate
+          {{- if .Values.persistence.filesTranslate.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.tmp.existingClaim }}{{ .Values.persistence.tmp.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-tmp{{- end }}
+            claimName: {{ if .Values.persistence.filesTranslate.existingClaim }}{{ .Values.persistence.filesTranslate.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-files-translate{{- end }}
           {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -74,8 +74,8 @@ spec:
               mountPath: /home/libretranslate/.local/db
             - name: libretranslate-share
               mountPath: /home/libretranslate/.local/share
-            - name: libretranslate-tmp
-              mountPath: /tmp
+            - name: libretranslate-files-translate
+              mountPath: /tmp/libretranslate-files-translate
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

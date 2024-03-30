@@ -35,6 +35,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 5000
+  sessionAffinity: None
 
 ingress:
   enabled: false
@@ -74,10 +75,10 @@ persistence:
     accessMode: ReadWriteOnce
     size: 20Gi
     annotations: {}
-  tmp:
+  filesTranslate:
     enabled: false
     # storageClass: "-"
-    # existingClaim: libretranslate-tmp
+    # existingClaim: libretranslate-files-translate
     accessMode: ReadWriteOnce
     size: 3Gi
     annotations: {}
