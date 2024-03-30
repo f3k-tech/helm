@@ -4,11 +4,7 @@ Hash: SHA512
 annotations:
   artifacthub.io/changes: |
     - kind: added
-      description: Instructions for sticky sessions and mounting translated files
-    - kind: added
-      description: service.annotations is now a configurable value
-    - kind: changed
-      description: Mount /tmp/libretranslate-files-translate instead of entire /tmp directory.
+      description: Shared volume for /tmp
 apiVersion: v2
 appVersion: v1.5.6
 description: Libretranslate Helm chart for Kubernetes
@@ -22,17 +18,17 @@ version: 1.0.7
 
 ...
 files:
-  libretranslate-1.0.7.tgz: sha256:1837a831dbce58a1b59bdaa30c019988e7fdee84f6af316eb2f3365c9b722c05
+  libretranslate-1.0.7.tgz: sha256:784d1502864e7202bb0cb8b09ab2d5b5b49fe3c3296b0da88797503bab10b4d6
 -----BEGIN PGP SIGNATURE-----
 
-wsDcBAEBCgAQBQJmB+oFCRBVfFCgAnZIiQAAb/IMADUh66oa2citeTh0BqIoOXCG
-cI0KDQGDPj+qDfS7A7LkacPmRh15xyaW9yiMgytXYZtrP9DQC/9sq9h6ANRM9cnU
-g8b7BguNnLCfzEuKdKWbHX28LhV3CXqiJHuuDqwncMr0mio6I5uQuiahqlwv4kU6
-u/gbN6WmgRFXBkaHyS+Yt6bjW/RyjdiQrODLm+AFsgtAN/dpknnoUq9Ac1dr24LU
-DrNxtMioKFUVQyz1iP9AbrzGxvUrEg4xgcAB8Ke+OGnMDCz0wlMDLzH353vJiGhH
-L9xON5mY0OAvQjf+M9sZ0ZCwgJvyZBriHBh1D0Sh5eZsEVv2idQ6pLuofaBWkDNI
-9iUR4uApeEyTH0fh4BWuekJ/Lw/2B5hlXwc8nvIoszbLTANEvoF0Gaw/7YTC7Sop
-FYzb6KG9XteAvHK5v24IQTMVK6grPvyYylx92fxnkRQe+rsoUpXp5evFS2H2Y+Hd
-cgpa5Y0zWTFJT2uSBD54c8V9eHOxw0dtpVFBwmytCw==
-=HwDu
+wsDcBAEBCgAQBQJmB/uRCRBVfFCgAnZIiQAA2osMACmzV9t4YYk5OEMSYD6/PT7h
+u8Gjdq4cyuueMK/Lfz1Wun/4D0lKtSSJPhDMvdAaYh/bcbrpPaaQFmEDEq1dguWd
+GPVWqxYwnDxOvHQ9xMTS414D35DoeIiOJ/zQk79c9lNMyiXMn2dv/Whh5FTpD3Z5
+1kRJd5qD7KiMKLgyGTmPdodMezjcbV5rIR0GPrOfUGKVk0OnrdJ+TUx2TvromEry
+kEtLlpv7lgpXfFgKhgVK1ysGeP4LSKFcjZ0gXgP42AbghlomXbwQOGBeObTU78Bn
+39+0xcq7QZjhFjqX74JbOv99gMK/9VsZ66LehP8+jASfj/l8piaRDfJxtJv5o2Rf
+HuaYtPWJot1QGBrbowBl+MLkA97qe3w8mestanTi0EOzOJhbMCVZ8AebGNIkoGtt
+8oM1u5xafU1LzXFpKvCUID5B1dHdLK7X1tYvxdNW+aX/U5NwHyktNsRfgfcOkDUj
+D2G68d8WtlvOcFOHSMt8a5RxYxiNYjiyT3x1p7Rqpg==
+=mTkj
 -----END PGP SIGNATURE-----
