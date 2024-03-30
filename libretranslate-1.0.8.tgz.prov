@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Instructions for sticky sessions and mounting translated files
+    - kind: added
+      description: service.annotations is now a configurable value
+    - kind: changed
+      description: Mount /tmp/libretranslate-files-translate instead of entire /tmp directory.
+apiVersion: v2
+appVersion: v1.5.6
+description: Libretranslate Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: libretranslate
+type: application
+version: 1.0.8
+
+...
+files:
+  libretranslate-1.0.8.tgz: sha256:7bae4c4e6992991cc1583bd927423cc8d49f7774b8735b2b28cb75d9262df95a
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJmB+oYCRBVfFCgAnZIiQAA3e0MAJ10jIA63X3fwjapYvZpsp3r
+nvSalYvtFZu0eIgnKTjJjSnE61nLJZ+Gdiqzfm2/98oz3IyvCwWBaD1gy0Z46EUf
+BsllcN7LDnqRzwHbKgqPq5Bcm5vLBu/IKzwUHmhNCZm7oIUExDvosftCZMW0UIP1
+4/xvNAWfn1gY37psqzBjTd4AHHFIXnrt4NbbvTpz84dbr/YmV93pl8XolepQclOK
+bg+roUG6WGgsuTIYfAZ36Uozr+s2OpS31lzAo8hgxI4lp+UKx06QAsYqR+oI3WOk
+L46COena47Bmsvt/VF0IOgiS5CNceOavl5M1iBUtihHEdzULH70lJ5vPzUSbnHo6
+7inWzWuV6f3/FxSr7htblSfWyvAR1ayickIbnMHBPF7pmNf9kvnMsmgZcUaaZhjI
+N8dDJUrwSDI9N2rAoXEWm7B83OWAPZHCxncBkyg5/HrmXiDRxp73PlE2AOmhHOJ4
+pkjLJQMr0tHLaUuDV5DS+JWa+XsUkvA7KlzEdlijyw==
+=IDSf
+-----END PGP SIGNATURE-----
