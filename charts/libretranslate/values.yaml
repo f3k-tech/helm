@@ -35,6 +35,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 5000
+  annotations: {}
   sessionAffinity: None
 
 ingress:
