@@ -25,11 +25,11 @@ args:
 
 ### Sticky Sessions and Persistent Volumes
 
-To manage translated files stored in `/tmp/libretranslate-files-translate`, you can use sticky sessions or mount a Persistent Volume. This is crucial for maintaining access to temporary files generated during file translation.
+To manage translated files stored in `/tmp/libretranslate-files-translate`, you can use sticky sessions or mount a persistent volume. This is crucial for maintaining access to temporary files generated during file translation.
 
 >Sticky sessions provide an easier, straightforward solution for maintaining user session consistency, especially for stateful applications. However, they can constrain the flexibility and efficiency of autoscaling by tying sessions to specific pods, potentially leading to uneven load distribution and reduced fault tolerance. For scenarios requiring optimal autoscaling and resilience, leveraging shared persistent storage might be a more suitable approach, despite its greater complexity.
 
-#### Sticky Sessions
+#### Option 1: Sticky Sessions
 
 Enable sticky sessions to route requests from the same client to the same pod, ensuring consistent access to temporary stateful data across requests. 
 
@@ -52,7 +52,7 @@ ingress:
     nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
 ```
 
-#### Persistent Volumes
+#### Option 2: Persistent Volume
 
 For applications using Horizontal Pod Autoscaling (HPA), attach a Persistent Volume with ReadWriteMany (RWX) access to your pods. This allows all pods to share language files, facilitating consistent translations and quick scaling.
 
