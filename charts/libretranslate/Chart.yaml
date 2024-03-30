@@ -8,8 +8,6 @@ appVersion: v1.5.6
 annotations:
   artifacthub.io/changes: |
     - kind: added
-      description: service.sessionAffinity is now a configurable value
-    - kind: added
       description: Instructions for sticky sessions and mounting translated files
     - kind: added
       description: service.annotations is now a configurable value

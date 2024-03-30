@@ -15,6 +15,5 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  sessionAffinity: {{ .Values.service.sessionAffinity }}
   selector:
     {{- include "libretranslate.selectorLabels" . | nindent 4 }}
