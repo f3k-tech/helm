@@ -1,9 +1,25 @@
 # LibreTranslate Helm Chart
 
+## Table of Contents
+
+- [Repository](#repository)
+- [Arguments](#arguments)
+- [Autoscaling and Persistent Storage](#autoscaling-and-persistent-storage)
+  - [Sticky Sessions and Persistent Volumes](#sticky-sessions-and-persistent-volumes)
+    - [Option 1: Sticky Sessions](#option-1-sticky-sessions)
+    - [Option 2: Persistent Volume](#option-2-persistent-volume)
+- [Health Checks](#health-checks)
+  - [Sample Probe Configurations](#sample-probe-configurations)
+
+## Repository
+
 | Name       | Url                                                              |
 |------------|------------------------------------------------------------------|
 | Contribute | https://github.com/f3k-tech/helm/tree/main/charts/libretranslate |
 | Issues     | https://github.com/f3k-tech/helm/issues                          |
+
+
+
 
 ## Arguments
 
