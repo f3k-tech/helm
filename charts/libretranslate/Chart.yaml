@@ -3,16 +3,12 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
 type: application
-version: 1.0.8
-appVersion: v1.5.6
+version: 1.0.9
+appVersion: v1.5.7
 annotations:
   artifacthub.io/changes: |
-    - kind: added
-      description: Instructions for sticky sessions and mounting translated files
-    - kind: added
-      description: service.annotations is now a configurable value
     - kind: changed
-      description: Mount /tmp/libretranslate-files-translate instead of entire /tmp directory.
+      description: Bump app version
 maintainers:
   - name: FreekO
     email: info@f3k.tech
