@@ -43,7 +43,7 @@ jobs:
               echo "Chart $chart_name version $chart_version already exists, skipping."
             else
               echo "Packaging new or updated chart $chart_name version $chart_version."
-              helm package "$dir" -d ../
+              ../scripts/process-charts.sh
             fi
           done
           cd ..
