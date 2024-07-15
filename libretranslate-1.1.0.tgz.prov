@@ -1,0 +1,34 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Bump app version
+apiVersion: v2
+appVersion: v1.6.0
+description: Libretranslate Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: libretranslate
+type: application
+version: 1.1.0
+
+...
+files:
+  libretranslate-1.1.0.tgz: sha256:2c63ccf327f90f1f5bd83afc212a495bfb9d0330dfb4b01236e32d1fd084eb17
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJmlXCGCRBVfFCgAnZIiQAAI/8MAJuT7DoLmcYDF3QLw+DjDjG9
+iMRCZmXvlhQHu8K4IgRRGKMG7asE2YhuSNTNLJgSEnPPkJDaqplyJw5tJDFwUqdc
+XJZeuMoX5TvUiPrAb/9YyV4vXrpgbTVKI1Ru6ZtkljybQF4JvhUZ5dSCCxfg2+Vy
+DdxAaeILeG2k0MwBHHWNGN8bEfA88v07O6WnsCirse/adiEs7BBKFNHzgNezrrZl
+ol0V++et5kLvqhr1QTW9foOuEkaxr2ZeIue+EaRdAgqEKry3Vkt9S/C8lduPsuRQ
+wTVDfByrY4FUoHCBOKrWJwhWVqFEqW1IB9pVzljLN0FLXxBXhWmp5IpqdMu/W0YK
+H8NO/cI8hY3MJwdGUr8uVYDmPqh1B7Qu0hxp9VasyuyNYoUYs0UtRtdLB/Qh5OQW
+B+PvPqHPjKQo6OHumAd4PDRSRRSw+7I6dnNbh/mfiDGUYNUvqRYG2KY2YbszjD3L
+MP2YAQE+P6EC3iolRX6EJ6DT6i1Nib1cLxzAoDclyQ==
+=PaXO
+-----END PGP SIGNATURE-----
