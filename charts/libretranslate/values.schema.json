@@ -452,9 +452,11 @@
             "title": "Arguments",
             "description": "Arguments for the container.",
             "examples": [
-                "--update-models",
-                "--load-only",
-                "en,de,fr,hu,nl,tr"
+                [
+                    "--update-models",
+                    "--load-only",
+                    "en,de,fr,hu,nl,tr"
+                ]
             ]
         },
         "autoscaling": {
