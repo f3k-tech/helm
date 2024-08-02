@@ -1,0 +1,651 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "title": "Libretranslate Helm Chart Configuration",
+    "properties": {
+        "replicaCount": {
+            "type": "integer",
+            "default": 1,
+            "title": "Replica Count",
+            "description": "Number of replicas for the deployment."
+        },
+        "image": {
+            "type": "object",
+            "title": "Image Configuration",
+            "properties": {
+                "repository": {
+                    "type": "string",
+                    "default": "libretranslate/libretranslate",
+                    "title": "Repository",
+                    "description": "Image repository."
+                },
+                "tag": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Tag",
+                    "description": "Image tag."
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "default": "IfNotPresent",
+                    "title": "Pull Policy",
+                    "description": "Image pull policy."
+                }
+            },
+            "required": [
+                "repository"
+            ]
+        },
+        "imagePullSecrets": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "default": [],
+            "title": "Image Pull Secrets",
+            "description": "Secrets for image pull."
+        },
+        "nameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "Name Override",
+            "description": "Override the name of the chart."
+        },
+        "fullnameOverride": {
+            "type": "string",
+            "default": "",
+            "title": "Fullname Override",
+            "description": "Override the full name of the chart."
+        },
+        "serviceAccount": {
+            "type": "object",
+            "title": "Service Account",
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Create",
+                    "description": "Specifies whether a service account should be created."
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "default": {},
+                    "title": "Annotations",
+                    "description": "Annotations to add to the service account."
+                },
+                "name": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Name",
+                    "description": "The name of the service account to use."
+                }
+            },
+            "required": [
+                "create"
+            ]
+        },
+        "podAnnotations": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Pod Annotations",
+            "description": "Annotations for the pod."
+        },
+        "podSecurityContext": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Pod Security Context",
+            "description": "Security context for the pod."
+        },
+        "securityContext": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Security Context",
+            "description": "Security context for the container."
+        },
+        "service": {
+            "type": "object",
+            "title": "Service",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "default": "ClusterIP",
+                    "title": "Type",
+                    "description": "Type of the service."
+                },
+                "port": {
+                    "type": "integer",
+                    "default": 5000,
+                    "title": "Port",
+                    "description": "Port of the service."
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "default": {},
+                    "title": "Annotations",
+                    "description": "Annotations to add to the service."
+                }
+            },
+            "required": [
+                "type",
+                "port"
+            ]
+        },
+        "ingress": {
+            "type": "object",
+            "title": "Ingress",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Enabled",
+                    "description": "Enable ingress."
+                },
+                "className": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Class Name",
+                    "description": "Ingress class name."
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "default": {},
+                    "title": "Annotations",
+                    "description": "Annotations for the ingress."
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "host": {
+                                "type": "string",
+                                "default": "chart-example.local",
+                                "title": "Host",
+                                "description": "Host for the ingress."
+                            },
+                            "paths": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "path": {
+                                            "type": "string",
+                                            "default": "/",
+                                            "title": "Path",
+                                            "description": "Path for the ingress."
+                                        },
+                                        "pathType": {
+                                            "type": "string",
+                                            "default": "ImplementationSpecific",
+                                            "title": "Path Type",
+                                            "description": "Path type for the ingress."
+                                        }
+                                    },
+                                    "required": [
+                                        "path"
+                                    ]
+                                }
+                            }
+                        },
+                        "required": [
+                            "host"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "host": "chart-example.local",
+                            "paths": [
+                                {
+                                    "path": "/",
+                                    "pathType": "ImplementationSpecific"
+                                }
+                            ]
+                        }
+                    ],
+                    "title": "Hosts",
+                    "description": "Hosts for the ingress."
+                },
+                "tls": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "secretName": {
+                                "type": "string",
+                                "title": "Secret Name",
+                                "description": "Secret name for the TLS certificate."
+                            },
+                            "hosts": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "title": "Host",
+                                    "description": "Host for the TLS certificate."
+                                }
+                            }
+                        },
+                        "required": [
+                            "secretName",
+                            "hosts"
+                        ]
+                    },
+                    "default": [],
+                    "title": "TLS",
+                    "description": "TLS configuration for the ingress."
+                }
+            },
+            "required": [
+                "enabled"
+            ]
+        },
+        "persistence": {
+            "type": "object",
+            "title": "Persistence",
+            "properties": {
+                "cache": {
+                    "type": "object",
+                    "title": "Cache",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enabled",
+                            "description": "Enable cache persistence."
+                        },
+                        "accessMode": {
+                            "type": "string",
+                            "default": "ReadWriteOnce",
+                            "title": "Access Mode",
+                            "description": "Access mode for the cache."
+                        },
+                        "size": {
+                            "type": "string",
+                            "default": "8Gi",
+                            "title": "Size",
+                            "description": "Size of the cache volume."
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "default": {},
+                            "title": "Annotations",
+                            "description": "Annotations for the cache volume."
+                        }
+                    },
+                    "required": [
+                        "enabled"
+                    ]
+                },
+                "db": {
+                    "type": "object",
+                    "title": "Database",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enabled",
+                            "description": "Enable database persistence."
+                        },
+                        "accessMode": {
+                            "type": "string",
+                            "default": "ReadWriteOnce",
+                            "title": "Access Mode",
+                            "description": "Access mode for the database."
+                        },
+                        "size": {
+                            "type": "string",
+                            "default": "1Gi",
+                            "title": "Size",
+                            "description": "Size of the database volume."
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "default": {},
+                            "title": "Annotations",
+                            "description": "Annotations for the database volume."
+                        }
+                    },
+                    "required": [
+                        "enabled"
+                    ]
+                },
+                "share": {
+                    "type": "object",
+                    "title": "Share",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enabled",
+                            "description": "Enable shared volume persistence."
+                        },
+                        "accessMode": {
+                            "type": "string",
+                            "default": "ReadWriteOnce",
+                            "title": "Access Mode",
+                            "description": "Access mode for the shared volume."
+                        },
+                        "size": {
+                            "type": "string",
+                            "default": "20Gi",
+                            "title": "Size",
+                            "description": "Size of the shared volume."
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "default": {},
+                            "title": "Annotations",
+                            "description": "Annotations for the shared volume."
+                        }
+                    },
+                    "required": [
+                        "enabled"
+                    ]
+                },
+                "filesTranslate": {
+                    "type": "object",
+                    "title": "Files Translate",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enabled",
+                            "description": "Enable files translate persistence."
+                        },
+                        "accessMode": {
+                            "type": "string",
+                            "default": "ReadWriteOnce",
+                            "title": "Access Mode",
+                            "description": "Access mode for the files translate volume."
+                        },
+                        "size": {
+                            "type": "string",
+                            "default": "3Gi",
+                            "title": "Size",
+                            "description": "Size of the files translate volume."
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "default": {},
+                            "title": "Annotations",
+                            "description": "Annotations for the files translate volume."
+                        }
+                    },
+                    "required": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "resources": {
+            "type": "object",
+            "title": "Resources",
+            "properties": {
+                "limits": {
+                    "type": "object",
+                    "properties": {
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU Limit",
+                            "description": "CPU limit for the container."
+                        },
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory Limit",
+                            "description": "Memory limit for the container."
+                        }
+                    }
+                },
+                "requests": {
+                    "type": "object",
+                    "properties": {
+                        "cpu": {
+                            "type": "string",
+                            "title": "CPU Request",
+                            "description": "CPU request for the container."
+                        },
+                        "memory": {
+                            "type": "string",
+                            "title": "Memory Request",
+                            "description": "Memory request for the container."
+                        }
+                    }
+                }
+            },
+            "description": "Resource requests and limits for the container."
+        },
+        "args": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "default": [],
+            "title": "Arguments",
+            "description": "Arguments for the container."
+        },
+        "autoscaling": {
+            "type": "object",
+            "title": "Autoscaling",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Enabled",
+                    "description": "Enable autoscaling."
+                },
+                "minReplicas": {
+                    "type": "integer",
+                    "default": 1,
+                    "title": "Min Replicas",
+                    "description": "Minimum number of replicas."
+                },
+                "maxReplicas": {
+                    "type": "integer",
+                    "default": 100,
+                    "title": "Max Replicas",
+                    "description": "Maximum number of replicas."
+                },
+                "targetCPUUtilizationPercentage": {
+                    "type": "integer",
+                    "default": 80,
+                    "title": "Target CPU Utilization",
+                    "description": "Target CPU utilization percentage."
+                }
+            },
+            "required": [
+                "enabled",
+                "minReplicas",
+                "maxReplicas"
+            ]
+        },
+        "nodeSelector": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Node Selector",
+            "description": "Node selector for pod assignment."
+        },
+        "tolerations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "title": "Key",
+                        "description": "Toleration key."
+                    },
+                    "operator": {
+                        "type": "string",
+                        "title": "Operator",
+                        "description": "Toleration operator."
+                    },
+                    "value": {
+                        "type": "string",
+                        "title": "Value",
+                        "description": "Toleration value."
+                    },
+                    "effect": {
+                        "type": "string",
+                        "title": "Effect",
+                        "description": "Toleration effect."
+                    }
+                }
+            },
+            "default": [],
+            "title": "Tolerations",
+            "description": "Tolerations for pod assignment."
+        },
+        "affinity": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Affinity",
+            "description": "Affinity settings for pod assignment."
+        },
+        "livenessProbe": {
+            "type": "object",
+            "title": "Liveness Probe",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Enabled",
+                    "description": "Enable liveness probe."
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "default": 60,
+                    "title": "Initial Delay",
+                    "description": "Initial delay for liveness probe."
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "default": 30,
+                    "title": "Period",
+                    "description": "Period for liveness probe."
+                },
+                "failureThreshold": {
+                    "type": "integer",
+                    "default": 30,
+                    "title": "Failure Threshold",
+                    "description": "Failure threshold for liveness probe."
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "default": 1,
+                    "title": "Success Threshold",
+                    "description": "Success threshold for liveness probe."
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "default": 5,
+                    "title": "Timeout",
+                    "description": "Timeout for liveness probe."
+                }
+            },
+            "required": [
+                "enabled",
+                "initialDelaySeconds",
+                "periodSeconds",
+                "failureThreshold",
+                "successThreshold",
+                "timeoutSeconds"
+            ]
+        },
+        "readinessProbe": {
+            "type": "object",
+            "title": "Readiness Probe",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Enabled",
+                    "description": "Enable readiness probe."
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "default": 60,
+                    "title": "Initial Delay",
+                    "description": "Initial delay for readiness probe."
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "default": 30,
+                    "title": "Period",
+                    "description": "Period for readiness probe."
+                },
+                "failureThreshold": {
+                    "type": "integer",
+                    "default": 30,
+                    "title": "Failure Threshold",
+                    "description": "Failure threshold for readiness probe."
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "default": 1,
+                    "title": "Success Threshold",
+                    "description": "Success threshold for readiness probe."
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "default": 5,
+                    "title": "Timeout",
+                    "description": "Timeout for readiness probe."
+                }
+            },
+            "required": [
+                "enabled",
+                "initialDelaySeconds",
+                "periodSeconds",
+                "failureThreshold",
+                "successThreshold",
+                "timeoutSeconds"
+            ]
+        }
+    },
+    "required": [
+        "replicaCount",
+        "image",
+        "serviceAccount",
+        "service",
+        "ingress",
+        "persistence",
+        "autoscaling",
+        "livenessProbe",
+        "readinessProbe"
+    ]
+}
