@@ -71,7 +71,7 @@ spec:
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
             - name: libretranslate-db
-              mountPath: /home/libretranslate/.local/db
+              mountPath: /app/db
             - name: libretranslate-share
               mountPath: /home/libretranslate/.local/share
             - name: libretranslate-files-translate
