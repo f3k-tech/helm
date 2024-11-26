@@ -30,12 +30,12 @@ spec:
       initContainers:
         - name: init-chown
           image: busybox
-          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /app/db /home/libretranslate/.local/share']
+          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share']
           volumeMounts:
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
             - name: libretranslate-db
-              mountPath: /app/db
+              mountPath: /home/libretranslate/.local/db
             - name: libretranslate-share
               mountPath: /home/libretranslate/.local/share
             - name: libretranslate-files-translate
@@ -71,7 +71,7 @@ spec:
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
             - name: libretranslate-db
-              mountPath: /app/db
+              mountPath: /home/libretranslate/.local/db
             - name: libretranslate-share
               mountPath: /home/libretranslate/.local/share
             - name: libretranslate-files-translate
