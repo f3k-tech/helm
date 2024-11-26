@@ -260,6 +260,42 @@
             "type": "object",
             "title": "Persistence",
             "properties": {
+                "apiKeys": {
+                    "type": "object",
+                    "title": "Files Translate",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enabled",
+                            "description": "Enable files translate persistence."
+                        },
+                        "accessMode": {
+                            "type": "string",
+                            "default": "ReadWriteOnce",
+                            "title": "Access Mode",
+                            "description": "Access mode for the files translate volume."
+                        },
+                        "size": {
+                            "type": "string",
+                            "default": "1Gi",
+                            "title": "Size",
+                            "description": "Size of the files translate volume."
+                        },
+                        "annotations": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "default": {},
+                            "title": "Annotations",
+                            "description": "Annotations for the files translate volume."
+                        }
+                    },
+                    "required": [
+                        "enabled"
+                    ]
+                },
                 "cache": {
                     "type": "object",
                     "title": "Cache",
