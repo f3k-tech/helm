@@ -1,0 +1,34 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: persistent storage for the api keys directory.
+apiVersion: v2
+appVersion: v1.6.2
+description: Libretranslate Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: libretranslate
+type: application
+version: 1.1.3
+
+...
+files:
+  libretranslate-1.1.3.tgz: sha256:3c2cf2b90aab7c3d1bfa7c5fc69e973e25121f263248de1e16bff4fedbb1a56b
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJnRe9lCRBVfFCgAnZIiQAAPyYMAHnM+JDLbY28+U1Ws2M1bl1r
+7xDeaT5qbdA/FfcpG7g2fKuJAoAazx4fD6oqYhcyPs5wuJ5bXx4x3HsbJexa0pQT
+/XZgJyZA5CCobADJdKEgnOCd8QUtigxfpLVG9rLjNy0g/RWPhJyntIAUdxMXn626
+WhN6zcKMLh4QRUtjkkQHKSMAYNocLCumwcl3+EPvyK/nlQ5hotQDdx4qQJvz0eet
+kEJREtxOMvaIma06ZRgcjSXUUYMZnmPhgP51t1uMz0bWnF9p172AiPOY1QLmp4+r
+io57puHOwzEnG4ZP0SGfBCj04+D0sQyfyZb0EJ4qJZD3pMTiKpO49CiKiUCiAPeJ
+dIzfVU9bWntKAxJ66gAuCjOdLd62ns0p8HNqiPwE/9iL3EPiLO4oO1oAgq/Ip8PH
+tYgV34L4U2jqqacRwsGJtuHR1u084ntDxDwhqK8BpZi81zCldqLtj/wVAlThalao
+bXnniDutwuhBxgJjVcp9agV3rwUTSQ0A+cOyu5O78w==
+=p95/
+-----END PGP SIGNATURE-----
