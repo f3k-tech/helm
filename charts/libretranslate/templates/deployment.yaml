@@ -30,8 +30,10 @@ spec:
       initContainers:
         - name: init-chown
           image: busybox
-          command: ['sh', '-c', 'chown -R 1032: /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share']
+          command: ['sh', '-c', 'chown -R 1032: /app/db /home/libretranslate/.local/cache /home/libretranslate/.local/db /home/libretranslate/.local/share']
           volumeMounts:
+            - name: libretranslate-api-keys
+              mountPath: /app/db
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
             - name: libretranslate-db
@@ -41,6 +43,11 @@ spec:
             - name: libretranslate-files-translate
               mountPath: /tmp/libretranslate-files-translate
       volumes:
+        - name: libretranslate-api-keys
+          {{- if .Values.persistence.apiKeys.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.persistence.apiKeys.existingClaim }}{{ .Values.persistence.apiKeys.existingClaim }}{{- else }}{{ template "libretranslate.fullname" . }}-api-keys{{- end }}
+          {{- end }}
         - name: libretranslate-cache
           {{- if .Values.persistence.cache.enabled }}
           persistentVolumeClaim:
@@ -68,6 +75,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
+            - name: libretranslate-api-keys
+              mountPath: /app/db
             - name: libretranslate-cache
               mountPath: /home/libretranslate/.local/cache
             - name: libretranslate-db

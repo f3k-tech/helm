@@ -54,6 +54,13 @@ ingress:
   #      - chart-example.local
 
 persistence:
+  apiKeys:
+    enabled: false
+    # storageClass: "-"
+    # existingClaim: libretranslate-api-keys
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    annotations: {}
   cache:
     enabled: false
     # storageClass: "-"
