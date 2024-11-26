@@ -3,12 +3,14 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
 type: application
-version: 1.1.2
+version: 1.1.3
 appVersion: v1.6.2
 annotations:
   artifacthub.io/changes: |
-    - kind: changed
-      description: Bump app version
+    - kind: fixed
+      description: >
+        Corrected the database persistence path from `/home/libretranslate/.local/db` 
+        to the proper location `/app/db`.
 maintainers:
   - name: FreekO
     email: info@f3k.tech
