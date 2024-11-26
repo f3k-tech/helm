@@ -97,8 +97,6 @@ resources: {}
 
 # You can find a full list of arguments here: https://github.com/LibreTranslate/LibreTranslate?tab=readme-ov-file#settings--flags
 args:
-  - --require-api-key-origin
-  - --disable-web-ui
   # - --update-models
   # - --load-only
   # - en,de,fr,hu,nl,tr
