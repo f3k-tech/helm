@@ -95,6 +95,7 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+# You can find a full list of arguments here: https://github.com/LibreTranslate/LibreTranslate?tab=readme-ov-file#settings--flags
 args: []
   # - --update-models
   # - --load-only
