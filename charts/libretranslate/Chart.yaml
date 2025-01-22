@@ -3,12 +3,12 @@ name: libretranslate
 description: Libretranslate Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
 type: application
-version: 1.164.0
+version: 1.164.1
 appVersion: v1.6.4
 annotations:
   artifacthub.io/changes: |
-    - kind: changed
-      description: bumped container image
+    - kind: fixed
+      description: fixed template pvc-api-keys.yaml to use .Values.persistence.apiKeys instead of .Values.persistence.filesTranslate
 maintainers:
   - name: FreekO
     email: info@f3k.tech
