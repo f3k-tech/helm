@@ -27,6 +27,7 @@ You can add arguments like this:
 
 ```yaml
 args:
+  - --ssl
   - --update-models
   - --load-only
   - en,de,fr,hu,nl,tr
