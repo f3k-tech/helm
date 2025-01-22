@@ -1,5 +1,5 @@
-{{- if .Values.persistence.filesTranslate.enabled -}}
-{{- if not .Values.persistence.filesTranslate.existingClaim -}}
+{{- if .Values.persistence.apiKeys.enabled -}}
+{{- if not .Values.persistence.apiKeys.existingClaim -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -10,21 +10,21 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/component: app
-{{- if .Values.persistence.filesTranslate.annotations }}
+{{- if .Values.persistence.apiKeys.annotations }}
   annotations:
-{{ toYaml .Values.persistence.filesTranslate.annotations | indent 4 }}
+{{ toYaml .Values.persistence.apiKeys.annotations | indent 4 }}
 {{- end }}
 spec:
   accessModes:
-    - {{ .Values.persistence.filesTranslate.accessMode | quote }}
+    - {{ .Values.persistence.apiKeys.accessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.persistence.filesTranslate.size | quote }}
-{{- if .Values.persistence.filesTranslate.storageClass }}
-{{- if (eq "-" .Values.persistence.filesTranslate.storageClass) }}
+      storage: {{ .Values.persistence.apiKeys.size | quote }}
+{{- if .Values.persistence.apiKeys.storageClass }}
+{{- if (eq "-" .Values.persistence.apiKeys.storageClass) }}
   storageClassName: ""
 {{- else }}
-  storageClassName: "{{ .Values.persistence.filesTranslate.storageClass }}"
+  storageClassName: "{{ .Values.persistence.apiKeys.storageClass }}"
 {{- end }}
 {{- end }}
 {{- end -}}
