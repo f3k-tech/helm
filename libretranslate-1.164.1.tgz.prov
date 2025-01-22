@@ -1,0 +1,34 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: fixed
+      description: fixed template pvc-api-keys.yaml to use .Values.persistence.apiKeys instead of .Values.persistence.filesTranslate
+apiVersion: v2
+appVersion: v1.6.4
+description: Libretranslate Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: libretranslate
+type: application
+version: 1.164.1
+
+...
+files:
+  libretranslate-1.164.1.tgz: sha256:352da9b7a3fc3fe0333017514a16cebaa5b3f3505a13e2d9658a4014491d506c
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJnkV+mCRBVfFCgAnZIiQAA7/0MAHldCxDoRBftfChzie5X/xc1
+JxhSIO6oSRGPrJpfzvn6Uggr15HZFMPr3XlCdhCB+WOEStjWRn4auarliM2XxrMj
+Uo/t5z3Me5na6KuOQrDYOyt3aFq9ONnKJit0LDl7MfEf7R+KdmlCnrUrR93TgvKr
+zPngXwOVgKKejEu2AayY2sYkZKO2B1oQ/sxwd8QgJfroekst6U1Xk2meESoknZUK
+kf83xNne1iqcVLGftf03xvDxS7Tuo7is1+/41PTKoIgU1KAUr4qSc86KBXpaM3L+
+tAg37rbJ0Hd37RT4B02IwEoGf4PzwITtDDxNY1jMq9K9YIyXMeZ1eAq5qcOCQXpJ
+Dcz1BfLWwXonXLRjTQ3AXM/eIg5GvRW3SPx8DkjXOoRVuWDLFIKP28gXV6GVklg4
+y7/wUGdrMcsiLqDHm6VM/BtlTu/YxsqGctZMbzRkU6k4aNpGDFN7eR7R/GIlhz6h
+u5awUsMGgpEN+3UDk0+b27D5exrT0+FdZU8OZMXc0g==
+=FjEC
+-----END PGP SIGNATURE-----
