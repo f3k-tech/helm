@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: akaunting-config
+  labels:
+    app.kubernetes.io/name: akaunting
+data:
+  APP_URL: {{ .Values.env.appUrl }}
+  DB_PREFIX: {{ .Values.env.dbPrefix }}
+  LOCALE: {{ .Values.env.locale }}

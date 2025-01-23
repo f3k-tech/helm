@@ -36,6 +36,45 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+          - configMapRef:
+              name: akaunting-config
+          env:
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: DB_NAME
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: DB_USERNAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: DB_PASSWORD
+          - name: ADMIN_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: ADMIN_EMAIL
+          - name: ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: ADMIN_PASSWORD
+          - name: COMPANY_NAME
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: COMPANY_NAME
+          - name: COMPANY_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: akaunting-secret
+                key: COMPANY_EMAIL
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
