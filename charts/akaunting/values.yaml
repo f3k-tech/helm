@@ -10,12 +10,18 @@ image:
   tag: ""
 
 env:
+  - name: DB_HOST
+    value: akaunting-db
+  - name: DB_PORT
+    value: "3306"
   - name: APP_URL
     value: https://akaunting.example.com
   - name: DB_PREFIX
     value: "asd_"
   - name: LOCALE
     value: en-US
+  - name: AKAUNTING_SETUP
+    value: "true"
 
 secrets:
   admin:
