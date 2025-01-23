@@ -50,12 +50,18 @@ spec:
           volumeMounts:
             - name: akaunting-data
               mountPath: /var/www/html
+            {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
       volumes:
         - name: akaunting-data
           {{- if .Values.persistence.data.enabled }}
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.data.existingClaim }}{{ .Values.persistence.data.existingClaim }}{{- elzse }}{{ template "akaunting.fullname" . }}-data{{- end }}
           {{- end }}
+        {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
