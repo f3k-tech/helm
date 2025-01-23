@@ -82,9 +82,9 @@ mysql:
   enabled: true
   auth:
     rootPassword: "rootpassword"
-    username: "3360api"
+    username: "username"
     password: "mypassword"
-    database: 360api
+    database: "akaunting"
   primary:
     persistence:
       enabled: false
