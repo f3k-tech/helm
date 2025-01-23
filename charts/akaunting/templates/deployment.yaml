@@ -75,6 +75,12 @@ spec:
               secretKeyRef:
                 name: akaunting-secret
                 key: COMPANY_EMAIL
+          {{- if .Values.env }}
+          {{- range $key, $value := .Values.env }}
+          - name: {{ $key | upper }}
+            value: {{ $value | quote }}
+          {{- end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
