@@ -11,7 +11,7 @@ image:
 
 env:
   - name: DB_HOST
-    value: akaunting-mysql
+    value: akaunting-mariadb
   - name: DB_PORT
     value: "3306"
   - name: APP_URL
@@ -81,7 +81,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
+  port: 9000
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
@@ -109,7 +109,7 @@ nginx:
   config:
     custom: {}
     
-mysql:
+mariadb:
   enabled: true
   auth:
     rootPassword: "rootpassword"
@@ -120,7 +120,7 @@ mysql:
     persistence:
       enabled: false
       # storageClass: "-"
-      # existingClaim: akaunting-mysql
+      # existingClaim: akaunting-mariadb
       accessMode: ReadWriteOnce
       size: 10Gi
       annotations: {}
@@ -139,10 +139,12 @@ resources: {}
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
+  enabled: true
   httpGet:
     path: /
     port: http
 readinessProbe:
+  enabled: true
   httpGet:
     path: /
     port: http
