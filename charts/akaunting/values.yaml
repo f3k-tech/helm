@@ -10,9 +10,12 @@ image:
   tag: ""
 
 env:
-  appUrl: https://akaunting.example.com
-  dbPrefix: "asd_"
-  locale: en-US
+  - name: APP_URL
+    value: https://akaunting.example.com
+  - name: DB_PREFIX
+    value: "asd_"
+  - name: LOCALE
+    value: en-US
 
 secrets:
   admin:
