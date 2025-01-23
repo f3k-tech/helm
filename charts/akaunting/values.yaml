@@ -11,7 +11,7 @@ image:
 
 env:
   - name: DB_HOST
-    value: akaunting-db
+    value: akaunting-mysql
   - name: DB_PORT
     value: "3306"
   - name: APP_URL
