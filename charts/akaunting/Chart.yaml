@@ -3,9 +3,9 @@ name: akaunting
 description: Akaunting Helm chart for Kubernetes
 type: application
 version: 0.3114.0
-appVersion: "3.1.14"
+appVersion: "latest"
 dependencies:
-  - name: mysql
-    version: 12.2.*
+  - name: mariadb
+    version: 20.2.2
     repository: https://charts.bitnami.com/bitnami
-    condition: mysql.enabled
+    condition: mariadb.enabled

@@ -1,6 +1,6 @@
 dependencies:
-- name: mysql
+- name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 12.2.2
-digest: sha256:9dfb6c9d8a541002756901eb7d6d9a04bad65e85856f3d6f8e8c021088c74f16
-generated: "2025-01-23T18:56:35.962021+03:00"
+  version: 20.2.2
+digest: sha256:35376f99acbb0f6d401605e2945708dc9bd5eb44fdb2527eb97c138fd432a772
+generated: "2025-01-24T01:01:43.916516+03:00"
