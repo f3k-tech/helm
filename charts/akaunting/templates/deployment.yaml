@@ -49,7 +49,7 @@ spec:
           {{- with .Values.volumeMounts }}
           volumeMounts:
             - name: akaunting-data
-              mountPath: /var/www/config/jwt
+              mountPath: /var/www/html
       volumes:
         - name: akaunting-data
           {{- if .Values.persistence.data.enabled }}
