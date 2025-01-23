@@ -36,9 +36,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-          - configMapRef:
-              name: akaunting-config
           env:
           - name: DB_NAME
             valueFrom:
@@ -89,7 +86,6 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           args: {{ .Values.args | toYaml | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
             - name: akaunting-data
               mountPath: /var/www/html
@@ -100,7 +96,7 @@ spec:
         - name: akaunting-data
           {{- if .Values.persistence.data.enabled }}
           persistentVolumeClaim:
-            claimName: {{ if .Values.persistence.data.existingClaim }}{{ .Values.persistence.data.existingClaim }}{{- elzse }}{{ template "akaunting.fullname" . }}-data{{- end }}
+            claimName: {{ if .Values.persistence.data.existingClaim }}{{ .Values.persistence.data.existingClaim }}{{- else }}{{ template "akaunting.fullname" . }}-data{{- end }}
           {{- end }}
         {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
