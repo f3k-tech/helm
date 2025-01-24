@@ -57,14 +57,14 @@ spec:
             - /bin/sh
             - -c
             - |
-              if [ "$AKAUNTING_SETUP" == "true" ]; then
+              # if [ "$AKAUNTING_SETUP" == "true" ]; then
                 apk add --no-cache curl unzip && \
-                curl -Lo /tmp/akaunting.zip 'https://akaunting.com/download.php?version=latest&utm_source=docker&utm_campaign=developers' && \
-                unzip /tmp/akaunting.zip -d /var/www/html && \
+                curl -Lo /tmp/akaunting.zip 'https://github.com/akaunting/akaunting/releases/download/3.1.14/Akaunting_3.1.14-Stable.zip' && \
+                unzip -o /tmp/akaunting.zip -d /var/www/html && \
                 rm -f /tmp/akaunting.zip
-              else
-                echo "Skipping application download as AKAUNTING_SETUP is not true.";
-              fi
+              # else
+              #   echo "Skipping application download as AKAUNTING_SETUP is not true.";
+              # fi
           volumeMounts:
             - name: akaunting-data
               mountPath: /var/www/html
