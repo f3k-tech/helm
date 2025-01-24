@@ -20,14 +20,14 @@ Since mounting persistent storage clears the `/var/www/html` directory, the char
 - **Purpose**: Facilitates application upgrades by downloading and overwriting the application files.
 - **Behavior**:
   - When set to `true`, downloads the Akaunting application zip file and extracts it to `/var/www/html`.
-  - It can remain `true` if frequent updates are required, but this will re-download the files every time the pod starts. Therefore, it is recommended to set it to `true` only during installation and upgrades.
+  - It can technically remain `true`, but this will re-download the files every time the pod starts. Therefore, it is recommended to set it to `true` only during installation and upgrades.
 
 
 #### `AKAUNTING_SETUP`
 
 - **Purpose**: Triggers initial application setup.
 - **Behavior**:
-  - When set to `true`, it initializes the project by setting up the necessary files and (database) configurations. This should only be enabled during the first run to initialize the application. This should only be enabled on the first run to initialize the application.
+  - When set to `true`, it initializes the project by setting up the necessary files and (database) configurations. This should only be enabled during the first run to initialize the application.
   - It is important to set this to `false` after the first successful deployment to avoid errors.
 
 #### Examples
