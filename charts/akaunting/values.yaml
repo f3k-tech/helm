@@ -21,7 +21,7 @@ env:
   - name: LOCALE
     value: en-US
   - name: AKAUNTING_SETUP
-    value: "true"
+    value: "false"
 
 secrets:
   admin:
@@ -81,7 +81,7 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 9000
+  port: 80
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
@@ -99,15 +99,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
-nginx:
-  enabled: true
-  image: nginx:latest
-  service:
-    ports:
-      http: 80
-  config:
-    custom: {}
     
 mariadb:
   enabled: true
