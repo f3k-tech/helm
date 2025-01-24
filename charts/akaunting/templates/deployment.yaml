@@ -102,8 +102,8 @@ spec:
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: akaunting-secret
-                key: DB_PASSWORD
+                name: akaunting-mariadb
+                key: mariadb-password
           - name: ADMIN_EMAIL
             valueFrom:
               secretKeyRef:
