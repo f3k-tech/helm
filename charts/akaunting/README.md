@@ -22,9 +22,6 @@ Since mounting persistent storage clears the `/var/www/html` directory, the char
   - When set to `true`, downloads the Akaunting application zip file and extracts it to `/var/www/html`.
   - It can remain `true` if frequent updates are required, but this will re-download the files every time the pod starts. Therefore, it is recommended to set it to `true` only during installation and upgrades.
 
-```yaml
-
-```
 
 #### `AKAUNTING_SETUP`
 
