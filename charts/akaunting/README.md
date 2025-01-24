@@ -11,38 +11,65 @@ Please note that this chart is currently under development. While it seems to wo
 
 ## Deployment
 
-The chart downloads the required Akaunting application zip file during the initialization process. This ensures the app files are extracted into the `/var/www/html` directory of your container.
+Since mounting persistent storage clears the `/var/www/html` directory, the chart automatically downloads the required Akaunting application zip file during the initialization process, ensuring the application files are properly extracted into the `/var/www/html` directory of the container.
 
 ### Key Environment Variables
-
-#### `AKAUNTING_SETUP`
-
-- **Purpose**: Triggers initial application setup.
-- **Behavior**:
-  - When set to `true`, downloads the Akaunting application zip file and extracts it to `/var/www/html`. This should only be enabled on the first run to initialize the application.
-  - It is important to set this to `false` after the first successful deployment to avoid repeated initialization or accidental overwrites.
-
-```yaml
-# values.yml
-env:
-  - name: AKAUNTING_SETUP
-    value: "false"
-```
 
 #### `AKAUNTING_UPGRADE`
 
 - **Purpose**: Facilitates application upgrades by downloading and overwriting the application files.
 - **Behavior**:
-  - When set to `true`, downloads the latest Akaunting application zip (corresponding to the app version) and overwrites the current files in `/var/www/html`.
-  - It can remain `true` if frequent updates are required, but this will re-download the files every time the pod starts. Therefore, it is recommended to set it to `true` only during upgrades.
+  - When set to `true`, downloads the Akaunting application zip file and extracts it to `/var/www/html`.
+  - It can remain `true` if frequent updates are required, but this will re-download the files every time the pod starts. Therefore, it is recommended to set it to `true` only during installation and upgrades.
+
+```yaml
+
+```
+
+#### `AKAUNTING_SETUP`
+
+- **Purpose**: Triggers initial application setup.
+- **Behavior**:
+  - When set to `true`, it initializes the project by setting up the necessary files and (database) configurations. This should only be enabled during the first run to initialize the application. This should only be enabled on the first run to initialize the application.
+  - It is important to set this to `false` after the first successful deployment to avoid errors.
+
+#### Examples
+
+##### First Run 
 
 ```yaml
 # values.yml
 env:
   - name: AKAUNTING_UPGRADE
     value: "true"
+env:
+  - name: AKAUNTING_SETUP
+    value: "true"
 ```
 
+##### Upgrade
+
+```yaml
+# values.yml
+env:
+  - name: AKAUNTING_UPGRADE
+    value: "true"
+env:
+  - name: AKAUNTING_SETUP
+    value: "false"
+```
+
+#### Normal Run
+
+```yaml
+# values.yml
+env:
+  - name: AKAUNTING_UPGRADE
+    value: "false"
+env:
+  - name: AKAUNTING_SETUP
+    value: "false"
+```
 ### Image Details
 
 The container image is constructed using the following:
