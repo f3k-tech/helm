@@ -90,40 +90,25 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: DB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-secret
-                key: DB_NAME
+            value: {{ .Values.mariadb.auth.database }}
           - name: DB_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-secret
-                key: DB_USERNAME
+            value: {{ .Values.mariadb.auth.username }}
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: akaunting-mariadb
                 key: mariadb-password
           - name: ADMIN_EMAIL
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-secret
-                key: ADMIN_EMAIL
+            value: {{ .Values.secrets.admin.email }}
           - name: ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: akaunting-secret
                 key: ADMIN_PASSWORD
           - name: COMPANY_NAME
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-secret
-                key: COMPANY_NAME
+            value: {{ .Values.secrets.company.name }}
           - name: COMPANY_EMAIL
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-secret
-                key: COMPANY_EMAIL
+            value: {{ .Values.secrets.company.email }}
           {{- if .Values.env }}
           {{- .Values.env | toYaml | nindent 10 }}
           {{- end }}
