@@ -39,7 +39,6 @@ Since mounting persistent storage clears the `/var/www/html` directory, the char
 env:
   - name: AKAUNTING_UPGRADE
     value: "true"
-env:
   - name: AKAUNTING_SETUP
     value: "true"
 ```
@@ -51,7 +50,6 @@ env:
 env:
   - name: AKAUNTING_UPGRADE
     value: "true"
-env:
   - name: AKAUNTING_SETUP
     value: "false"
 ```
@@ -63,7 +61,6 @@ env:
 env:
   - name: AKAUNTING_UPGRADE
     value: "false"
-env:
   - name: AKAUNTING_SETUP
     value: "false"
 ```
