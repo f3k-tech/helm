@@ -1,6 +1,7 @@
 apiVersion: v2
 name: akaunting
 description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
 type: application
 version: 0.3114.0
 appVersion: "3.1.14"
