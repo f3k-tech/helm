@@ -1,0 +1,32 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v2
+appVersion: 3.1.14
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.2.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+name: akaunting
+type: application
+version: 0.3114.0
+
+...
+files:
+  akaunting-0.3114.0.tgz: sha256:0468921f6cbbd728e3e95a00badb60f45cdf8e83dd4903c0cceac352f698d482
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJnlFLHCRBVfFCgAnZIiQAA34UMAJ3QLq4gWMSwujMurLYdbIWX
+1k+7/zmxBhmmoQKZfuVwqKRcYgCBD95BVvZJQUbWY5PxVwuS05KhDhN55nseEEK7
+wLekoQEhiJxkqgEyfbLyci6c75exMsvnQuxkpKcnhBzWnQFLP1Q0hnxc776u1zZp
+doQjxUx6S7oKaYNl840sAQyAPbtPHnDOmYcRUrWMfXej7m1EKHR43DwY3KrYI0vh
+rjUXQrXBzksXK4Gtev9zsF87/CUk6MkOXLoRrXPa3IbY7bnpEwtMdYR9JkMZIorU
+IacNK1NUrO6VZiDkLrl/FIDOWKm1TXM1HFChPRgo2B+glediO61IU6uVZDQ8nXRW
+nhUc7go0H+TrMXMM/Q2X0p0vY5RupZPiY5d68iescaXqxGkROi3r68lhmnzaPOUB
+Hz4GywhA1B3p5BUqUhkuFRElhaEHFh7mysJKYGkNglMKQiohGAlxbBAq9mi8+bHy
+j1BgFcpIhrZt0cDZZX6S2UQBCtzDYFFEHm+EVZ6eWA==
+=Mq/T
+-----END PGP SIGNATURE-----
