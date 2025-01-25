@@ -3,10 +3,17 @@ name: akaunting
 description: Akaunting Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/akaunting.png
 type: application
-version: 0.3114.0
+version: 0.3114.1
 appVersion: "3.1.14"
 dependencies:
   - name: mariadb
     version: 20.2.2
     repository: https://charts.bitnami.com/bitnami
     condition: mariadb.enabled
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Timeout settings for probes
+maintainers:
+  - name: FreekO
+    email: info@f3k.tech
