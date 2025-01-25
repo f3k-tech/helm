@@ -1,0 +1,39 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Timeout settings for probes
+apiVersion: v2
+appVersion: 3.1.14
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.2.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: akaunting
+type: application
+version: 0.3114.1
+
+...
+files:
+  akaunting-0.3114.1.tgz: sha256:c19f3c28103f36ca96c81424279f49a08a7bf7cacfd4ef1c1edb1bf995306632
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJnlLOoCRBVfFCgAnZIiQAA2fsMALHrurflx/TinLTPyPqrBWjE
+oq94XjDjmvcrKnMkeNcffOvskSkewykSvTrBaIcTEuJl/PazgMjOw0hgIgg8BLGP
+4Ntu5GZqykBQO+z+ML9vKjMG/ACTypQRBv/g53dTg0rJtvG3qhYie7I7W/55eqHw
+Q9mPJD/Gd4bxJTt3jAT+0Ln5NPrEMNInhPVpFCSZHS7RdVEJsghjvSFYe21RxiQk
+d65Proq0Mun6CtLsEkA3qND5M2j9YrL4ktoWqy6wo4Fnd6WE2WohkqWr619B9YQg
+LhWhWA/9cRwLHkAQa2I4jrki1iUxddiMGtQF8IE+sPEZmIx77I2lq7d5zvGVHOev
+G7fhoTkUVheejuTaten5aZzpUXPCAUV7kp/Hwi9P/w/PBm6Ow5Mm1Z15YGSt5NKZ
+W9FcL9PeDkpBbss4POeecipTmEvZBQs1l1KYseE+YViKunHN3HfIggLVln1i/cBq
+dXxpP4KtESAkcMG6uayxYkb/c8S4O6wb31Ri++pXHQ==
+=YFs9
+-----END PGP SIGNATURE-----
