@@ -1,9 +1,32 @@
 apiVersion: v1
 entries:
   akaunting:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Timeout settings for probes
+    apiVersion: v2
+    appVersion: 3.1.14
+    created: "2025-01-25T03:28:04.018463658Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.2.2
+    description: Akaunting Helm chart for Kubernetes
+    digest: 1516236f00667d3c7d82ceac5cfcfeebee9c8fb477ddd2fe1c3f7c270187f640
+    icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+    maintainers:
+    - email: info@f3k.tech
+      name: FreekO
+    name: akaunting
+    type: application
+    urls:
+    - https://f3k-tech.github.io/helm/akaunting-0.3114.1.tgz
+    version: 0.3114.1
   - apiVersion: v2
     appVersion: 3.1.14
-    created: "2025-01-25T03:27:31.383629791Z"
+    created: "2025-01-25T03:28:04.014190569Z"
     dependencies:
     - condition: mariadb.enabled
       name: mariadb
@@ -24,7 +47,7 @@ entries:
           description: fixed template pvc-api-keys.yaml to use .Values.persistence.apiKeys instead of .Values.persistence.filesTranslate
     apiVersion: v2
     appVersion: v1.6.4
-    created: "2025-01-25T03:27:31.400998781Z"
+    created: "2025-01-25T03:28:04.03674479Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 352da9b7a3fc3fe0333017514a16cebaa5b3f3505a13e2d9658a4014491d506c
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -42,7 +65,7 @@ entries:
           description: bumped container image
     apiVersion: v2
     appVersion: v1.6.4
-    created: "2025-01-25T03:27:31.400439672Z"
+    created: "2025-01-25T03:28:04.036177921Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 8fe8d1b84640a59ba7be90d3ce306d093123167539ae48ba52d9fb2959b74ea7
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -60,7 +83,7 @@ entries:
           description: bumped container image
     apiVersion: v2
     appVersion: v1.6.3
-    created: "2025-01-25T03:27:31.399886935Z"
+    created: "2025-01-25T03:28:04.035619927Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: b357d5f1c65161cf4a30f264d0714a422c69234c993005a92209914eccfbda90
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -78,7 +101,7 @@ entries:
           description: persistent storage for the api keys directory.
     apiVersion: v2
     appVersion: v1.6.2
-    created: "2025-01-25T03:27:31.399296207Z"
+    created: "2025-01-25T03:28:04.035040714Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 2f52c2883533cba88fa654d5da84f46362184358ef7ff763ec01db88a6cbc6fd
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -96,7 +119,7 @@ entries:
           description: Bump app version
     apiVersion: v2
     appVersion: v1.6.2
-    created: "2025-01-25T03:27:31.398728683Z"
+    created: "2025-01-25T03:28:04.034394967Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: a0825939017bf46d4828dddf47d1311a7ea283d392a5f2aa93df870116c7ec93
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -114,7 +137,7 @@ entries:
           description: Bump app version
     apiVersion: v2
     appVersion: v1.6.1
-    created: "2025-01-25T03:27:31.39814053Z"
+    created: "2025-01-25T03:28:04.0337764Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 1e7907db932b74b9d54584de559c1ffdc49f43904d3cefc7513819e21a82967d
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -132,7 +155,7 @@ entries:
           description: Bump app version
     apiVersion: v2
     appVersion: v1.6.0
-    created: "2025-01-25T03:27:31.397609523Z"
+    created: "2025-01-25T03:28:04.03226995Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 139c7243acbd5dbdf09abb161118b33ed7cd549ccde9b314e76118cbd70b4eb2
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -150,7 +173,7 @@ entries:
           description: Bump app version
     apiVersion: v2
     appVersion: v1.5.7
-    created: "2025-01-25T03:27:31.397076363Z"
+    created: "2025-01-25T03:28:04.031646093Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 503c3959f206972fd1037b7109740c2e062ddeb66e73a52c60d6f9a0cbb2a34f
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -172,7 +195,7 @@ entries:
           description: Mount /tmp/libretranslate-files-translate instead of entire /tmp directory.
     apiVersion: v2
     appVersion: v1.5.6
-    created: "2025-01-25T03:27:31.396592684Z"
+    created: "2025-01-25T03:28:04.031163321Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 7bae4c4e6992991cc1583bd927423cc8d49f7774b8735b2b28cb75d9262df95a
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -190,7 +213,7 @@ entries:
           description: Shared volume for /tmp
     apiVersion: v2
     appVersion: v1.5.6
-    created: "2025-01-25T03:27:31.396092014Z"
+    created: "2025-01-25T03:28:04.030637167Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 784d1502864e7202bb0cb8b09ab2d5b5b49fe3c3296b0da88797503bab10b4d6
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -208,7 +231,7 @@ entries:
           description: Updated appVersion to v1.5.6
     apiVersion: v2
     appVersion: v1.5.6
-    created: "2025-01-25T03:27:31.3956108Z"
+    created: "2025-01-25T03:28:04.030174732Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 12fddfa368da1897e263e87952b86b2d7096bc642ee51b4c8fc23a6b4f774d4d
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -226,7 +249,7 @@ entries:
           description: Updated appVersion to v1.5.5
     apiVersion: v2
     appVersion: v1.5.5
-    created: "2025-01-25T03:27:31.395125077Z"
+    created: "2025-01-25T03:28:04.02972446Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 8e794b2ce2450e930009b41eee72e59f2f6d0e74b7e8457da6b97841f30e8329
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -244,7 +267,7 @@ entries:
           description: Updated appVersion to v1.5.3
     apiVersion: v2
     appVersion: v1.5.3
-    created: "2025-01-25T03:27:31.394619608Z"
+    created: "2025-01-25T03:28:04.0292643Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 70baf4fd271c76aab4afc58b57804ab5390f353b5226caa7b6bd7f40fe899e12
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -264,7 +287,7 @@ entries:
           description: Update readme
     apiVersion: v2
     appVersion: v1.5.2
-    created: "2025-01-25T03:27:31.393635675Z"
+    created: "2025-01-25T03:28:04.028816293Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 0a084b8563349dc5939813fcd086df6bbbca6b3b420ca77bda020daab365f690
     icon: https://f3k-tech.github.io/helm/icons/libretranslate.png
@@ -284,7 +307,7 @@ entries:
           description: Updated values.yaml
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.392804781Z"
+    created: "2025-01-25T03:28:04.02836572Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: e8d02eac476117e34100ad4789f325c0a27e4a03d01125e7ad3063c1c08e44cd
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -301,7 +324,7 @@ entries:
         README.md\n"
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.392138493Z"
+    created: "2025-01-25T03:28:04.027725944Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 4dd72ebc026d9e9a74fb222b038b8157d400e1adc3d13e95a873db32a9baf9fb
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -322,7 +345,7 @@ entries:
           description: values.yaml
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.391428434Z"
+    created: "2025-01-25T03:28:04.027062103Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: d76c2e1fc6bba4186a882438dfb6e286e71b19c2369ff77d3715499b1369e504
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -357,7 +380,7 @@ entries:
           description: persistence.annotations use persistence.db.annotations instead
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.390758289Z"
+    created: "2025-01-25T03:28:04.026362575Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 1b970393a1617b8f58bebee504402133127068c421461494a29162a86aeecfbc
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -382,7 +405,7 @@ entries:
           description: No security updates in this release.
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.390131785Z"
+    created: "2025-01-25T03:28:04.02549758Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 030d8dc2ed7b1f9f53cdeffb88b4511186387e8de3196e6a83d4218f9f221d64
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -415,7 +438,7 @@ entries:
           description: No security updates in this release.
     apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.389743503Z"
+    created: "2025-01-25T03:28:04.024446384Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 45c23f7e62378a888ce56f93ecc3e8838779a4041a2bb7ec91c8862ceda28976
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -426,7 +449,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.5.1
-    created: "2025-01-25T03:27:31.389337469Z"
+    created: "2025-01-25T03:28:04.024047478Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 78962ed44ecfaa4051e6c31c0dc81b0375fb7f9e6985a0a1a8724d952b372a54
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -437,7 +460,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.5.0
-    created: "2025-01-25T03:27:31.389002667Z"
+    created: "2025-01-25T03:28:04.023715577Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: a86d1135e066896ae798a1ab7b7658be8681ff33d98dd288c0d7ffc2070814fa
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -448,7 +471,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.5.0
-    created: "2025-01-25T03:27:31.388441474Z"
+    created: "2025-01-25T03:28:04.023181599Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: d4f948c3d689f62b321d08942ba59a2deee0e2dd3f2ea0cf319d32ad1bc3f627
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -459,7 +482,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.4.1
-    created: "2025-01-25T03:27:31.387910137Z"
+    created: "2025-01-25T03:28:04.022599611Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 89add5cf1b9adeb6ef7221d0eabd88965194547141c9178cf4a3d356bd2421be
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -470,7 +493,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.4.0
-    created: "2025-01-25T03:27:31.387334777Z"
+    created: "2025-01-25T03:28:04.021679862Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 2f89d36fe15d73e1673b230d1eebef50b2937fa532c89e3aaaa8a38a3882a8c8
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -481,7 +504,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.3.13
-    created: "2025-01-25T03:27:31.386757916Z"
+    created: "2025-01-25T03:28:04.020883442Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 97a2ceec6ba790bc4ac605d2aeb4d0e4bfcaa3089218654f85c16209f3f30d49
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -492,7 +515,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.3.12
-    created: "2025-01-25T03:27:31.385310574Z"
+    created: "2025-01-25T03:28:04.020167254Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 734f80750635b6502896217326a2f83081b8d5627f7985cda66b25da6640f021
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -503,7 +526,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.3.11
-    created: "2025-01-25T03:27:31.38476501Z"
+    created: "2025-01-25T03:28:04.019612787Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 592af020fdfacf2adbdd72a2019534c81122294eb74ef8fab7116937b2ddc22e
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -514,7 +537,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.3.11
-    created: "2025-01-25T03:27:31.384202836Z"
+    created: "2025-01-25T03:28:04.019053632Z"
     description: Libretranslate Helm chart for Kubernetes
     digest: 2afb29a2bdac9f7c7d5ff5711263765bdd971b852bb42a660ea5c936af2b2fe9
     icon: https://media.githubusercontent.com/media/f3k-tech/helm/main/charts/libretranslate/icon.png
@@ -523,4 +546,4 @@ entries:
     urls:
     - https://f3k-tech.github.io/helm/libretranslate-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-25T03:27:31.379072273Z"
+generated: "2025-01-25T03:28:04.009089121Z"
