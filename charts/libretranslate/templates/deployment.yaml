@@ -13,6 +13,10 @@ spec:
       {{- include "libretranslate.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      {{- with .Values.podLabels }}
+      labels:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
