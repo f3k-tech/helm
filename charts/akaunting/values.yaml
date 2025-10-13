@@ -106,6 +106,8 @@ ingress:
     
 mariadb:
   enabled: true
+  image:
+    repository: bitnamilegacy/mariadb
   auth:
     rootPassword: "rootpassword"
     username: "username"
