@@ -12,8 +12,8 @@ dependencies:
     condition: mariadb.enabled
 annotations:
   artifacthub.io/changes: |
-    - kind: added
-      description: Timeout settings for probes
+    - kind: changed
+      description: switch to bitnamilegacy/mariadb image
 maintainers:
   - name: FreekO
     email: info@f3k.tech
