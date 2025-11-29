@@ -24,45 +24,6 @@ entries:
     urls:
     - https://f3k-tech.github.io/helm/akaunting-0.3114.2.tgz
     version: 0.3114.2
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: added
-          description: Timeout settings for probes
-    apiVersion: v2
-    appVersion: 3.1.14
-    created: "2025-10-14T10:12:46.0696Z"
-    dependencies:
-    - condition: mariadb.enabled
-      name: mariadb
-      repository: https://charts.bitnami.com/bitnami
-      version: 20.2.2
-    description: Akaunting Helm chart for Kubernetes
-    digest: c19f3c28103f36ca96c81424279f49a08a7bf7cacfd4ef1c1edb1bf995306632
-    icon: https://f3k-tech.github.io/helm/icons/akaunting.png
-    maintainers:
-    - email: info@f3k.tech
-      name: FreekO
-    name: akaunting
-    type: application
-    urls:
-    - https://f3k-tech.github.io/helm/akaunting-0.3114.1.tgz
-    version: 0.3114.1
-  - apiVersion: v2
-    appVersion: 3.1.14
-    created: "2025-10-14T10:12:46.064600163Z"
-    dependencies:
-    - condition: mariadb.enabled
-      name: mariadb
-      repository: https://charts.bitnami.com/bitnami
-      version: 20.2.2
-    description: Akaunting Helm chart for Kubernetes
-    digest: 0468921f6cbbd728e3e95a00badb60f45cdf8e83dd4903c0cceac352f698d482
-    icon: https://f3k-tech.github.io/helm/icons/akaunting.png
-    name: akaunting
-    type: application
-    urls:
-    - https://f3k-tech.github.io/helm/akaunting-0.3114.0.tgz
-    version: 0.3114.0
   libretranslate:
   - annotations:
       artifacthub.io/changes: |
