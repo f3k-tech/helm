@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "recaptcha-v3-verifier.fullname" . }}-test-connection"
+  labels:
+    {{- include "recaptcha-v3-verifier.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "recaptcha-v3-verifier.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
