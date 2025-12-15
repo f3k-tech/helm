@@ -108,7 +108,7 @@ helm repo update
 # install (recommended: set secret via values override file or --set)
 helm upgrade --install recaptcha f3k/recaptcha-v3-verifier \
   --namespace recaptcha --create-namespace \
-  --set secrets.recaptcha.RECAPTCHA_SECRET_KEY="<your-recaptcha-secret-key>"
+  --set secrets.app.RECAPTCHA_SECRET_KEY="<your-recaptcha-secret-key>"
 ```
 
 Upgrade with a values file:
@@ -116,7 +116,7 @@ Upgrade with a values file:
 ```bash
 cat > values.override.yaml <<'YAML'
 secrets:
-  recaptcha:
+  app:
     RECAPTCHA_SECRET_KEY: "<your-recaptcha-secret-key>"
 
 # Optional: additional environment variables
@@ -145,7 +145,7 @@ helm upgrade --install recaptcha f3k/recaptcha-v3-verifier \
 - `service.port`: Container port (default `3000`).
 - `ingress.enabled`: Should remain `false` for security; do not expose publicly.
 - `env`: List of additional environment variables.
-- `secrets.recaptcha.RECAPTCHA_SECRET_KEY`: Required reCAPTCHA secret; creates a Kubernetes Secret and is injected into the pod.
+- `secrets.app.RECAPTCHA_SECRET_KEY`: Required reCAPTCHA secret; creates a Kubernetes Secret and is injected into the pod.
 
 ### Environment Variables (runtime)
 

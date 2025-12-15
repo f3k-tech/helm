@@ -45,7 +45,7 @@ spec:
             - name: RECAPTCHA_SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "recaptcha-v3-verifier.fullname" . }}-secret
+                  name: {{ include "recaptcha-v3-verifier.fullname" . }}-app
                   key: RECAPTCHA_SECRET_KEY
             {{- toYaml .Values.env | nindent 12 }}
           {{- end }}

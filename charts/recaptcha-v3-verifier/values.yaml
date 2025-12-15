@@ -16,7 +16,7 @@ env:
     value: "0.3"
 
 secrets:
-  recaptcha:
+  app:
     RECAPTCHA_SECRET_KEY: "your-recaptcha-secret-key"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
