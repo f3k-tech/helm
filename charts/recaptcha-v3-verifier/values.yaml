@@ -1,5 +1,7 @@
 replicaCount: 1
 image:
+  # Registry host for the image (e.g., docker.io, ghcr.io, gcr.io)
+  registry: docker.io
   repository: f3ktech/recaptcha-v3-verifier
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -124,7 +126,7 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /health
-    port: 3000
+    port: http
   initialDelaySeconds: 30
   periodSeconds: 10
   failureThreshold: 3
@@ -134,7 +136,7 @@ livenessProbe:
 readinessProbe:
   httpGet:
     path: /ready
-    port: 3000
+    port: http
   initialDelaySeconds: 5
   periodSeconds: 10
   failureThreshold: 3

@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Build full image reference from registry/repository and tag or digest.
+If .Values.image.digest is set (sha256 without prefix), use @sha256:digest; otherwise use :tag (defaulting to Chart.AppVersion).
+*/}}
+{{- define "recaptcha-v3-verifier.image" -}}
+{{- $registry := default "docker.io" .Values.image.registry -}}
+{{- $repository := required "image.repository is required" .Values.image.repository -}}
+{{- $digest := .Values.image.digest | default "" -}}
+{{- if $digest -}}
+{{- printf "%s/%s@%s" $registry $repository (printf "sha256:%s" $digest) -}}
+{{- else -}}
+{{- $tag := default .Chart.AppVersion .Values.image.tag -}}
+{{- printf "%s/%s:%s" $registry $repository $tag -}}
+{{- end -}}
+{{- end }}
