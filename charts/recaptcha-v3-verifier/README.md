@@ -14,6 +14,16 @@ Important: Do not expose this service publicly (e.g., via Ingress). It should on
 - 🔐 Non-root container execution
 - 🚀 Production-ready with security best practices
 
+## Project Links
+
+| Resource                | Link                                                                                                    |
+|-------------------------|---------------------------------------------------------------------------------------------------------|
+| Container (source)      | [f3k-tech/recaptcha-v3-verifier](https://github.com/f3k-tech/recaptcha-v3-verifier)                     |
+| Container Issues        | [Open issues](https://github.com/f3k-tech/recaptcha-v3-verifier/issues)                                 |
+| Helm Repository (index) | [https://f3k-tech.github.io/helm](https://f3k-tech.github.io/helm)                                      |
+| Helm Chart (source)     | [charts/recaptcha-v3-verifier](https://github.com/f3k-tech/helm/tree/main/charts/recaptcha-v3-verifier) |
+| Helm Issues             | [Open issues](https://github.com/f3k-tech/helm/issues)                                                  |
+
 ## API Endpoints
 
 ### POST /verify
@@ -149,12 +159,12 @@ helm upgrade --install recaptcha f3k/recaptcha-v3-verifier \
 
 ### Environment Variables (runtime)
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `RECAPTCHA_SECRET_KEY` | Google reCAPTCHA secret key | - | Yes |
-| `ALLOWED_ORIGINS` | Comma-separated CORS origins | `*` | No |
-| `ALLOW_SCORE` | Score to automatically allow (0.0-1.0) | `0.6` | No |
-| `CHALLENGE_SCORE` | Score to challenge (0.0-1.0). Requests below this are denied. | `0.3` | No |
+| Variable               | Description                                                   | Default | Required |
+|------------------------|---------------------------------------------------------------|---------|----------|
+| `RECAPTCHA_SECRET_KEY` | Google reCAPTCHA secret key                                   | -       | Yes      |
+| `ALLOWED_ORIGINS`      | Comma-separated CORS origins                                  | `*`     | No       |
+| `ALLOW_SCORE`          | Score to automatically allow (0.0-1.0)                        | `0.6`   | No       |
+| `CHALLENGE_SCORE`      | Score to challenge (0.0-1.0). Requests below this are denied. | `0.3`   | No       |
 
 ### Decision Logic
 
