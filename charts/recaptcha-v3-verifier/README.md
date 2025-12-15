@@ -83,6 +83,20 @@ Health check endpoint for liveness probe.
 ### GET /ready
 Readiness check endpoint.
 
+## Test From Cluster
+
+Because this service is internal-only, test it from inside the cluster using a curl pod:
+
+```bash
+NAMESPACE=recaptcha
+RELEASE=recaptcha
+SERVICE="${RELEASE}-recaptcha-v3-verifier" # chart fullname
+
+kubectl run -it --rm curl -n "$NAMESPACE" --image=curlimages/curl:8.10.1 --restart=Never -- \
+  sh -c "curl -s -X POST http://${SERVICE}.${NAMESPACE}.svc.cluster.local:3000/verify \
+    -H 'Content-Type: application/json' -d '{\"token\":\"test_token\"}' | sed -e 's/{/\n{/g'"
+```
+
 ## Install
 
 Add the Helm repo and install the chart. Replace the secret value with your reCAPTCHA v3 secret key.
