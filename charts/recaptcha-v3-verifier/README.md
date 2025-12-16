@@ -1,3 +1,4 @@
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/f3k-tech)](https://artifacthub.io/packages/search?repo=f3k-tech)
 # reCAPTCHA v3 Verifier — Helm Chart
 
 This Helm chart deploys a lightweight service that securely validates Google reCAPTCHA v3 tokens server-side and returns an allow/challenge/deny decision based on configurable score thresholds.
