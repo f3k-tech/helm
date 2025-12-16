@@ -1,0 +1,39 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: fixed
+      description: Secret name no longer hardcoded; now derived from chart fullname (based on release and chart name).
+apiVersion: v2
+appVersion: 3.1.14
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.2.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: akaunting
+type: application
+version: 0.3114.3
+
+...
+files:
+  akaunting-0.3114.3.tgz: sha256:05b8b047747e9b007e08b1724042d036c7d60d45f5749dbb279f314faa33b0e0
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpQR64CRBVfFCgAnZIiQAAROMMAF6Gzbrp0+TmJ6gmKxTLbFwN
+sEiU0jc0oTOg9vbV4U1Ae2gLY8oDE/5PqyH7ovDyBAB3hoLQS/YRbEqs+E/PWt+Q
+ubr81gyARfPGoxhINfo4YsYIcELbJ2LnGH7Iz8uMqK2SuBcdaVAvp15flTWxYAvb
+lNEwoj+lcyi5bwYCL0VNiLl3M7FDydnZwk5wgujQPvePDYJ0zjp/RPFdCDvP4Ocg
+JSHGqhcRxbSFKnjR/qPyQ4K4yDlJXzbjTzjR+P51ZdolRgpEyTolOac9E2tyKr5i
+ZC/5KT8Ssn7s7QOLHy/mZMS2w1EChXGFiBG0pWS2CHd2/5N1PZCyyvFuNF0yHdlI
+kSaqrlVAEML5DCvQeTi2LQjvImbylf0Q0h6DT5LDV0FhjZklRDRQzDbcXD/C+wIF
+JZnpP3zqQhs6lEgKwcWATUDVkbfcvSVg2tu4HUH/VSFgJj3q+HxqwK3h5pZ+j8FK
+wwJpsZpOxgnggMPRoy9+bNtqm8YAM7zS8gucMcbzVw==
+=zcvu
+-----END PGP SIGNATURE-----
