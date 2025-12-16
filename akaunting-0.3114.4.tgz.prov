@@ -1,0 +1,43 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: fixed
+      description: MariaDB secret name no longer hardcoded; now derived from chart fullname (based on release and chart name).
+    - kind: changed
+      description: Move COMPANY_NAME and COMPANY_EMAIL from Secret to plain environment variables. Non-sensitive config is now provided via values.env.
+    - kind: changed
+      description: Move ADMIN_EMAIL to secret.
+apiVersion: v2
+appVersion: 3.1.14
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 20.2.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: akaunting
+type: application
+version: 0.3114.4
+
+...
+files:
+  akaunting-0.3114.4.tgz: sha256:78705801cffe532a6e8b08d7197acda90bed110ce55efae6a559a68e7dd5347b
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpQTnDCRBVfFCgAnZIiQAAAEkMAFlcIXJP1JPCWgVzSm6hl/qr
+NwQN4w9MfhtuvrVaj9nBZ4G/D1uHCNGbBmTFBCQEhcg8Sx55YZzECYWRcnfto0c+
+75bpZsEKoq7BIrF7nH4YfRS9iDKXywwAVaT/cMKpNd/g8w6kezgJvsYZA8nXF97i
+sIWVpGHXtYtWzYB7R1Px91r1Hs8zc0kX8zhbFxDZ5QpINmAWb7KMwGbbHUrtx2yd
+P5HLYAJ7N/b1WVI7bprRGuYuBkbybr2lm/hksHvGNL365ioIbMmxZ/KAaxuagrcN
+NhuyPwF34hxKx5rvmUjOs7cyTHsQcxoTz92XSVxMaUVd+3FvMXAITuTpZe+oQF1T
+yVM9RgyKBcmnGbLRypcyyhAkwfjIhg+kwLFdo3NoyzA+k95E5oAG9f4se8VHXxEe
+aUclAxTCIAAubi+8PBtH5RifJzQKcWGgpLTr/qmMRJLEvH2JRGmBMqe7IMHjYoXK
+qqydu/IFfjuAnp1D1d/7utrMCQzAlNzSJcHMFloKhA==
+=AEl/
+-----END PGP SIGNATURE-----
