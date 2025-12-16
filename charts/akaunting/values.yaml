@@ -17,10 +17,10 @@ image:
 
 
 env:
-  - name: DB_HOST
-    value: akaunting-mariadb
-  - name: DB_PORT
-    value: "3306"
+  - name: COMPANY_NAME
+    value: "My Company Name"
+  - name: COMPANY_EMAIL
+    value: "info@example.com"
   - name: APP_URL
     value: https://akaunting.example.com
   - name: DB_PREFIX
@@ -36,9 +36,6 @@ secrets:
   admin:
     email: admin@example.com
     password: "adminpassword"
-  company:
-    name: MyCompany
-    email: mycompany@example.com
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []

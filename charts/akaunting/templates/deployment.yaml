@@ -89,29 +89,32 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}{{- if .Values.image.flavour }}-{{ .Values.image.flavour }}{{- end }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          - name: DB_NAME
-            value: {{ .Values.mariadb.auth.database }}
-          - name: DB_USERNAME
-            value: {{ .Values.mariadb.auth.username }}
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: akaunting-mariadb
-                key: mariadb-password
-          - name: ADMIN_EMAIL
-            value: {{ .Values.secrets.admin.email }}
-          - name: ADMIN_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "akaunting.fullname" . }}-secret
-                key: ADMIN_PASSWORD
-          - name: COMPANY_NAME
-            value: {{ .Values.secrets.company.name }}
-          - name: COMPANY_EMAIL
-            value: {{ .Values.secrets.company.email }}
-          {{- if .Values.env }}
-          {{- .Values.env | toYaml | nindent 10 }}
-          {{- end }}
+            - name: DB_HOST
+              value: {{ include "akaunting.fullname" . }}-mariadb
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: {{ .Values.mariadb.auth.database }}
+            - name: DB_USERNAME
+              value: {{ .Values.mariadb.auth.username }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "akaunting.fullname" . }}-mariadb
+                  key: mariadb-password
+            - name: ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "akaunting.fullname" . }}-secret
+                  key: ADMIN_EMAIL
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "akaunting.fullname" . }}-secret
+                  key: ADMIN_PASSWORD
+            {{- if .Values.env }}
+            {{- .Values.env | toYaml | nindent 12 }}
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
