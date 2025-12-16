@@ -159,12 +159,12 @@ helm upgrade --install recaptcha f3k/recaptcha-v3-verifier \
 
 ### Environment Variables (runtime)
 
-| Variable               | Description                                                   | Default | Required |
-|------------------------|---------------------------------------------------------------|---------|----------|
-| `RECAPTCHA_SECRET_KEY` | Google reCAPTCHA secret key                                   | -       | Yes      |
-| `ALLOWED_ORIGINS`      | Comma-separated CORS origins                                  | `*`     | No       |
-| `ALLOW_SCORE`          | Score to automatically allow (0.0-1.0)                        | `0.6`   | No       |
-| `CHALLENGE_SCORE`      | Score to challenge (0.0-1.0). Requests below this are denied. | `0.3`   | No       |
+| Variable               | Description                                                   | Default                                     | Required |
+|------------------------|---------------------------------------------------------------|---------------------------------------------|----------|
+| `RECAPTCHA_SECRET_KEY` | Google reCAPTCHA secret key                                   | -                                           | Yes      |
+| `ALLOWED_ORIGINS`      | Comma-separated CORS origins                                  | `http://localhost:3000,https://example.com` | No       |
+| `ALLOW_SCORE`          | Score to automatically allow (0.0-1.0)                        | `0.6`                                       | No       |
+| `CHALLENGE_SCORE`      | Score to challenge (0.0-1.0). Requests below this are denied. | `0.3`                                       | No       |
 
 ### Decision Logic
 
