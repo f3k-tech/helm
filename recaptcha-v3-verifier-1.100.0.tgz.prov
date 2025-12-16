@@ -1,0 +1,30 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v2
+appVersion: 1.0.0
+description: A Helm chart for Kubernetes to deploy a reCAPTCHA v3 verification service
+icon: https://f3k-tech.github.io/helm/icons/recaptcha-v3.jpg
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: recaptcha-v3-verifier
+type: application
+version: 1.100.0
+
+...
+files:
+  recaptcha-v3-verifier-1.100.0.tgz: sha256:d48506f1790de4ca5fa349edbf033c29af308bdcfb06df38f204f5c3a3607a05
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpQRi4CRBVfFCgAnZIiQAAHeEMAAxJ7tLOxDfTJVqIOCCrkcUH
+bn9PSf/Lyt8tP8ayz/7KP9FgYkFvVXJdCux9d8qSFpREf7IjjgS1reEF2y0Y+jjo
+aLDU2BQMTQtqwKWhCoKZLOzQ5UV1bn4pr81ujw9pnRq+H+xx6+qiwnaMMbKkzxiM
+c5vSVfq2Cj9S1cfHRJVfSpsxvCux1j0Z6GVpwem9ouj44UDheRogBz84iFb1shjQ
+A1P/5qEgupQotg92iXnDaNnCf0cnU2MrFgoSE5Eol8t1E15VB+eCOLr5jDbxIt5S
+Zfyh4voTB1KrbQyVP0QHrh0fxtBFiLZriguP2d6dBBp6hiiCTC1ulB5MOxjDR6HL
+1M8WFWQ5CopEoComN0W3phn4PsgfDlpx7vI01Zdal/Y+GBdyPX8zgxHfu1QjvUwU
+WM4J0F2ImCvlbUjKJkxiyA1stuhBJ5jR37B+20ulx3SgW/saR2Q1wPap9OaeHzkY
+EDBvB0dGHLS0gz2nPVHT7t7PZmpQsg9okP87/nFNQw==
+=A90M
+-----END PGP SIGNATURE-----
