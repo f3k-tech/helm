@@ -66,7 +66,7 @@ spec:
                 echo "Skipping application download as AKAUNTING_UPGRADE is not true.";
               fi
           volumeMounts:
-            - name: akaunting-data
+            - name: {{ template "akaunting.fullname" . }}-data
               mountPath: /var/www/html
         - name: wait-for-mariadb
           image: busybox
@@ -145,7 +145,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           args: {{ .Values.args | toYaml | nindent 12 }}
           volumeMounts:
-            - name: akaunting-data
+            - name: {{ template "akaunting.fullname" . }}-data
               mountPath: /var/www/html
             - name: config-volume
               mountPath: /usr/local/etc/php/php.ini
@@ -160,7 +160,7 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- end }}
       volumes:
-        - name: akaunting-data
+        - name: {{ template "akaunting.fullname" . }}-data
           {{- if .Values.persistence.data.enabled }}
           persistentVolumeClaim:
             claimName: {{ if .Values.persistence.data.existingClaim }}{{ .Values.persistence.data.existingClaim }}{{- else }}{{ template "akaunting.fullname" . }}-data{{- end }}
