@@ -3,8 +3,8 @@ name: akaunting
 description: Akaunting Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/akaunting.png
 type: application
-version: 1.3114.0
-appVersion: "3.1.14"
+version: 1.3121.0
+appVersion: "3.1.21"
 dependencies:
   - name: mariadb
     version: 24.0.2
@@ -12,10 +12,8 @@ dependencies:
     condition: mariadb.enabled
 annotations:
   artifacthub.io/changes: |
-    - kind: fixed
-      description: Secret is no longer unintentionally recreated on update.
     - kind: changed
-      description: Updated mariadb dependency to v24.0.2.
+      description: Bump Akaunting to version 3.1.21.
 maintainers:
   - name: FreekO
     email: info@f3k.tech
