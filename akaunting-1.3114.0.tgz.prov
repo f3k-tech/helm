@@ -1,0 +1,41 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: fixed
+      description: Secret is no longer unintentionally recreated on update.
+    - kind: changed
+      description: Updated mariadb dependency to v24.0.2.
+apiVersion: v2
+appVersion: 3.1.14
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 24.0.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: akaunting
+type: application
+version: 1.3114.0
+
+...
+files:
+  akaunting-1.3114.0.tgz: sha256:90dc1a2f61490209cbf1e09a1edad3c5bf7645a101b90ec0d22e6fba193b4352
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpQpOjCRBVfFCgAnZIiQAADMYMACOsluwRHCy/WaL87qES7C4e
+2mPMqh0jkCB8hNcrbrbcForYOyHZ7A3aLYj6XRIdmU1ma8/+x0jXLgMxSMPoRqBM
+qVHfODhGZdy6Y0ugMjirM+/IedfCGIZRG6AmyIHrmSVhLPLoEW7++VnSiHwQG+cy
+m9RnhvtJ3N7I35gJsufN9WZ1VFIuHvaLSVUjAXZ2DprF6Cozl6CIJ57pL4X38poK
+oNZthmToH2rI1Z+4cm4UAC77GGCbVMnERJH8xIPGjehkonBJIaR+p7sfX6/VGX49
+F39+YNJVywFfxwHYhIAXfYbd8xivsI2DCWrhX431UlaiWyKw3gfyeB4Yb9t9DwQy
+LVPzHDj+YI7nFrHBcRYOXaOCBoee6ynbCZXgm7Raq9gCoLyCCfo+iC/P/MufwmfF
+SfiQ45aANYwdkzlHzIjNuGANRF7yVH4/iqoDspfH7Z6Ia543yv03x53UqRSBKtzi
+HGY+LKhnsduR1L9rSgEYJv79dhKHpnMo6HSAwNdM5Q==
+=L+i8
+-----END PGP SIGNATURE-----
