@@ -1,0 +1,39 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: changed
+      description: Bump Akaunting to version 3.1.21.
+apiVersion: v2
+appVersion: 3.1.21
+dependencies:
+- - condition: mariadb.enabled
+  name: mariadb
+  repository: https://charts.bitnami.com/bitnami
+  version: 24.0.2
+description: Akaunting Helm chart for Kubernetes
+icon: https://f3k-tech.github.io/helm/icons/akaunting.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: akaunting
+type: application
+version: 1.3121.0
+
+...
+files:
+  akaunting-1.3121.0.tgz: sha256:8de4fc050a132df7a4e77d4f5ed59bea174029fd118430a4ad7ecd28e7d6a7f0
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpQpWBCRBVfFCgAnZIiQAAbLgMALGyqC1XmmA6NOotcEdr3AMJ
+sD6SCmuAiKHGm95+qF0OLxsjhFXeOX+RxP0LKLSE8ODh0pqjKPHOT5s0VluhSgqJ
+jqBrTKNP2s4SdeOzAt+jRXtpoeNgWIPxzApkRgbwRg0NN9Vk7yjvaQNN91ytmqtI
+PKbiCGsKJpE9Qi26NguEhTN4CWHCQw1/8zSZAnGA65bnnj3SXltYJpxb4RUNdolM
+Liz7UWwiB15KwDDT9bNImq5O3bmdFJABQE1MwlgYPWK6F38JE5qv/4ZzGhAlX8sv
+SJQ9Ir2Ry4BcN/WrSoKoNU5/C1ygLsNT2HCMCiOBHRErCNax2bFnRvjWV2FHBays
+kkTZh2Yx5kVH83DbeJ+8fG75/jKBQFxkTGKn6N2zm0XuYKRHRd2PugCt7/JhaDiR
+JZNklnkoZvxGt9X8KfF6ZKkrCc595se8Ca988RKJaCQIZSTD7t9tbrB8jYHSGdFm
+UTaHDxRRg9O3OF5J4UkxZtTpF0Uv4J77z25WWMOE0w==
+=60vw
+-----END PGP SIGNATURE-----
