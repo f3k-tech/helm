@@ -1,7 +1,5 @@
 # Akaunting Helm Chart
 
-Please note that this chart is currently under development. While it seems to work reliably, it has yet to prove itself in practice. Below are the details on how the deployment works, including key environment variables, image tags, and special configurations required for setup and upgrades.
-
 ## Repository
 
 | Name       | Url                                                              |

@@ -3,21 +3,19 @@ name: akaunting
 description: Akaunting Helm chart for Kubernetes
 icon: https://f3k-tech.github.io/helm/icons/akaunting.png
 type: application
-version: 0.3114.4
+version: 1.3114.0
 appVersion: "3.1.14"
 dependencies:
   - name: mariadb
-    version: 20.2.2
+    version: 24.0.2
     repository: https://charts.bitnami.com/bitnami
     condition: mariadb.enabled
 annotations:
   artifacthub.io/changes: |
     - kind: fixed
-      description: MariaDB secret name no longer hardcoded; now derived from chart fullname (based on release and chart name).
+      description: Secret is no longer unintentionally recreated on update.
     - kind: changed
-      description: Move COMPANY_NAME and COMPANY_EMAIL from Secret to plain environment variables. Non-sensitive config is now provided via values.env.
-    - kind: changed
-      description: Move ADMIN_EMAIL to secret.
+      description: Updated mariadb dependency to v24.0.2.
 maintainers:
   - name: FreekO
     email: info@f3k.tech
