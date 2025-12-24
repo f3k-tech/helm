@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: bumped container image to version 1.1.0
+    - kind: changed
+      description: added support for multi-account configuration via environment variables
+apiVersion: v2
+appVersion: 1.1.0
+description: A Helm chart for Kubernetes to deploy a reCAPTCHA v3 verification service
+icon: https://f3k-tech.github.io/helm/icons/recaptcha-v3.jpg
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: recaptcha-v3-verifier
+type: application
+version: 1.110.0
+
+...
+files:
+  recaptcha-v3-verifier-1.110.0.tgz: sha256:f3a888057874ad2c97bb0864d843cc8568711acd942ca1b6183f984bc1298f62
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpTEPXCRBVfFCgAnZIiQAAst8MAINwpsYs1aQh0qDO850e9wqf
+GuIKguCdBg4Oe+7lI+DKEq7Nb2IlYxzKLYfIhRIhU8UsYZ+lP53MfX2tyR7xQqes
+dvEwHKmciJuN/kT5h0tCOc2GgGtHGdKZVpCQF47k3KmAZUPRgNXCg7a7D/inqmAE
+MEvjIruy7fttyNVrZTudhK1q3qNqZgNCxh13z4AUWRxw6YHTWr7eG4gkBieyIX1/
+6PREMLcmYH+Tx69P/rnTEIr9AY3oEJ8OSYh9Q3EeSVrbqjXSYvOOoUzvwTvnz23e
+qBhn3rkZSzfnLufwDXoSlVAheFWG7FfSvScQXNZjrzGujN6xHZvAjhkKw5KFNcym
+ZLcjPZsdGSehtjGJo2Vwb+9jpwylC4YnWfPzh9ZVMjJsCGOUmE+D8J1L1P/2hvD9
+0WXRFh+XswyeweSTx2e3DQerXXYCn48MZk5lc6RHwdczhFgUc8efWVvnwSTkbqwB
+nGDX+3uKbxrtsvWdAR/yXt1ZMGpdDG+nwZQLGVAzHQ==
+=ILvu
+-----END PGP SIGNATURE-----
