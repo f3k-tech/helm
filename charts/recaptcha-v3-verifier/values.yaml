@@ -9,15 +9,41 @@ image:
 
 env:
   - name: ALLOWED_ORIGINS
-    value: "http://localhost:3000,https://example.com"
+    value: "http://localhost:3000,https://yourdomain.com"
   - name: ALLOW_SCORE
     value: "0.6"
   - name: CHALLENGE_SCORE
     value: "0.3"
 
+  # --- Optional: Multi-account configuration ---
+  # Define additional accounts by suffixing the account ID.
+  # Requests can target an account by sending {"accountId":"<id>"} to /verify.
+  # If no accountId is provided, the service uses the default account above.
+
+  # Example additional account "account1":
+  # - name: RECAPTCHA_SECRET_KEY_account1
+  #   value: "your_recaptcha_secret_for_account1"
+  # - name: ALLOW_SCORE_account1
+  #   value: "0.7"          # optional, falls back to ALLOW_SCORE
+  # - name: CHALLENGE_SCORE_account1
+  #   value: "0.4"          # optional, falls back to CHALLENGE_SCORE
+
+  # Example additional account "account2":
+  # - name: RECAPTCHA_SECRET_KEY_account2
+  #   value: "your_recaptcha_secret_for_account2"
+  # - name: ALLOW_SCORE_account2
+  #   value: "0.5"
+  # - name: CHALLENGE_SCORE_account2
+  #   value: "0.2"
+
 secrets:
   app:
     RECAPTCHA_SECRET_KEY: "your-recaptcha-secret-key"
+    # Optional: store per-account secrets here if you prefer managing via Secret
+    # Note: to inject these into the container, add matching env entries above
+    # using valueFrom.secretKeyRef or plain value as appropriate.
+    # RECAPTCHA_SECRET_KEY_account1: "your_recaptcha_secret_for_account1"
+    # RECAPTCHA_SECRET_KEY_account2: "your_recaptcha_secret_for_account2"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []

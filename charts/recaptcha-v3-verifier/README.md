@@ -34,7 +34,8 @@ Verify a reCAPTCHA v3 token and return a decision.
 ```json
 {
   "token": "recaptcha_token_here",
-  "action": "optional_action_name"
+  "action": "optional_action_name",
+  "accountId": "optional_account_id"
 }
 ```
 
@@ -44,6 +45,7 @@ Allow
 ```json
 {
   "success": true,
+  "accountId": "default",
   "decision": "allow",
   "allow": true,
   "challenge": false,
@@ -60,6 +62,7 @@ Challenge
 ```json
 {
   "success": true,
+  "accountId": "default",
   "decision": "challenge",
   "allow": false,
   "challenge": true,
@@ -76,6 +79,7 @@ Deny
 ```json
 {
   "success": true,
+  "accountId": "default",
   "decision": "deny",
   "allow": false,
   "challenge": false,
@@ -166,6 +170,48 @@ helm upgrade --install recaptcha f3k/recaptcha-v3-verifier \
 | `ALLOWED_ORIGINS`      | Comma-separated CORS origins                                  | `http://localhost:3000,https://example.com` | No       |
 | `ALLOW_SCORE`          | Score to automatically allow (0.0-1.0)                        | `0.6`                                       | No       |
 | `CHALLENGE_SCORE`      | Score to challenge (0.0-1.0). Requests below this are denied. | `0.3`                                       | No       |
+
+### Optional: Multi-Account Configuration
+
+You can define additional verifier accounts by suffixing the account ID to the environment variables. Requests can target an account by sending a body that includes an `accountId` to the `/verify` endpoint. If no `accountId` is provided, the service uses the default account.
+
+Example base configuration:
+
+```env
+ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key_here
+ALLOW_SCORE=0.6
+CHALLENGE_SCORE=0.3
+```
+
+Example additional account "account1":
+
+```env
+RECAPTCHA_SECRET_KEY_account1=your_recaptcha_secret_for_account1
+ALLOW_SCORE_account1=0.7          # optional, falls back to ALLOW_SCORE
+CHALLENGE_SCORE_account1=0.4      # optional, falls back to CHALLENGE_SCORE
+```
+
+Example additional account "account2":
+
+```env
+RECAPTCHA_SECRET_KEY_account2=your_recaptcha_secret_for_account2
+ALLOW_SCORE_account2=0.5
+CHALLENGE_SCORE_account2=0.2
+```
+
+Targeting an account:
+
+```json
+{
+  "token": "recaptcha_token_here",
+  "accountId": "account1"
+}
+```
+
+Notes:
+- Only set secrets via Kubernetes Secrets in production. You can inject `RECAPTCHA_SECRET_KEY` and its per-account variants as environment variables using `valueFrom.secretKeyRef` (see chart values). 
+- If `ALLOW_SCORE_<account>` or `CHALLENGE_SCORE_<account>` are not provided, the defaults (`ALLOW_SCORE`, `CHALLENGE_SCORE`) are used for that account.
 
 ### Decision Logic
 
