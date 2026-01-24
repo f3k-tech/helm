@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: initial chart version 0.21.0 deploying cap-captcha-server version 2.1
+  artifacthub.io/links: |-
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/cap-captcha-server
+apiVersion: v2
+appVersion: "2.1"
+description: Lightweight, privacy-first, and open-source CAPTCHA server for the modern
+  web.
+icon: https://f3k-tech.github.io/helm/icons/cap.png
+maintainers:
+- - email: info@f3k.tech
+  name: FreekO
+name: cap-captcha-server
+type: application
+version: 0.21.0
+
+...
+files:
+  cap-captcha-server-0.21.0.tgz: sha256:7afc965c00037a57dcb95f6990bb7c73258fe449dd3ad9c4391d05edeb5f886d
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpdPSTCRBVfFCgAnZIiQAAtR0MAB48h8KSbQ/jMqLanuHDJRGx
+YlKr+IFe+zF0YN4H40VuJlKX3kwBZ40rS1/sskSNM6+egEjbtqchoJebdrCCesub
+s/P9sZbJWTU6n2J0KXMDWdICp5uzo8Hq4DQ9I2VCxbh+GZHt1VUyxj6cbIvBMBl+
+oiEZgCsQPJwBHkv3A6oZ4Duwg2NfX47gv+RD5Ugz8RZmE37nSS1MrqGJc01ZE5eG
+8NbPO57whQ3GyD3iX6TynX3OP306x4u80BWbsmkfNxEMKUa4Y7eUcfhcGnjedThj
+PdEkoZOzvP5TjWwDYaF8sAss5CSj/y0iNSNKAi0b4JbSE7GxLVDe+MarHDSie7QP
+yA8t0NRAB2KO0FOiBHun9aJAGU2uJpvDHye/iuEcML3YalLDpDJcg1k1tCK3L4ov
+6jAiQk3wWe7R28s3A9j8ZayeGvp/We2sauXd8h/OFmBi0F63OraFyDjYay9LRfTj
++7OitvaCqgFtZrgrbKWnV3kyO+NoKtujApzZhIja3g==
+=CQQX
+-----END PGP SIGNATURE-----
