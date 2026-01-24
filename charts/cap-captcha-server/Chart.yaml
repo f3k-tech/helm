@@ -13,5 +13,5 @@ annotations:
     - kind: added
       description: initial chart version 0.21.0 deploying cap-captcha-server version 2.1
   artifacthub.io/links: |
-    - name: Issues
+    - name: support
       url: https://github.com/f3k-tech/helm/issues
