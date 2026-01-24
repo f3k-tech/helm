@@ -6,10 +6,10 @@ This chart wraps the container image defined in `values.yaml` (default: `docker.
 
 ## Project Links
 
-| Resource                | Link                                                                                                    |
-|-------------------------|---------------------------------------------------------------------------------------------------------|
-| Helm Repository (index) | [https://f3k-tech.github.io/helm](https://f3k-tech.github.io/helm)                                      |
-| Helm Issues             | [Open issues](https://github.com/f3k-tech/helm/issues)                                                  |
+| Resource                | Link                                                               |
+|-------------------------|--------------------------------------------------------------------|
+| Helm Repository (index) | [https://f3k-tech.github.io/helm](https://f3k-tech.github.io/helm) |
+| Helm Issues             | [Open issues](https://github.com/f3k-tech/helm/issues)             |
 
 ## Quick Start
 
@@ -68,6 +68,35 @@ Example values:
 env:
   - name: DB_URL
     value: "sqlite://./.data/db.sqlite"
+```
+
+### SQLite Init Container
+
+This chart can run an init container to prepare the SQLite database when persistence is enabled.
+
+- Name: `init-sqlite-db`
+- Purpose: creates `/usr/src/app/.data` and pre-creates `db.sqlite`, fixing permissions so the app user can write.
+- Activation: only runs when `persistence.data.enabled=true` and `persistence.data.initSqliteDB.enabled=true`.
+- After initial run: you can disable it (set `persistence.data.initSqliteDB.enabled=false`) once the file and directory exist.
+- Safety: it does not overwrite an existing database; it only creates the file if missing and adjusts permissions, so it’s safe to leave enabled.
+
+Example enabling it:
+
+```bash
+helm upgrade --install cap f3k-tech/cap-captcha-server \
+	--set secrets.app.ADMIN_KEY="your_secret_password" \
+	--set persistence.data.enabled=true \
+	--set persistence.data.initSqliteDB.enabled=true
+```
+
+### Recommended Rate Limit IP Header
+
+Set the IP header used for rate limiting to match your ingress/proxy setup:
+
+```yaml
+env:
+  - name: RATELIMIT_IP_HEADER
+    value: "x-forwarded-for" # or "cf-connecting-ip" when behind Cloudflare
 ```
 
 ## Persistence

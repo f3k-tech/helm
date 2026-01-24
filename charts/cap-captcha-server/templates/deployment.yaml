@@ -32,6 +32,25 @@ spec:
       securityContext:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if and .Values.persistence.data.enabled (.Values.persistence.data.initSqliteDB.enabled | default false) }}
+      initContainers:
+        - name: init-sqlite-db
+          image: {{ .Values.persistence.data.initSqliteDB.image }}
+          command:
+            - sh
+            - -c
+            - >-
+              set -e;
+              mkdir -p /usr/src/app/.data;
+              if [ ! -f /usr/src/app/.data/db.sqlite ]; then touch /usr/src/app/.data/db.sqlite; fi;
+              chown -R {{ default 1000 .Values.securityContext.runAsUser }}:{{ default 1000 .Values.podSecurityContext.fsGroup }} /usr/src/app/.data;
+              chmod -R g+rwX /usr/src/app/.data;
+              chmod 0660 /usr/src/app/.data/db.sqlite;
+              ls -la /usr/src/app/.data
+          volumeMounts:
+            - name: {{ template "cap-captcha-server.fullname" . }}-data
+              mountPath: /usr/src/app/.data
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           {{- with .Values.securityContext }}
