@@ -15,3 +15,5 @@ annotations:
   artifacthub.io/links: |
     - name: support
       url: https://github.com/f3k-tech/helm/issues
+    - name: source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/cap-captcha-server
