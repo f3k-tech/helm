@@ -3,7 +3,6 @@ replicaCount: 1
 image:
   registry: docker.io
   repository: tiago2/cap
-  # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -35,7 +34,7 @@ secrets:
 
 persistence:
   data:
-    enabled: true
+    enabled: false
     # storageClass: ""
     # existingClaim: cap-captcha-server-data
     accessMode: ReadWriteOnce
