@@ -9,6 +9,9 @@ annotations:
   artifacthub.io/changes: |
     - kind: changed
       description: bumped container image to version 1.6.5
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
 maintainers:
   - name: FreekO
     email: info@f3k.tech

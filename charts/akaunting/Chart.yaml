@@ -14,6 +14,9 @@ annotations:
   artifacthub.io/changes: |
     - kind: changed
       description: Bump Akaunting to version 3.1.21.
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
 maintainers:
   - name: FreekO
     email: info@f3k.tech

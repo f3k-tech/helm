@@ -14,3 +14,6 @@ annotations:
       description: bumped container image to version 1.1.0
     - kind: changed
       description: added support for multi-account configuration via environment variables
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
