@@ -405,6 +405,7 @@ postgresql:
       owner: "" # .... Managed. Defaults to username in the <release>-postgres secret
       secret:
         name: "" # ... Managed. Defaults to <release>-postgres
+      scripts: {}
   # Backup configuration (optional)
   backup:
     enabled: false

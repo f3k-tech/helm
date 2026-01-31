@@ -26,7 +26,9 @@ spec:
       owner: {{ default $username .Values.postgresql.bootstrap.initdb.owner }}
       secret:
         name: {{ .Values.postgresql.bootstrap.initdb.secret.name | default (include "atlas-cmms.fullname-postgres" .) }}
-        
+      scripts:
+        {{- toYaml .Values.postgresql.bootstrap.initdb.scripts | nindent 8 }}
+      {{- end }}
   {{- if .Values.postgresql.storage.enabled }}
   storage:
     size: {{ .Values.postgresql.storage.size }}
