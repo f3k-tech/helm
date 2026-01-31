@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: added
+      description: Add placeholders to prevent empty backend and frontend secret values.
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.1
+
+...
+files:
+  atlas-cmms-0.140.1.tgz: sha256:d839216651da13cf5258ab241160bb2d5494fa9ba65520120cfe0dee97bc8a4f
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpflmiCRBVfFCgAnZIiQAALyQMAK++dMRmkyPAXnuul47tNZ8G
+GpgF+63aIZa9/RlUp6u/gGfMdEm2t/fIPYd/8Gr/5EjPcRfCxW5UNCA03hLfSB2A
+qk5Dq1Ag5Llla7qmGAYPLc7DPhdDdv6V0eNcbIhfJUa6P9++QC6Xq/q163IHCngu
+oOmsJdsnD1pU1DscjL2aDd5bB9yXt9LkNgk5I53bEmik5uDwiAF2Vs3vh5oHUtlC
+X/fSX4SxHzLiiIb8rbfmv3lerrKhESvygGk0eo5Tc5a2Hx3woTEbMbAncNk//PTL
+bFaQy0hLsPu+LBXUefb/UgI6wrMhKqIS4v0ZS2ljiGcNR2skKP31AHrGUyMxP0ty
+KVLv7XGnTgsz7CXyApOsz8zZ84Fm43qryAW6HC/rHMkBzlBTiomWUCwMEHZ/VjmZ
+5MkR6c3Eqr1ZfHVJ41a2PEpe89VzBUIxYMibWb8OGsf/hN0jiCWzNlG1YaSQT7eR
+2N3K2W8IHGl3fx20AsUGXqZ9HIe8gxYYwjAJ/X1Phw==
+=0Hjd
+-----END PGP SIGNATURE-----
