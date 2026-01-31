@@ -74,6 +74,7 @@ secrets:
   frontend:
     existingSecret: false
     name: "" # ............. Managed. Defaults to <release>-frontend
+    annotations: {}
 
     oauth2:
       clientId: "" # ....... Optional
@@ -88,6 +89,7 @@ secrets:
   backend:
     existingSecret: false
     name: "" # ................. Managed. Defaults to <release>-backend
+    annotations: {}
 
     jwt:
       secretKey: "" # .......... Optional. If empty, auto-generated
@@ -109,6 +111,7 @@ secrets:
   postgres:
     existingSecret: false
     name: "" # .......... Managed. Defaults to <release>-postgres
+    annotations: {}
 
     auth:
       username: "atlas"
@@ -117,6 +120,7 @@ secrets:
   minio:
     existingSecret: false
     name: "" # .......... Managed. Defaults to <release>-minio
+    annotations: {}
 
     root:
       accessKey: "" # ... Encouraged. If empty, auto-generated
@@ -450,6 +454,7 @@ minio:
         enabled: true
         image: "lachlanevenson/k8s-kubectl:v1.22.16"
         restartMinio: true # ... Rollout restart MinIO StatefulSet if config secret is updated
+        annotations: {}
         sourceSecret:
           name: "" # ........... Managed. Defaults to <release>-minio
           keyMapping:

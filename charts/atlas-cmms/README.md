@@ -43,6 +43,32 @@ This chart is designed to do a lot of heavy lifting for you. It wires together f
 
 We encourage starting with the minimal example below and only adding functionality as needed. For production or stricter security setups, we also recommend setting the MinIO and PostgreSQL secrets manually rather than relying on auto-generation.
 
+## ArgoCD Sync Waves (Ordering)
+
+When using ArgoCD the components need to be synced in a certain order to prevent errors. This is not problem when using traditional helm commands.
+
+- MinIO Secret first
+- Config generator Job second
+- Everything else
+
+Example values to achieve this ordering:
+
+```yaml
+secrets:
+  minio:
+    annotations:
+      argocd.argoproj.io/sync-wave: "-2" # First in sync
+
+minio:
+  tenant:
+    configSecret:
+      configGeneratorJob:
+        annotations:
+          argocd.argoproj.io/sync-wave: "-1" # Second in sync
+```
+
+With the above, Argo CD will apply all Secrets at wave `-2`, then run the config generator Job at wave `-1`, and finally sync the core app resources at wave `0`.
+
 ## Recommended Minimal Values 
 
 ```yaml
