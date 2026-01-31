@@ -3,7 +3,7 @@ name: atlas-cmms
 description: CMMS Software Built to Make Managing Maintenance Easier
 icon: https://f3k-tech.github.io/helm/icons/atlas.png
 type: application
-version: 0.140.0
+version: 0.140.1
 appVersion: "v1.4.0"
 dependencies:
   - name: tenant
@@ -27,4 +27,4 @@ annotations:
       url: https://atlas-cmms.com
   artifacthub.io/changes: |
     - kind: added
-      description: initial chart version 0.140.0 deploying atlas-cmms version v1.4.0
+      description: Add placeholders to prevent empty backend and frontend secret values.

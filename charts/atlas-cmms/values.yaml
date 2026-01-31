@@ -73,40 +73,40 @@ env:
 secrets:
   frontend:
     existingSecret: false
-    name: "" # ............. Managed. Defaults to <release>-frontend
+    name: "" # .............. Managed. Defaults to <release>-frontend
     annotations: {}
 
     oauth2:
-      clientId: "" # ....... Optional
-      clientSecret: "" # ... Optional
+      clientId: "-" # ....... Optional
+      clientSecret: "-" # ... Optional
     google:
-      apiKey: "" # ......... Optional
+      apiKey: "-" # ......... Optional
     mui:
-      licenseKey: "" # ..... Optional
+      licenseKey: "-" # ..... Optional
     paddle:
-      secretToken: "" # .... Optional
+      secretToken: "-" # .... Optional
 
   backend:
     existingSecret: false
-    name: "" # ................. Managed. Defaults to <release>-backend
+    name: "" # .................. Managed. Defaults to <release>-backend
     annotations: {}
 
     jwt:
-      secretKey: "" # .......... Optional. If empty, auto-generated
+      secretKey: "" # ........... Optional. If empty, auto-generated
     smtp:
-      username: "" # ........... Optional
-      password: "" # ........... Optional
+      username: "-" # ........... Optional
+      password: "-" # ........... Optional
     oauth2:
-      clientId: "" # ........... Optional
-      clientSecret: "" # ....... Optional
+      clientId: "-" # ........... Optional
+      clientSecret: "-" # ....... Optional
     fastspring:
-      username: "" # ........... Optional
-      password: "" # ........... Optional
+      username: "-" # ........... Optional
+      password: "-" # ........... Optional
     paddle:
-      apiKey: "" # ............. Optional
-      webhookSecretKey: "" # ... Optional
+      apiKey: "-" # ............. Optional
+      webhookSecretKey: "-" # ... Optional
     keygen:
-      productToken: "" # ....... Optional
+      productToken: "-" # ....... Optional
 
   postgres:
     existingSecret: false
