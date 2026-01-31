@@ -13,12 +13,15 @@ spec:
       {{- include "libretranslate.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      labels:
+        {{- include "libretranslate.selectorLabels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
       {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      labels:
-        {{- include "libretranslate.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
