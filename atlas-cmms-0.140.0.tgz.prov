@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: added
+      description: initial chart version 0.140.0 deploying atlas-cmms version v1.4.0
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.0
+
+...
+files:
+  atlas-cmms-0.140.0.tgz: sha256:c76ef99fc55fabc47ff78015689e5d7f54aecf414606d930a16f887dad826d68
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpflLHCRBVfFCgAnZIiQAArfoMACNJFIlAwxA373w1+nw2MpdW
+4pGJctIszYKuoMG1mmkjJEkVXbkzhVIChSS1a2UBKzVQjneadH6g82oSkrdz0ixT
+OFwjVYtiP9YUwvbrbLJ1+mIHgQU1/B3ZSsYvMXXpyJ59fwk7JobvahTkxumZl7C6
+zJmo4ZX7bjS5eXRS3kj5mQIGiOJPUFRQ3y4O/Q7eAPY9rtjK9gDFAt/5fhkw/fA/
+cZ6d0DqZ7ZWlLkl7PAvOsNI0Jl7egQ0f04rV59HPDqgALhCJssQF8g27lJ9hoHjr
+ijXI2gjsZnCrUrLbKu9pzSXMdCRxeh46O/EK+eSjziX5MydHJ7MTkg44u+04ak8F
+irgyEnxrXyyZVYda2RBnGIVW/+OF5Q7bP68B59vG5zTgyL11q87nxj5mZrTU9Oiz
+t2XI8TavKDAQ9R23sTF41cpxEi6SO+2iIMK+2AbW0IVV6Uam5bMAfKtDBciI2eFr
+u24gGhX2xydCkYZtOJSBtGHgDN40Tu+nQC5HTMs7Bw==
+=tICV
+-----END PGP SIGNATURE-----
