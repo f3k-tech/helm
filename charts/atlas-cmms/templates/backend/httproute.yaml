@@ -1,0 +1,38 @@
+{{- if .Values.backend.httpRoute.enabled -}}
+{{- $fullName := include "atlas-cmms.fullname-backend" . -}}
+{{- $svcPort := .Values.backend.service.port -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "atlas-cmms.labels" . | nindent 4 }}
+  {{- with .Values.backend.httpRoute.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  parentRefs:
+    {{- with .Values.backend.httpRoute.parentRefs }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with .Values.backend.httpRoute.hostnames }}
+  hostnames:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  rules:
+    {{- range .Values.backend.httpRoute.rules }}
+    {{- with .matches }}
+    - matches:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .filters }}
+      filters:
+      {{- toYaml . | nindent 8 }}
+    {{- end }}
+      backendRefs:
+        - name: {{ $fullName }}
+          port: {{ $svcPort }}
+          weight: 1
+    {{- end }}
+{{- end }}

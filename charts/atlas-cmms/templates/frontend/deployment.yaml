@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "atlas-cmms.fullname-frontend" . }}
+  labels:
+    {{- include "atlas-cmms.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.frontend.autoscaling.enabled }}
+  replicas: {{ .Values.frontend.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "atlas-cmms.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.frontend.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/component: frontend
+        {{- include "atlas-cmms.labels" . | nindent 8 }}
+        {{- with .Values.frontend.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "atlas-cmms.serviceAccountName-frontend" . }}
+      {{- with .Values.frontend.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+        - name: wait-for-backend
+          image: {{ .Values.frontend.waitFor.backend.image }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Waiting for backend TCP port..."
+              until nc -z {{ default ( include "atlas-cmms.fullname-backend" . ) .Values.frontend.waitFor.backend.service }} {{ default .Values.backend.service.port .Values.frontend.waitFor.backend.port }}; do
+                echo "Waiting..."
+                sleep 2
+              done
+              echo "Backend TCP port is up!"
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- with .Values.frontend.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.registry }}/{{ .Values.frontend.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.frontend.service.port }}
+              protocol: TCP
+          {{- if .Values.frontend.livenessProbe.enabled }}
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: {{ .Values.frontend.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.frontend.livenessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.frontend.livenessProbe.failureThreshold }}
+            successThreshold: {{ .Values.frontend.livenessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.frontend.livenessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- if .Values.frontend.readinessProbe.enabled }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: {{ .Values.frontend.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.frontend.readinessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.frontend.readinessProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.frontend.readinessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- with .Values.frontend.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.frontend.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            {{- range $k, $v := .Values.env.common.user }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+            {{- range $k, $v := .Values.env.frontend.user }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+            - name: API_URL
+              value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}
+          envFrom:
+            - secretRef:
+                name: {{ if .Values.secrets.frontend.existingSecret }}
+                  {{ .Values.secrets.frontend.name | default (include "atlas-cmms.fullname-frontend" .) }}
+                {{ else }}
+                  {{ include "atlas-cmms.fullname-frontend" . }}
+                {{ end }}
+      {{- with .Values.frontend.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.frontend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

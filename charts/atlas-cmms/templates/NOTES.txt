@@ -1,0 +1,52 @@
+1. Get the application URL by running these commands:
+{{- if or .Values.frontend.httpRoute.enabled .Values.backend.httpRoute.enabled }}
+{{- if .Values.frontend.httpRoute.enabled }}
+  {{- if .Values.frontend.httpRoute.hostnames }}
+    export FRONT_HOSTNAME={{ .Values.frontend.httpRoute.hostnames | first }}
+  {{- else }}
+    export FRONT_HOSTNAME=$(kubectl get --namespace {{ (first .Values.frontend.httpRoute.parentRefs).namespace | default .Release.Namespace }} gateway/{{ (first .Values.frontend.httpRoute.parentRefs).name }} -o jsonpath="{.spec.listeners[0].hostname}")
+  {{- end }}
+  {{- if and .Values.frontend.httpRoute.rules (first .Values.frontend.httpRoute.rules).matches (first (first .Values.frontend.httpRoute.rules).matches).path.value }}
+    echo "Frontend: http://$FRONT_HOSTNAME{{ (first (first .Values.frontend.httpRoute.rules).matches).path.value }}"
+  {{- end }}
+{{- end }}
+{{- if .Values.backend.httpRoute.enabled }}
+  {{- if .Values.backend.httpRoute.hostnames }}
+    export BACK_HOSTNAME={{ .Values.backend.httpRoute.hostnames | first }}
+  {{- else }}
+    export BACK_HOSTNAME=$(kubectl get --namespace {{ (first .Values.backend.httpRoute.parentRefs).namespace | default .Release.Namespace }} gateway/{{ (first .Values.backend.httpRoute.parentRefs).name }} -o jsonpath="{.spec.listeners[0].hostname}")
+  {{- end }}
+  {{- if and .Values.backend.httpRoute.rules (first .Values.backend.httpRoute.rules).matches (first (first .Values.backend.httpRoute.rules).matches).path.value }}
+    echo "Backend: http://$BACK_HOSTNAME{{ (first (first .Values.backend.httpRoute.rules).matches).path.value }}"
+  {{- end }}
+{{- end }}
+{{- else if or .Values.frontend.ingress.enabled .Values.backend.ingress.enabled }}
+{{- if .Values.frontend.ingress.enabled }}
+{{- range $host := .Values.frontend.ingress.hosts }}
+  {{- range .paths }}
+  Frontend: http{{ if $.Values.frontend.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- end }}
+{{- if .Values.backend.ingress.enabled }}
+{{- range $host := .Values.backend.ingress.hosts }}
+  {{- range .paths }}
+  Backend: http{{ if $.Values.backend.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- end }}
+{{- else if contains "NodePort" .Values.frontend.service.type }}
+  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "atlas-cmms.fullname" . }})
+  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+{{- else if contains "LoadBalancer" .Values.frontend.service.type }}
+     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+           You can watch its status by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "atlas-cmms.fullname" . }}'
+  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "atlas-cmms.fullname" . }} --template "{{"{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}"}}")
+  echo http://$SERVICE_IP:{{ .Values.frontend.service.port }}
+{{- else if contains "ClusterIP" .Values.frontend.service.type }}
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "atlas-cmms.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace {{ .Release.Namespace }} $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:$CONTAINER_PORT
+{{- end }}

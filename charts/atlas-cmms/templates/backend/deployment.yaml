@@ -1,0 +1,175 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "atlas-cmms.fullname-backend" . }}
+  labels:
+    {{- include "atlas-cmms.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.backend.autoscaling.enabled }}
+  replicas: {{ .Values.backend.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "atlas-cmms.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.backend.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/component: backend
+        {{- include "atlas-cmms.labels" . | nindent 8 }}
+        {{- with .Values.backend.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "atlas-cmms.serviceAccountName-backend" . }}
+      {{- with .Values.backend.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      initContainers:
+        {{- if .Values.minio.enabled }}
+        - name: wait-for-minio
+          image: {{ .Values.backend.waitFor.minio.image }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Waiting for {{ default .Values.backend.waitFor.minio.service }} service to be ready..."
+              while ! nc -z {{ .Values.backend.waitFor.minio.service }} {{ .Values.backend.waitFor.minio.port }}; do
+                echo "MinIO not ready yet, sleeping 2s..."
+                sleep 2
+                    done
+              echo "MinIO is up!"
+        {{- end }}
+        {{- if .Values.postgresql.enabled }}
+        - name: wait-for-postgres
+          image: {{ .Values.backend.waitFor.postgres.image }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Waiting for Postgres service to be ready..."
+              while ! nc -z {{ default (printf "%s-r" (include "atlas-cmms.fullname-postgres" . )) .Values.backend.waitFor.postgres.service }} {{ .Values.backend.waitFor.postgres.port }}; do
+                echo "Postgres not ready yet, sleeping 2s..."
+                sleep 2
+              done
+              echo "Postgres is up!"
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- with .Values.backend.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.registry }}/{{ .Values.backend.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.backend.service.port }}
+              protocol: TCP
+          {{- if .Values.backend.livenessProbe.enabled }}
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: {{ .Values.backend.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.backend.livenessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.backend.livenessProbe.failureThreshold }}
+            successThreshold: {{ .Values.backend.livenessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.backend.livenessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- if .Values.backend.readinessProbe.enabled }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: {{ .Values.backend.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.backend.readinessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.backend.readinessProbe.failureThreshold }}
+            timeoutSeconds: {{ .Values.backend.readinessProbe.timeoutSeconds }}
+          {{- end }}
+          {{- with .Values.backend.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.backend.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            {{- range $k, $v := .Values.env.common.user }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+            {{- range $k, $v := .Values.env.backend.user }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+            - name: DB_URL
+              value: {{ default (printf "%s-rw/%s" (include "atlas-cmms.fullname-postgres" . ) .Values.postgresql.bootstrap.initdb.database) .Values.env.backend.auto.DB_URL | quote }}
+            - name: PUBLIC_API_URL
+              value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.backend.auto.PUBLIC_API_URL | quote }}
+            - name: PUBLIC_FRONT_URL
+              value: {{ default (printf "https://%s" (index .Values.frontend.ingress.hosts 0).host) .Values.env.backend.auto.PUBLIC_FRONT_URL | quote }}
+            - name: MINIO_BUCKET
+              value: {{ (index .Values.minio.tenant.buckets 0).name | quote }}
+            - name: PUBLIC_MINIO_ENDPOINT
+              value: {{ default (printf "https://%s" (.Values.minio.ingress.api.host)) .Values.env.backend.auto.PUBLIC_MINIO_ENDPOINT | quote }}
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ if .Values.secrets.postgres.existingSecret }}
+                    {{ .Values.secrets.postgres.name | default (include "atlas-cmms.fullname-postgres" .) }}
+                  {{ else }}
+                    {{ include "atlas-cmms.fullname-postgres" . }}
+                  {{ end }}
+                  key: username
+            - name: DB_PWD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ if .Values.secrets.postgres.existingSecret }}
+                    {{ .Values.secrets.postgres.name | default (include "atlas-cmms.fullname-postgres" .) }}
+                  {{ else }}
+                    {{ include "atlas-cmms.fullname-postgres" . }}
+                  {{ end }}
+                  key: password
+          envFrom:
+            - secretRef:
+                name: {{ if .Values.secrets.backend.existingSecret }}
+                  {{ .Values.secrets.backend.name | default (include "atlas-cmms.fullname-backend" .) }}
+                {{ else }}
+                  {{ include "atlas-cmms.fullname-backend" . }}
+                {{ end }}
+            - secretRef:
+                name: {{ if .Values.secrets.minio.existingSecret }}
+                  {{ .Values.secrets.minio.name | default (include "atlas-cmms.fullname-minio" .) }}
+                {{ else }}
+                  {{ include "atlas-cmms.fullname-minio" . }}
+                {{ end }}
+            - secretRef:
+                name: {{ if .Values.secrets.minio.existingSecret }}
+                  {{ .Values.secrets.minio.name | default (include "atlas-cmms.fullname-minio" .) }}
+                {{ else }}
+                  {{ include "atlas-cmms.fullname-minio" . }}
+                {{ end }}
+      {{- with .Values.backend.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.backend.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

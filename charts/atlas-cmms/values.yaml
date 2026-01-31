@@ -1,0 +1,485 @@
+# ─────────────────────────────────────────────────────────────
+# Values legend
+#
+# Optional
+#   May be omitted safely. Feature or behavior is optional.
+#
+# Encouraged
+#   Optional, but recommended to set explicitly for production
+#   (e.g. rotation, backups, disaster recovery, or external integration).
+#
+# Managed
+#   Set automatically by the chart. User-provided values are discouraged.
+# ─────────────────────────────────────────────────────────────
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  registry: docker.io
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+env:
+  common:
+    user:
+      CUSTOM_COLORS: "-" # E.g: '{"primary":"#EE4B2B"}'
+      BRAND_CONFIG: "-" # E.g: '{"name":"My Company","shortName":"MC","website":"https://example.com"}'
+
+  frontend:
+    # All variables under 'auto' are managed by the chart and we discourage to set them manually.
+    # Feel free to delete any variables you don't need to set manually.
+    auto:
+      API_URL: "" # Defaults to https://<ingress-host>/api.
+
+    # All variables under 'user' are optional.
+    # Feel free to delete any variables you don't need or for which you want to use the default.
+    user:
+      GOOGLE_TRACKING_ID: "-"
+      ENABLE_SSO: false
+      OAUTH2_PROVIDER: "-"
+      DEMO_LINK: "-"
+      INVITATION_VIA_EMAIL: false
+      CLOUD_VERSION: false
+      NODE_ENV: "production"
+      PADDLE_ENVIRONMENT: "production" # ... "sandbox" or "production"
+      LOGO_PATHS: "{}" # ................... E.g: '{"dark":"dark.png","white":"white.png"}'
+
+  backend:
+    # All variables under 'auto' are managed by the chart and we discourage to set them manually.
+    # Feel free to delete any variables you don't need to set manually.
+    auto:
+      DB_URL: "" # .................. Defaults to <postgresql-service>/<postgresql-database>.
+      PUBLIC_API_URL: "" # .......... Defaults to https://<ingress-host>/api.
+      PUBLIC_FRONT_URL: "" # ........ Defaults to https://<ingress-host>.
+      MINIO_BUCKET: "" # ............ Defaults to <minio-bucket>.
+      PUBLIC_MINIO_ENDPOINT: "" # ... Defaults to https://<minio-api-host>/<minio-api-path>.
+
+    # All variables under 'user' are optional. 
+    # Feel free to delete any variables you don't need or for which you want to use the default.
+    user:
+      STORAGE_TYPE: "minio" # ............. "gcp", "minio".
+      ENABLE_EMAIL_NOTIFICATIONS: false
+      INVITATION_VIA_EMAIL: false
+      MAIL_RECIPIENTS: ""
+      ENABLE_SSO: false
+      SMTP_HOST: ""
+      SMTP_PORT: ""
+      LICENSE_KEY: ""
+      ALLOWED_ORGANIZATION_ADMINS: "" # ... Comma-separated list of emails.
+
+secrets:
+  frontend:
+    existingSecret: false
+    name: "" # ............. Managed. Defaults to <release>-frontend
+
+    oauth2:
+      clientId: "" # ....... Optional
+      clientSecret: "" # ... Optional
+    google:
+      apiKey: "" # ......... Optional
+    mui:
+      licenseKey: "" # ..... Optional
+    paddle:
+      secretToken: "" # .... Optional
+
+  backend:
+    existingSecret: false
+    name: "" # ................. Managed. Defaults to <release>-backend
+
+    jwt:
+      secretKey: "" # .......... Optional. If empty, auto-generated
+    smtp:
+      username: "" # ........... Optional
+      password: "" # ........... Optional
+    oauth2:
+      clientId: "" # ........... Optional
+      clientSecret: "" # ....... Optional
+    fastspring:
+      username: "" # ........... Optional
+      password: "" # ........... Optional
+    paddle:
+      apiKey: "" # ............. Optional
+      webhookSecretKey: "" # ... Optional
+    keygen:
+      productToken: "" # ....... Optional
+
+  postgres:
+    existingSecret: false
+    name: "" # .......... Managed. Defaults to <release>-postgres
+
+    auth:
+      username: "atlas"
+      password: "" # .... Encouraged. If empty, auto-generated
+
+  minio:
+    existingSecret: false
+    name: "" # .......... Managed. Defaults to <release>-minio
+
+    root:
+      accessKey: "" # ... Encouraged. If empty, auto-generated
+      secretKey: "" # ... Encouraged. If empty, auto-generated
+
+frontend:
+  replicaCount: 1
+
+  image:
+    repository: intelloop/atlas-cmms-frontend
+
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: atlas.example.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+      # - secretName: chart-example-tls
+      #   hosts:
+      #     - chart-example.local
+
+  httpRoute:
+    enabled: false
+    annotations: {}
+    parentRefs:
+      - name: gateway
+        sectionName: http
+        # namespace: default
+    hostnames:
+      - chart-example.local
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /headers
+    #   filters:
+    #   - type: RequestHeaderModifier
+    #     requestHeaderModifier:
+    #       set:
+    #       - name: My-Overwrite-Header
+    #         value: this-is-the-only-value
+    #       remove:
+    #       - User-Agent
+    # - matches:
+    #   - path:
+    #       type: PathPrefix
+    #       value: /echo
+    #     headers:
+    #     - name: version
+    #       value: v2
+
+  serviceAccount:
+    name: ""
+    create: true
+
+  podAnnotations: {}
+  podLabels: {}
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  service:
+    type: ClusterIP
+    port: 3000
+
+  waitFor:
+    backend:
+      enabled: true
+      image: busybox:1.36
+      service: "" # ... Managed. Defaults to <release>-backend
+      port: "" # ...... Managed. Defaults to backend service port
+
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+    successThreshold: 1
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
+
+  volumes: []
+    # - name: foo
+    #   secret:
+    #     secretName: mysecret
+    #     optional: false
+
+  volumeMounts: []
+    # - name: foo
+    #   mountPath: "/etc/foo"
+    #   readOnly: true
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+backend:
+  replicaCount: 1
+
+  image:
+    repository: intelloop/atlas-cmms-backend
+
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hosts:
+      - host: api.atlas.example.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+      # - secretName: chart-example-tls
+      #   hosts:
+      #     - chart-example.local
+
+  httpRoute:
+    enabled: false
+    annotations: {}
+    parentRefs:
+      - name: gateway
+        sectionName: http
+        # namespace: default
+    hostnames:
+      - chart-example.local
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /headers
+    #   filters:
+    #   - type: RequestHeaderModifier
+    #     requestHeaderModifier:
+    #       set:
+    #       - name: My-Overwrite-Header
+    #         value: this-is-the-only-value
+    #       remove:
+    #       - User-Agent
+    # - matches:
+    #   - path:
+    #       type: PathPrefix
+    #       value: /echo
+    #     headers:
+    #     - name: version
+    #       value: v2
+
+  serviceAccount:
+    name: ""
+    create: true
+
+  podAnnotations: {}
+  podLabels: {}
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  service:
+    type: ClusterIP
+    port: 8080
+
+  waitFor:
+    minio:
+      enabled: true
+      image: busybox:1.36
+      service: "minio"
+      port: 80
+    postgres:
+      enabled: true
+      image: busybox:1.36
+      service: "" # Managed. Defaults to <release>-postgres-r
+      port: 5432
+
+  resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+    successThreshold: 1
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
+
+  volumes: []
+    # - name: foo
+    #   secret:
+    #     secretName: mysecret
+    #     optional: false
+
+  volumeMounts: []
+    # - name: foo
+    #   mountPath: "/etc/foo"
+    #   readOnly: true
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+# Requires the CloudNativePG (CNPG) operator installed cluster-wide (CRDs + controller)
+# Install CNPG before using this section: https://cloudnative-pg.io/
+postgresql:
+  enabled: true
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.1
+  storage:
+    enabled: true
+    size: 2Gi
+    storageClass: ""
+  bootstrap:
+    initdb:
+      database: atlas
+      owner: "" # .... Managed. Defaults to username in the <release>-postgres secret
+      secret:
+        name: "" # ... Managed. Defaults to <release>-postgres
+  # Backup configuration (optional)
+  backup:
+    enabled: false
+    barmanObjectStore:
+      destinationPath: ""
+      s3Credentials:
+        accessKeyId:
+          name: ""
+          key: access-key-id
+        secretAccessKey:
+          name: ""
+          key: secret-access-key
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+
+  monitoring:
+    enabled: true
+    podMonitorEnabled: false
+
+  resources: {}
+    # requests:
+    #   memory: "256Mi"
+    #   cpu: "100m"
+    # limits:
+    #   memory: "1Gi"
+    #   cpu: "1000m"
+
+# MinIO Tenant (requires MinIO Operator CRDs installed in cluster)
+# See https://artifacthub.io/packages/helm/minio-operator/tenant?modal=values for full configuration options
+minio:
+  enabled: true
+  tenant:
+    name: atlas-cmms-minio
+    buckets:
+      - name: atlas-cmms
+    configSecret:
+      name: atlas-cmms-minio-config
+      existingSecret: true
+      configGeneratorJob:
+        enabled: true
+        image: "lachlanevenson/k8s-kubectl:v1.22.16"
+        restartMinio: true # ... Rollout restart MinIO StatefulSet if config secret is updated
+        sourceSecret:
+          name: "" # ........... Managed. Defaults to <release>-minio
+          keyMapping:
+            accessKey: MINIO_ACCESS_KEY
+            secretKey: MINIO_SECRET_KEY
+    pools:
+      - name: "pool-0"
+        servers: 1
+        volumesPerServer: 1
+        size: 2Gi
+        storageClassName: ""
+
+    certificate:
+      requestAutoCert: false
+
+  ingress:
+    api:
+      enabled: true
+      ingressClassName: ""
+      labels: {}
+      annotations: {}
+      tls: []
+      host: minio.local
+      path: /minio-api
+      pathType: Prefix
+    console:
+      enabled: true
+      ingressClassName: ""
+      labels: {}
+      annotations: {}
+      tls: []
+      host: minio-console.local
+      path: /minio
+      pathType: Prefix

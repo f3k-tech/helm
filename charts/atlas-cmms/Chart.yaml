@@ -1,0 +1,30 @@
+apiVersion: v2
+name: atlas-cmms
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+type: application
+version: 0.140.0
+appVersion: "v1.4.0"
+dependencies:
+  - name: tenant
+    alias: minio
+    version: 7.1.1
+    condition: minio.enabled
+    repository: https://operator.min.io/
+annotations:
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+  artifacthub.io/changes: |
+    - kind: added
+      description: initial chart version 0.140.0 deploying atlas-cmms version v1.4.0

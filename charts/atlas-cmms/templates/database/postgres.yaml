@@ -1,0 +1,65 @@
+{{- if .Values.postgresql.enabled }}
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ include "atlas-cmms.fullname-postgres" . }}
+  labels:
+    {{- include "atlas-cmms.labels" . | nindent 4 }}
+spec:
+  instances: {{ .Values.postgresql.instances }}
+  
+  imageName: {{ .Values.postgresql.imageName }}
+  
+  postgresql:
+    parameters:
+      max_connections: "100"
+      shared_buffers: "256MB"
+  
+  bootstrap:
+    initdb:
+      database: {{ .Values.postgresql.bootstrap.initdb.database }}
+      {{- $pgSecret := lookup "v1" "Secret" .Release.Namespace (include "atlas-cmms.fullname-postgres" .) }}
+      {{- $username := "" }}
+      {{- if $pgSecret }}
+        {{- $username = index $pgSecret.data "username" | b64dec }}
+      {{- end }}
+      owner: {{ default $username .Values.postgresql.bootstrap.initdb.owner }}
+      secret:
+        name: {{ .Values.postgresql.bootstrap.initdb.secret.name | default (include "atlas-cmms.fullname-postgres" .) }}
+        
+  {{- if .Values.postgresql.storage.enabled }}
+  storage:
+    size: {{ .Values.postgresql.storage.size }}
+    {{- if .Values.postgresql.storage.storageClass }}
+    storageClass: {{ .Values.postgresql.storage.storageClass }}
+    {{- end }}
+  {{- end }}
+  
+  {{- if .Values.postgresql.resources }}
+  resources:
+    {{- toYaml .Values.postgresql.resources | nindent 4 }}
+  {{- end }}
+  
+  {{- if .Values.postgresql.monitoring.enabled }}
+  monitoring:
+    enablePodMonitor: {{ .Values.postgresql.monitoring.podMonitorEnabled }}
+  {{- end }}
+  
+  {{- if .Values.postgresql.backup.enabled }}
+  backup:
+    barmanObjectStore:
+      destinationPath: {{ .Values.postgresql.backup.barmanObjectStore.destinationPath }}
+      s3Credentials:
+        accessKeyId:
+          name: {{ .Values.postgresql.backup.barmanObjectStore.s3Credentials.accessKeyId.name }}
+          key: {{ .Values.postgresql.backup.barmanObjectStore.s3Credentials.accessKeyId.key }}
+        secretAccessKey:
+          name: {{ .Values.postgresql.backup.barmanObjectStore.s3Credentials.secretAccessKey.name }}
+          key: {{ .Values.postgresql.backup.barmanObjectStore.s3Credentials.secretAccessKey.key }}
+      wal:
+        compression: {{ .Values.postgresql.backup.barmanObjectStore.wal.compression }}
+      data:
+        compression: {{ .Values.postgresql.backup.barmanObjectStore.data.compression }}
+    retentionPolicy: "30d"
+  {{- end }}
+{{- end }}
