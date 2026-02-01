@@ -16,6 +16,8 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+debug: true
+
 image:
   registry: docker.io
   pullPolicy: IfNotPresent
@@ -25,8 +27,8 @@ image:
 env:
   common:
     user:
-      CUSTOM_COLORS: "-" # E.g: '{"primary":"#EE4B2B"}'
-      BRAND_CONFIG: "-" # E.g: '{"name":"My Company","shortName":"MC","website":"https://example.com"}'
+      CUSTOM_COLORS: "" # ... E.g: '{"primary":"#EE4B2B"}'
+      BRAND_CONFIG: "" #  ... E.g: '{"name":"My Company","shortName":"MC","website":"https://example.com"}'
 
   frontend:
     # All variables under 'auto' are managed by the chart and we discourage to set them manually.
@@ -37,10 +39,10 @@ env:
     # All variables under 'user' are optional.
     # Feel free to delete any variables you don't need or for which you want to use the default.
     user:
-      GOOGLE_TRACKING_ID: "-"
+      GOOGLE_TRACKING_ID: ""
       ENABLE_SSO: false
-      OAUTH2_PROVIDER: "-"
-      DEMO_LINK: "-"
+      OAUTH2_PROVIDER: ""
+      DEMO_LINK: ""
       INVITATION_VIA_EMAIL: false
       CLOUD_VERSION: false
       NODE_ENV: "production"
@@ -77,36 +79,36 @@ secrets:
     annotations: {}
 
     oauth2:
-      clientId: "-" # ....... Optional
-      clientSecret: "-" # ... Optional
+      clientId: "" # ....... Optional
+      clientSecret: "" # ... Optional
     google:
-      apiKey: "-" # ......... Optional
+      apiKey: "" # ......... Optional
     mui:
-      licenseKey: "-" # ..... Optional
+      licenseKey: "" # ..... Optional
     paddle:
-      secretToken: "-" # .... Optional
+      secretToken: "" # .... Optional
 
   backend:
     existingSecret: false
-    name: "" # .................. Managed. Defaults to <release>-backend
+    name: "" # ................. Managed. Defaults to <release>-backend
     annotations: {}
 
     jwt:
-      secretKey: "" # ........... Optional. If empty, auto-generated
+      secretKey: "" # .......... Optional. If empty, auto-generated
     smtp:
-      username: "-" # ........... Optional
-      password: "-" # ........... Optional
+      username: "" # ........... Optional
+      password: "" # ........... Optional
     oauth2:
-      clientId: "-" # ........... Optional
-      clientSecret: "-" # ....... Optional
+      clientId: "" # ........... Optional
+      clientSecret: "" # ....... Optional
     fastspring:
-      username: "-" # ........... Optional
-      password: "-" # ........... Optional
+      username: "" # ........... Optional
+      password: "" # ........... Optional
     paddle:
-      apiKey: "-" # ............. Optional
-      webhookSecretKey: "-" # ... Optional
+      apiKey: "" # ............. Optional
+      webhookSecretKey: "" # ... Optional
     keygen:
-      productToken: "-" # ....... Optional
+      productToken: "" # ....... Optional
 
   postgres:
     existingSecret: false

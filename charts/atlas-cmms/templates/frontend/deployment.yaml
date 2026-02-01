@@ -90,11 +90,11 @@ spec:
           env:
             {{- range $k, $v := .Values.env.common.user }}
             - name: {{ $k }}
-              value: {{ $v | quote }}
+              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             {{- range $k, $v := .Values.env.frontend.user }}
             - name: {{ $k }}
-              value: {{ $v | quote }}
+              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             - name: API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}

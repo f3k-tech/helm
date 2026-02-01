@@ -1,0 +1,10 @@
+# templates/debug-values.yaml
+{{- if .Values.debug }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "atlas-cmms.fullname" . }}-values
+data:
+  values.yaml: |
+{{ toYaml .Values | indent 4 }}
+{{- end }}

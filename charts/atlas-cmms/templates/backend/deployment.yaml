@@ -104,11 +104,11 @@ spec:
           env:
             {{- range $k, $v := .Values.env.common.user }}
             - name: {{ $k }}
-              value: {{ $v | quote }}
+              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             {{- range $k, $v := .Values.env.backend.user }}
             - name: {{ $k }}
-              value: {{ $v | quote }}
+              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             - name: DB_URL
               value: {{ default (printf "%s-rw/%s" (include "atlas-cmms.fullname-postgres" . ) .Values.postgresql.bootstrap.initdb.database) .Values.env.backend.auto.DB_URL | quote }}

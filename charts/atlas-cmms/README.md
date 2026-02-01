@@ -1,41 +1,10 @@
 
 
-## IMPORTANT: Cluster-wide Prerequisites
+>## IMPORTANT: Cluster-wide Prerequisites
+>This chart depends on two operators being installed cluster-wide before you deploy:
+>1. MinIO Operator ([installation instructions](#minio-operator-cluster-wide-watch-example))
+>2. CloudNativePG (CNPG) Operator ([installation instructions](#cnpg-cluster-wide-watch-example))
 
-This chart depends on two operators being installed cluster-wide before you deploy:
-
-1. MinIO Operator (installs CRDs and controller)
-2. CloudNativePG (CNPG) Operator (installs CRDs and controller)
-
-### CNPG Cluster-wide Watch Example
-
-To ensure CNPG reconciles clusters across all namespaces, install it with a values file that enables cluster-wide watching:
-
-
-```bash
-helm repo add cnpg https://cloudnative-pg.github.io/charts
-helm repo update
-helm upgrade --install cnpg cnpg/cloudnative-pg \
-  --namespace cnpg-system \
-  --create-namespace \
-  --set serviceAccount.create=true \
-  --set serviceAccount.name=cnpg-operator \
-  --set-string watchNamespaces[0]="*"
-```
-
-### MinIO Operator Cluster-wide Watch Example
-
-To ensure the MinIO Operator watches all namespaces, set `WATCHED_NAMESPACE` to an empty string:
-
-```bash
-helm repo add minio https://operator.min.io/
-helm repo update
-helm upgrade --install minio-operator minio/operator \
-  --namespace minio-operator \
-  --create-namespace \
-  --set-string operator.env[0].name=WATCHED_NAMESPACE \
-  --set-string operator.env[0].value=""
-```
 
 # Atlas CMMS Helm Chart
 
@@ -152,4 +121,34 @@ minio:
           hosts:
             - minio.example.com
 
+```
+
+### CNPG Cluster-wide Watch Example
+
+To ensure CNPG reconciles clusters across all namespaces, install it with a values file that enables cluster-wide watching:
+
+
+```bash
+helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo update
+helm upgrade --install cnpg cnpg/cloudnative-pg \
+  --namespace cnpg-system \
+  --create-namespace \
+  --set serviceAccount.create=true \
+  --set serviceAccount.name=cnpg-operator \
+  --set-string watchNamespaces[0]="*"
+```
+
+### MinIO Operator Cluster-wide Watch Example
+
+To ensure the MinIO Operator watches all namespaces, set `WATCHED_NAMESPACE` to an empty string:
+
+```bash
+helm repo add minio https://operator.min.io/
+helm repo update
+helm upgrade --install minio-operator minio/operator \
+  --namespace minio-operator \
+  --create-namespace \
+  --set-string operator.env[0].name=WATCHED_NAMESPACE \
+  --set-string operator.env[0].value=""
 ```
