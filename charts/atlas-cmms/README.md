@@ -1,9 +1,9 @@
 
 
 >## IMPORTANT: Cluster-wide Prerequisites
->This chart depends on two operators being installed cluster-wide before you deploy:
->1. MinIO Operator ([installation instructions](#minio-operator-cluster-wide-watch-example))
->2. CloudNativePG (CNPG) Operator ([installation instructions](#cnpg-cluster-wide-watch-example))
+>This chart depends on two operators being installed cluster-wide before you deploy. Find installation instructions at the bottom of this page.
+>1. MinIO Operator (installs CRDs and controller)
+>2. CloudNativePG (CNPG) Operator (installs CRDs and controller)
 
 
 # Atlas CMMS Helm Chart
