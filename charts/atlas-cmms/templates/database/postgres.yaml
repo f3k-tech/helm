@@ -14,6 +14,10 @@ spec:
     parameters:
       max_connections: "100"
       shared_buffers: "256MB"
+
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
   
   bootstrap:
     initdb:

@@ -75,7 +75,7 @@ env:
 secrets:
   frontend:
     existingSecret: false
-    name: "" # .............. Managed. Defaults to <release>-frontend
+    name: "" # ............. Managed. Defaults to <release>-frontend
     annotations: {}
 
     oauth2:
