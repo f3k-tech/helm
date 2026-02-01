@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: added
+      description: persistentVolumeClaimRetentionPolicy added to Postgres
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.3
+
+...
+files:
+  atlas-cmms-0.140.3.tgz: sha256:93e62973d37934d7bf5cd3e2e87812d153d84ba45d006be645a687f2e8606102
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpf2BBCRBVfFCgAnZIiQAAKzIMAJnkOSQ6XULa6ZXGTAoI2sPo
+P53bfd3Ndr2grVvh05Hw85uPlM6nc9R+Zpnix2GdpNMo42kZ8Yte6kyhXLfSHo71
+0i3lA+VNO/YnJAhGPXA5DXSciSYTjOVKU0nybJ20qJKOLrDLtjNXnaLCk+H+LqNh
+OAbpoMvwx3/Ht2mHTkIv6XnjV+MRjhPsfWjuwYz2zD10sT7eeAm6r34GExiGV394
+l9iN3tEJ7tz2L9S4l7lP/B1rwwtL1QjYQYT+kRNJBJFS6SFkHM9P8tVvTRPfTgN9
+KPNrw15CHTdPn8W47yJ7mhWWYMVuLbtdYlIpxe4ougRhnU9ASgbk8inwOa/rshAg
+A1dtF/z0WTYJdFDheIkCx+qgRAe7ADDBPux8MDUlgvLyEqVExw2PAPStx13QBg6e
+/jumuSEZUjV7ixLo4qQJT6SaGxgxEdsGqVmvcsAXO7j1V5VVP1G6zYZHF8kBwtLr
+ayhF4iNgQKjIkBocDMPPmnbw8wVNL/kGChvVnXVORg==
+=jrXQ
+-----END PGP SIGNATURE-----
