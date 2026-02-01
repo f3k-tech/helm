@@ -68,7 +68,7 @@ env:
       MAIL_RECIPIENTS: ""
       ENABLE_SSO: false
       SMTP_HOST: ""
-      SMTP_PORT: ""
+      SMTP_PORT: "587"
       LICENSE_KEY: ""
       ALLOWED_ORGANIZATION_ADMINS: "" # ... Comma-separated list of emails.
 
