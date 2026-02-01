@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: Fixed issue with missing environment variables.
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.2
+
+...
+files:
+  atlas-cmms-0.140.2.tgz: sha256:88e0c77f4770a602b34f1d9d54066f5b8885ab38d6847324ae4a6898b1d43234
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpf1RiCRBVfFCgAnZIiQAAkyIMAHo951R3X0HC54/GdgYXoQu/
+L80EhDjPkcneUpRDAs+BTIYw2C19OOuk+gmkvvqc3GoeEFwCchSTYM3fsHDEHlfL
+gss7tBV+1ts5EDsX/gakjFKZX1hZHXQkIdXwsAQ54QF1bXl+kG14u+c7HL2FiFyi
+FTY26TqCI6H+hTKYOPFqE4JfZ8+fgd06DTq+KZwLKRGYf6I0mZKBQs5WZGn7J6+D
+0fs8MbRscZnFppAndTGmR6f/ZgAieQCktJ1qCMQ3p24i3iJckMxPAqjBSvK8QstC
+0jvd6cyD9gRfsIT8UDSn6IEb3KVofDoP25LQTrAyLmtXkFOWo+rpWVtgpvIcyRM0
+r6WhHNAmc8HpCvUAfWYk2XqSIMWdznwSUrWjFeqyQbTgOR7rpPZL/zdwnvc+D1N5
+ZZaWVCLob+6FMbk/ApDnGlh2WjPKfQhZl3XY6NPysl/rWESeIUXxsc8irx1aymDo
+WDvQEhs6gjuSF4qdwQZOLDxIE1N5xRuJWhMO34/k4w==
+=ENoG
+-----END PGP SIGNATURE-----
