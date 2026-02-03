@@ -3,7 +3,7 @@ name: atlas-cmms
 description: CMMS Software Built to Make Managing Maintenance Easier
 icon: https://f3k-tech.github.io/helm/icons/atlas.png
 type: application
-version: 0.140.5
+version: 0.140.6
 appVersion: "v1.4.0"
 dependencies:
   - name: tenant
@@ -27,4 +27,4 @@ annotations:
       url: https://atlas-cmms.com
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fixed issue with MINIO_BUCKET environment variable not being overridden using env.backend.auto.MINIO_BUCKET."
+      description: "Fixed issue with MINIO_BUCKET and PUBLIC_FRONT_URL env variables not being set correctly."
