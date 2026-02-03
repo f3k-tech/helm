@@ -27,4 +27,4 @@ annotations:
       url: https://atlas-cmms.com
   artifacthub.io/changes: |
     - kind: fixed
-      description: "Fixed issue with MINIO_BUCKET and PUBLIC_FRONT_URL env variables not being set correctly."
+      description: "Add INVITATION_VIA_EMAIL to common env variables."

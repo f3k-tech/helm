@@ -29,6 +29,7 @@ env:
     user:
       CUSTOM_COLORS: "{}" # ... E.g: '{"primary":"#EE4B2B"}'
       BRAND_CONFIG: "{}" #  ... E.g: '{"name":"My Company","shortName":"MC","website":"https://example.com"}'
+      INVITATION_VIA_EMAIL: false
 
   frontend:
     # All variables under 'auto' are managed by the chart and we discourage to set them manually.
@@ -43,7 +44,6 @@ env:
       ENABLE_SSO: false
       OAUTH2_PROVIDER: ""
       DEMO_LINK: ""
-      INVITATION_VIA_EMAIL: false
       CLOUD_VERSION: false
       NODE_ENV: "production"
       PADDLE_ENVIRONMENT: "production" # ... "sandbox" or "production"
@@ -64,7 +64,6 @@ env:
     user:
       STORAGE_TYPE: "minio" # ............. "gcp", "minio".
       ENABLE_EMAIL_NOTIFICATIONS: false
-      INVITATION_VIA_EMAIL: false
       MAIL_RECIPIENTS: ""
       ENABLE_SSO: false
       SMTP_HOST: ""
