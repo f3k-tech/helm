@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: "Fixed issue with MINIO_BUCKET and PUBLIC_FRONT_URL env variables not being set correctly."
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.6
+
+...
+files:
+  atlas-cmms-0.140.6.tgz: sha256:926f25522232a66697ee50ad22b1b1c4fe548f2463d34cf6bec02cc5ae36758c
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpgeg/CRBVfFCgAnZIiQAA+7cMAGFmbGCUpoBJrOm+QMvO2SqW
+r0DzV1yQJ2Jnxo7NCeK4sA1Cyz5bDL/st1B6E61cPQTkTMPk821Y5RFeBJiQzX9b
+YroeL4OEUYAdlqjnpa+EvQWeOYm4zHRQUgL4bA4s2bzkwASYPr6nTjr2Z2TGezXD
+uV884+ZUDzBKzZUlQq6/l3PbAMk2074XtoEZn3SD0GFIM1FNPikHwy0ACZ7w6n6m
+n7F5LoSxHXFyQH2r0+TvLdAU9Hjlf+BeD2QOifu3JW2Gu2gljslBkJ5ACVe+Pjp9
+GUzU2/IVdhA22t31HEoK4S9bCuWZb1a8PWyC7CsKLXZkeBmF9lhfo4NHCrzEFx7o
+iSxpAyAEL2r2HIyEfHE4E14LLb6vp/EQ24MUqi9ZFFEZaqaxBa1yebEJGj/o+D2X
+WjPvYG68ZasslZ4jnyikLi6KyT7UzwImPVyKsv/7FP4u41zNfS754PXAKRiGqTPA
+hu6+E98XGDkdcMWvsv6FrvXnt62ZGi8o8pGj2DXx6g==
+=thKG
+-----END PGP SIGNATURE-----
