@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: "Fixed issue with MINIO_BUCKET environment variable not being overridden using env.backend.auto.MINIO_BUCKET."
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.5
+
+...
+files:
+  atlas-cmms-0.140.5.tgz: sha256:4e1b363cb3b3b9078cb9c13d75e290293b63640861ba0151349770f9f58f550e
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpgamfCRBVfFCgAnZIiQAAwUYMADT4Xx9can6YP7o3M9txzOg4
+LdlH0WDbFj9UVkLjgQbA3aaxvPgjFlrZWYiudkKbqGDSTEwYtFYMQpZxZqtQqJrK
+jnH/9Y2TXd4+wQNvpes2WqJfCsc3Dsnh52DEdcjqkTC64oW+cUWSL0nZAZ5xHEy9
+zZ4HAkts+fh9DtO0WH5xQ/oUfzBl8Elr9NEdSbNAIozHapW0DHLMkn4zT8Z2uvcW
+jq0ZRY4jKS4EWvceHZ7Od+DyM0l0Wgvl/JfzFoLAAKkxOAZoZaicbBFo0NaOMECX
+YdNEpJDlgkVNc8op4TyYiKHE8UgVsZHTvJqyi+ru8LWTDnlI2FCWI9JBk9bEvh5+
+r13+eWTayr2Rf24I9fpDwFEDHNN7qNpHRH0pB37Tn6AGCLdvtMh6cGfEwDoxOuNt
+ulELTNambrn+pw7UT8RMl0lQhmtp0Wtfq8R4uZ9JEwh7Sb+ha3UXU+wX5acJKYgs
+iH87PsaVpjaVeQG0n4PMgUrJ9eoS4Bnc9kgXTj22BQ==
+=CfYU
+-----END PGP SIGNATURE-----
