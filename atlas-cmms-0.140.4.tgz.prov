@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: added
+      description: enableSuperuserAccess value for postgresql
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.4
+
+...
+files:
+  atlas-cmms-0.140.4.tgz: sha256:d1a0176e222f6a37845e4ae0502a13b59bcdcea34ff2671c03cd9041e96e3f19
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJpgX1tCRBVfFCgAnZIiQAA1BIMAH3qoapVQm9pvo3gzD3Wrq9Q
+nZwTm79aMJCkxMRkL6DVIOaY5XtGTrV/pId7X/5XlAsxD0KYTe9m7Hm38MMlmGAD
+E6HIJjK7CMFOOwLH4iQ/LWMpcO653+YIwHtrvvjz4UJlMkxXdsXauAnU23FJk/LJ
+lKd8/VTd1PWoYQNtyFkO/MU9CJxeXluaTC8XdQWpNhiU05f7Kxqh43BvvXIRwvz/
+ds6bHrvmtTzrsh+oZLXthi1ua5SVfTrUJBk5Vg9yCvoR8Oq0MixrI8gHrxefQ/74
+/SORcB03vfDjHJdrGynd99698jnGCy7zHmsuDddFKhsSw7DrChlQYXAZ9OMLbT8J
+pdkdoAhQDhvxC+yOovmgg4xxAHQVCvVs/3MQWuOQuuyC5vX0OZv0IcFPzuYdL126
+Cx+wmt8wjXFoWmZLlGPLfBgdIDI9kQCZbres1LxuLiUy9kHDGul0Kpk0id4/6kLj
+5jWzsT47ujjSDHdyc4FI+s1niKLgbbZJmm2lN1qkPg==
+=DNkj
+-----END PGP SIGNATURE-----
