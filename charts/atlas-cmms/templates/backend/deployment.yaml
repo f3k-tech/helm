@@ -115,9 +115,7 @@ spec:
             - name: PUBLIC_API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.backend.auto.PUBLIC_API_URL | quote }}
             - name: PUBLIC_FRONT_URL
-              value: {{ default (printf "https://%s" (index .Values.frontend.ingress.hosts 0).host) .Values.env.backend.auto.PUBLIC_FRONT_URL | quote }}
-            - name: MINIO_BUCKET
-              value: {{ (index .Values.minio.tenant.buckets 0).name | quote }}
+              value: {{ default (index .Values.minio.tenant.buckets 0).name .Values.env.backend.auto.MINIO_BUCKET | quote }}
             - name: PUBLIC_MINIO_ENDPOINT
               value: {{ default (printf "https://%s" (.Values.minio.ingress.api.host)) .Values.env.backend.auto.PUBLIC_MINIO_ENDPOINT | quote }}
             - name: DB_USER
