@@ -104,11 +104,11 @@ spec:
           env:
             {{- range $k, $v := .Values.env.common.user }}
             - name: {{ $k }}
-              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+              value: {{ ternary ("" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             {{- range $k, $v := .Values.env.backend.user }}
             - name: {{ $k }}
-              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+              value: {{ ternary ("" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
             {{- end }}
             - name: DB_URL
               value: {{ default (printf "%s-rw/%s" (include "atlas-cmms.fullname-postgres" . ) .Values.postgresql.bootstrap.initdb.database) .Values.env.backend.auto.DB_URL | quote }}
@@ -144,12 +144,6 @@ spec:
                   {{ .Values.secrets.backend.name | default (include "atlas-cmms.fullname-backend" .) }}
                 {{ else }}
                   {{ include "atlas-cmms.fullname-backend" . }}
-                {{ end }}
-            - secretRef:
-                name: {{ if .Values.secrets.minio.existingSecret }}
-                  {{ .Values.secrets.minio.name | default (include "atlas-cmms.fullname-minio" .) }}
-                {{ else }}
-                  {{ include "atlas-cmms.fullname-minio" . }}
                 {{ end }}
             - secretRef:
                 name: {{ if .Values.secrets.minio.existingSecret }}
