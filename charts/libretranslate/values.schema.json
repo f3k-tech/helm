@@ -87,6 +87,24 @@
                 "create"
             ]
         },
+        "labels": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Deployment Labels",
+            "description": "Labels for the deployment."
+        },
+        "podLabels": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "default": {},
+            "title": "Pod Labels",
+            "description": "Labels for the pod."
+        },
         "podAnnotations": {
             "type": "object",
             "additionalProperties": {
