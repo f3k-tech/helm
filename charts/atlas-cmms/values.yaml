@@ -73,11 +73,11 @@ env:
     user:
       STORAGE_TYPE: "minio" # ............. "gcp", "minio".
       ENABLE_EMAIL_NOTIFICATIONS: false
-      MAIL_RECIPIENTS: "-"
+      MAIL_RECIPIENTS: ""
       ENABLE_SSO: false
       SMTP_HOST: "-"
       SMTP_PORT: "587"
-      LICENSE_KEY: "-"
+      LICENSE_KEY: ""
       ALLOWED_ORGANIZATION_ADMINS: "" # ... Comma-separated list of emails.
 
     # Additional environment variables appended to the backend container.
