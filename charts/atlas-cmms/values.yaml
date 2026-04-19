@@ -42,10 +42,10 @@ env:
     # All variables under 'user' are always rendered in the frontend deployment.
     # Feel free to omit any variables you don't need to set manually.
     user:
-      GOOGLE_TRACKING_ID: ""
+      GOOGLE_TRACKING_ID: "-"
       ENABLE_SSO: false
-      OAUTH2_PROVIDER: ""
-      DEMO_LINK: ""
+      OAUTH2_PROVIDER: "-"
+      DEMO_LINK: "https://example.com/demo"
       CLOUD_VERSION: false
       NODE_ENV: "production"
       PADDLE_ENVIRONMENT: "production" # ... "sandbox" or "production"
