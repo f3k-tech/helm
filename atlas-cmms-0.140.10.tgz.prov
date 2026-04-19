@@ -1,0 +1,50 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: "Add INVITATION_VIA_EMAIL to common env variables."
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/f3k-tech/helm/issues
+    - name: helm source
+      url: https://github.com/f3k-tech/helm/tree/main/charts/atlas-cmms
+    - name: application source
+      url: https://github.com/Grashjs/cmms
+    - name: frontend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-frontend
+    - name: backend image
+      url: https://hub.docker.com/r/intelloop/atlas-cmms-backend
+    - name: Atlas CMMS official website
+      url: https://atlas-cmms.com
+apiVersion: v2
+appVersion: v1.4.0
+dependencies:
+- - alias: minio
+  condition: minio.enabled
+  name: tenant
+  repository: https://operator.min.io/
+  version: 7.1.1
+description: CMMS Software Built to Make Managing Maintenance Easier
+icon: https://f3k-tech.github.io/helm/icons/atlas.png
+name: atlas-cmms
+type: application
+version: 0.140.10
+
+...
+files:
+  atlas-cmms-0.140.10.tgz: sha256:dcd328aaf94c78e239326ef78d31a2ebbbf7121c793d5a743537dedf5bb66576
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJp5IJUCRBVfFCgAnZIiQAAAXAMAJFHLozJG8XrhVReFDvBjcvR
+1RNlEBhNzNnllzCTS5f5LaQoaG5zbxJyGwlbXCwi7zx1BtRkdeI7BlmJCWu6FbJl
+eQiNWlxpR5iq4X0gnNcRNLKoO2yoXDDMc6rTBe9pCMSv4xxx/agsc8/5722YYEkO
+9KFq3+ggf84I5/Ih6zWf4k9GdzT77NgkDWU+iZv92O9SSzwOKqKxmvXw+rk/ttzN
+K+hBH5OrdGeWgieWb87EKWkjOWyo3jTB1lHnJlS768NfVwDb0UTWb/Y7NM+m7nd6
+Gennnkwiag3Us5hTuMrrEVfWeXe2U6z4Q2CNWx2s4xyrd+UsuzJF1SPKrgokm5c/
+Jx51+lSu+c3ycxOsQuqd+lEcYBNxmfDS763OxxpZofKd5F2svtdkfyIwe6gQb7IM
+PDIIfi+OOsHCpw3epKBJ8K/vkVuqmF84kzn8ikw4MUSRbuMDzs/qWYPom5XZrZSx
+NaeN6uIBVz9tYWQINKIP2db0QA1hey1vaCx1BiGBaQ==
+=2Xna
+-----END PGP SIGNATURE-----
