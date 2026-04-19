@@ -43,6 +43,7 @@ env:
     # Feel free to omit any variables you don't need to set manually.
     user:
       GOOGLE_TRACKING_ID: "-"
+      RECAPTCHA_SITE_KEY: "-"
       ENABLE_SSO: false
       OAUTH2_PROVIDER: "-"
       DEMO_LINK: "https://example.com/demo"

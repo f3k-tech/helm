@@ -18,6 +18,7 @@
 {{- $frontendExtraEnv := concat $frontendExtraValues $legacyFrontendExtraValues }}
 {{- $frontendUserDefaults := dict
   "GOOGLE_TRACKING_ID" "-"
+  "RECAPTCHA_SITE_KEY" "-"
   "ENABLE_SSO" false
   "OAUTH2_PROVIDER" "-"
   "DEMO_LINK" "https://example.com/demo"
@@ -28,6 +29,7 @@
 }}
 {{- $frontendUserKeys := list
   "GOOGLE_TRACKING_ID"
+  "RECAPTCHA_SITE_KEY"
   "ENABLE_SSO"
   "OAUTH2_PROVIDER"
   "DEMO_LINK"

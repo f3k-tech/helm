@@ -20,6 +20,7 @@ For `env.common.user`, `env.frontend.user`, and `env.backend.user`:
 - You can omit individual keys from your values file; the chart applies internal defaults for missing keys.
 - If you explicitly set a key to `""`, the env var is still rendered with an empty value.
 - Only known keys are rendered. Extra custom keys under these maps are ignored.
+- `RECAPTCHA_SITE_KEY` belongs in `env.frontend.user` (public browser key), not in Kubernetes Secrets.
 
 For custom variables outside the fixed set, use `env.frontend.extra` and `env.backend.extra`:
 
