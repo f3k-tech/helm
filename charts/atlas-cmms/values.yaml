@@ -210,6 +210,12 @@ frontend:
       service: "" # ... Managed. Defaults to <release>-backend
       port: "" # ...... Managed. Defaults to backend service port
 
+  # Additional environment variables appended to the frontend container.
+  # Format:
+  # - name: "EXAMPLE_VAR"
+  #   value: "example-value"
+  extraEnv: []
+
   resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -345,6 +351,12 @@ backend:
       image: busybox:1.36
       service: "" # Managed. Defaults to <release>-postgres-r
       port: 5432
+
+  # Additional environment variables appended to the backend container.
+  # Format:
+  # - name: "EXAMPLE_VAR"
+  #   value: "example-value"
+  extraEnv: []
 
   resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

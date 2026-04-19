@@ -177,6 +177,9 @@ spec:
                     {{ include "atlas-cmms.fullname-postgres" . }}
                   {{ end }}
                   key: password
+            {{- with .Values.backend.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           envFrom:
             - secretRef:
                 name: {{ if .Values.secrets.backend.existingSecret }}

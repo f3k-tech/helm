@@ -137,6 +137,9 @@ spec:
             {{- end }}
             - name: API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}
+            {{- with .Values.frontend.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           envFrom:
             - secretRef:
                 name: {{ if .Values.secrets.frontend.existingSecret }}

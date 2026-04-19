@@ -21,6 +21,23 @@ For `env.common.user`, `env.frontend.user`, and `env.backend.user`:
 - If you explicitly set a key to `""`, the env var is still rendered with an empty value.
 - Only known keys are rendered. Extra custom keys under these maps are ignored.
 
+For custom variables outside the fixed set, use `frontend.extraEnv` and `backend.extraEnv`:
+
+- These lists are appended directly to each container `env` section.
+- Expected format:
+
+```yaml
+frontend:
+  extraEnv:
+    - name: "EXAMPLE_VAR"
+      value: "example-value"
+
+backend:
+  extraEnv:
+    - name: "EXAMPLE_VAR"
+      value: "example-value"
+```
+
 ## ArgoCD Sync Waves (Ordering)
 
 When using ArgoCD the components need to be synced in a certain order to prevent errors. This is not problem when using traditional helm commands.
