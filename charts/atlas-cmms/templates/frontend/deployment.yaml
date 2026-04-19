@@ -14,10 +14,10 @@
 {{- $frontendValues := get $envValues "frontend" | default (dict) }}
 {{- $frontendUserValues := get $frontendValues "user" | default (dict) }}
 {{- $frontendUserDefaults := dict
-  "GOOGLE_TRACKING_ID" ""
+  "GOOGLE_TRACKING_ID" "-"
   "ENABLE_SSO" false
-  "OAUTH2_PROVIDER" ""
-  "DEMO_LINK" ""
+  "OAUTH2_PROVIDER" "-"
+  "DEMO_LINK" "https://example.com/demo"
   "CLOUD_VERSION" false
   "NODE_ENV" "production"
   "PADDLE_ENVIRONMENT" "production"
