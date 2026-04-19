@@ -138,12 +138,16 @@ spec:
           {{- end }}
           env:
             {{- range $key := $commonUserKeys }}
+            {{- $value := index $commonUserValues $key }}
+            {{- $hasNonNilValue := and (hasKey $commonUserValues $key) (not (kindIs "invalid" $value)) }}
             - name: {{ $key }}
-              value: {{ ternary (index $commonUserValues $key) (index $commonUserDefaults $key) (hasKey $commonUserValues $key) | quote }}
+              value: {{ ternary $value (index $commonUserDefaults $key) $hasNonNilValue | quote }}
             {{- end }}
             {{- range $key := $backendUserKeys }}
+            {{- $value := index $backendUserValues $key }}
+            {{- $hasNonNilValue := and (hasKey $backendUserValues $key) (not (kindIs "invalid" $value)) }}
             - name: {{ $key }}
-              value: {{ ternary (index $backendUserValues $key) (index $backendUserDefaults $key) (hasKey $backendUserValues $key) | quote }}
+              value: {{ ternary $value (index $backendUserDefaults $key) $hasNonNilValue | quote }}
             {{- end }}
             - name: DB_URL
               value: {{ default (printf "%s-rw/%s" (include "atlas-cmms.fullname-postgres" . ) .Values.postgresql.bootstrap.initdb.database) .Values.env.backend.auto.DB_URL | quote }}

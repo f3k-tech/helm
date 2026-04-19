@@ -124,12 +124,16 @@ spec:
           {{- end }}
           env:
             {{- range $key := $commonUserKeys }}
+            {{- $value := index $commonUserValues $key }}
+            {{- $hasNonNilValue := and (hasKey $commonUserValues $key) (not (kindIs "invalid" $value)) }}
             - name: {{ $key }}
-              value: {{ ternary (index $commonUserValues $key) (index $commonUserDefaults $key) (hasKey $commonUserValues $key) | quote }}
+              value: {{ ternary $value (index $commonUserDefaults $key) $hasNonNilValue | quote }}
             {{- end }}
             {{- range $key := $frontendUserKeys }}
+            {{- $value := index $frontendUserValues $key }}
+            {{- $hasNonNilValue := and (hasKey $frontendUserValues $key) (not (kindIs "invalid" $value)) }}
             - name: {{ $key }}
-              value: {{ ternary (index $frontendUserValues $key) (index $frontendUserDefaults $key) (hasKey $frontendUserValues $key) | quote }}
+              value: {{ ternary $value (index $frontendUserDefaults $key) $hasNonNilValue | quote }}
             {{- end }}
             - name: API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}
