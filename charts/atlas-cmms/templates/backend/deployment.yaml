@@ -1,3 +1,38 @@
+{{- $envValues := get .Values "env" | default (dict) }}
+{{- $commonValues := get $envValues "common" | default (dict) }}
+{{- $commonUserValues := get $commonValues "user" | default (dict) }}
+{{- $commonUserDefaults := dict
+  "CUSTOM_COLORS" "{}"
+  "BRAND_CONFIG" "{}"
+  "INVITATION_VIA_EMAIL" false
+}}
+{{- $commonUserKeys := list
+  "CUSTOM_COLORS"
+  "BRAND_CONFIG"
+  "INVITATION_VIA_EMAIL"
+}}
+{{- $backendValues := get $envValues "backend" | default (dict) }}
+{{- $backendUserValues := get $backendValues "user" | default (dict) }}
+{{- $backendUserDefaults := dict
+  "STORAGE_TYPE" "minio"
+  "ENABLE_EMAIL_NOTIFICATIONS" false
+  "MAIL_RECIPIENTS" ""
+  "ENABLE_SSO" false
+  "SMTP_HOST" ""
+  "SMTP_PORT" "587"
+  "LICENSE_KEY" ""
+  "ALLOWED_ORGANIZATION_ADMINS" ""
+}}
+{{- $backendUserKeys := list
+  "STORAGE_TYPE"
+  "ENABLE_EMAIL_NOTIFICATIONS"
+  "MAIL_RECIPIENTS"
+  "ENABLE_SSO"
+  "SMTP_HOST"
+  "SMTP_PORT"
+  "LICENSE_KEY"
+  "ALLOWED_ORGANIZATION_ADMINS"
+}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -102,13 +137,13 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           env:
-            {{- range $k, $v := .Values.env.common.user }}
-            - name: {{ $k }}
-              value: {{ ternary ("" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+            {{- range $key := $commonUserKeys }}
+            - name: {{ $key }}
+              value: {{ ternary (index $commonUserValues $key) (index $commonUserDefaults $key) (hasKey $commonUserValues $key) | quote }}
             {{- end }}
-            {{- range $k, $v := .Values.env.backend.user }}
-            - name: {{ $k }}
-              value: {{ ternary ("" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+            {{- range $key := $backendUserKeys }}
+            - name: {{ $key }}
+              value: {{ ternary (index $backendUserValues $key) (index $backendUserDefaults $key) (hasKey $backendUserValues $key) | quote }}
             {{- end }}
             - name: DB_URL
               value: {{ default (printf "%s-rw/%s" (include "atlas-cmms.fullname-postgres" . ) .Values.postgresql.bootstrap.initdb.database) .Values.env.backend.auto.DB_URL | quote }}

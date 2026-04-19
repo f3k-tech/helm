@@ -26,6 +26,8 @@ image:
 
 env:
   common:
+    # Variables under 'user' are always rendered in backend and frontend deployments.
+    # Feel free to omit any variables you don't need to set manually.
     user:
       CUSTOM_COLORS: "{}" # ... E.g: '{"primary":"#EE4B2B"}'
       BRAND_CONFIG: "{}" #  ... E.g: '{"name":"My Company","shortName":"MC","website":"https://example.com"}'
@@ -37,8 +39,8 @@ env:
     auto:
       API_URL: "" # Defaults to https://<ingress-host>/api.
 
-    # All variables under 'user' are optional.
-    # Feel free to delete any variables you don't need or for which you want to use the default.
+    # All variables under 'user' are always rendered in the frontend deployment.
+    # Feel free to omit any variables you don't need to set manually.
     user:
       GOOGLE_TRACKING_ID: ""
       ENABLE_SSO: false
@@ -51,7 +53,7 @@ env:
 
   backend:
     # All variables under 'auto' are managed by the chart and we discourage to set them manually.
-    # Feel free to delete any variables you don't need to set manually.
+    # Feel free to omit any variables you don't need to set manually.
     auto:
       DB_URL: "" # .................. Defaults to <postgresql-service>/<postgresql-database>.
       PUBLIC_API_URL: "" # .......... Defaults to https://<ingress-host>/api.
@@ -59,8 +61,8 @@ env:
       MINIO_BUCKET: "" # ............ Defaults to <minio-bucket>.
       PUBLIC_MINIO_ENDPOINT: "" # ... Defaults to https://<minio-api-host>/<minio-api-path>.
 
-    # All variables under 'user' are optional. 
-    # Feel free to delete any variables you don't need or for which you want to use the default.
+    # All variables under 'user' are always rendered in the backend deployment.
+    # Feel free to omit any variables you don't need to set manually.
     user:
       STORAGE_TYPE: "minio" # ............. "gcp", "minio".
       ENABLE_EMAIL_NOTIFICATIONS: false

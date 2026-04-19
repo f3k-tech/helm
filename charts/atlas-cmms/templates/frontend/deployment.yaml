@@ -1,3 +1,38 @@
+{{- $envValues := get .Values "env" | default (dict) }}
+{{- $commonValues := get $envValues "common" | default (dict) }}
+{{- $commonUserValues := get $commonValues "user" | default (dict) }}
+{{- $commonUserDefaults := dict
+  "CUSTOM_COLORS" "{}"
+  "BRAND_CONFIG" "{}"
+  "INVITATION_VIA_EMAIL" false
+}}
+{{- $commonUserKeys := list
+  "CUSTOM_COLORS"
+  "BRAND_CONFIG"
+  "INVITATION_VIA_EMAIL"
+}}
+{{- $frontendValues := get $envValues "frontend" | default (dict) }}
+{{- $frontendUserValues := get $frontendValues "user" | default (dict) }}
+{{- $frontendUserDefaults := dict
+  "GOOGLE_TRACKING_ID" ""
+  "ENABLE_SSO" false
+  "OAUTH2_PROVIDER" ""
+  "DEMO_LINK" ""
+  "CLOUD_VERSION" false
+  "NODE_ENV" "production"
+  "PADDLE_ENVIRONMENT" "production"
+  "LOGO_PATHS" "{}"
+}}
+{{- $frontendUserKeys := list
+  "GOOGLE_TRACKING_ID"
+  "ENABLE_SSO"
+  "OAUTH2_PROVIDER"
+  "DEMO_LINK"
+  "CLOUD_VERSION"
+  "NODE_ENV"
+  "PADDLE_ENVIRONMENT"
+  "LOGO_PATHS"
+}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -88,13 +123,13 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           env:
-            {{- range $k, $v := .Values.env.common.user }}
-            - name: {{ $k }}
-              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+            {{- range $key := $commonUserKeys }}
+            - name: {{ $key }}
+              value: {{ ternary (index $commonUserValues $key) (index $commonUserDefaults $key) (hasKey $commonUserValues $key) | quote }}
             {{- end }}
-            {{- range $k, $v := .Values.env.frontend.user }}
-            - name: {{ $k }}
-              value: {{ ternary ("-" | quote) ($v | quote) (and (kindIs "string" $v) (eq $v "")) }}
+            {{- range $key := $frontendUserKeys }}
+            - name: {{ $key }}
+              value: {{ ternary (index $frontendUserValues $key) (index $frontendUserDefaults $key) (hasKey $frontendUserValues $key) | quote }}
             {{- end }}
             - name: API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}

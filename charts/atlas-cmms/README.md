@@ -12,6 +12,15 @@ This chart is designed to do a lot of heavy lifting for you. It wires together f
 
 We encourage starting with the minimal example below and only adding functionality as needed. For production or stricter security setups, we also recommend setting the MinIO and PostgreSQL secrets manually rather than relying on auto-generation.
 
+## Environment Variable Behavior
+
+For `env.common.user`, `env.frontend.user`, and `env.backend.user`:
+
+- The chart always renders a fixed set of known user-settable env vars into the Deployment manifests.
+- You can omit individual keys from your values file; the chart applies internal defaults for missing keys.
+- If you explicitly set a key to `""`, the env var is still rendered with an empty value.
+- Only known keys are rendered. Extra custom keys under these maps are ignored.
+
 ## ArgoCD Sync Waves (Ordering)
 
 When using ArgoCD the components need to be synced in a certain order to prevent errors. This is not problem when using traditional helm commands.
