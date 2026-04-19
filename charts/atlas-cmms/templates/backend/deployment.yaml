@@ -13,6 +13,9 @@
 }}
 {{- $backendValues := get $envValues "backend" | default (dict) }}
 {{- $backendUserValues := get $backendValues "user" | default (dict) }}
+{{- $backendExtraValues := get $backendValues "extra" | default (list) }}
+{{- $legacyBackendExtraValues := get .Values.backend "extraEnv" | default (list) }}
+{{- $backendExtraEnv := concat $backendExtraValues $legacyBackendExtraValues }}
 {{- $backendUserDefaults := dict
   "STORAGE_TYPE" "minio"
   "ENABLE_EMAIL_NOTIFICATIONS" false
@@ -177,7 +180,7 @@ spec:
                     {{ include "atlas-cmms.fullname-postgres" . }}
                   {{ end }}
                   key: password
-            {{- with .Values.backend.extraEnv }}
+                {{- with $backendExtraEnv }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
           envFrom:

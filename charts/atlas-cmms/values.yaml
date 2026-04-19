@@ -51,6 +51,12 @@ env:
       PADDLE_ENVIRONMENT: "production" # ... "sandbox" or "production"
       LOGO_PATHS: "{}" # ................... E.g: '{"dark":"dark.png","white":"white.png"}'
 
+    # Additional environment variables appended to the frontend container.
+    # Format:
+    # - name: "EXAMPLE_VAR"
+    #   value: "example-value"
+    extra: []
+
   backend:
     # All variables under 'auto' are managed by the chart and we discourage to set them manually.
     # Feel free to omit any variables you don't need to set manually.
@@ -72,6 +78,12 @@ env:
       SMTP_PORT: "587"
       LICENSE_KEY: "-"
       ALLOWED_ORGANIZATION_ADMINS: "" # ... Comma-separated list of emails.
+
+    # Additional environment variables appended to the backend container.
+    # Format:
+    # - name: "EXAMPLE_VAR"
+    #   value: "example-value"
+    extra: []
 
 secrets:
   frontend:
@@ -210,12 +222,6 @@ frontend:
       service: "" # ... Managed. Defaults to <release>-backend
       port: "" # ...... Managed. Defaults to backend service port
 
-  # Additional environment variables appended to the frontend container.
-  # Format:
-  # - name: "EXAMPLE_VAR"
-  #   value: "example-value"
-  extraEnv: []
-
   resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -351,12 +357,6 @@ backend:
       image: busybox:1.36
       service: "" # Managed. Defaults to <release>-postgres-r
       port: 5432
-
-  # Additional environment variables appended to the backend container.
-  # Format:
-  # - name: "EXAMPLE_VAR"
-  #   value: "example-value"
-  extraEnv: []
 
   resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

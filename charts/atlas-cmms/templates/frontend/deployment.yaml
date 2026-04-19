@@ -13,6 +13,9 @@
 }}
 {{- $frontendValues := get $envValues "frontend" | default (dict) }}
 {{- $frontendUserValues := get $frontendValues "user" | default (dict) }}
+{{- $frontendExtraValues := get $frontendValues "extra" | default (list) }}
+{{- $legacyFrontendExtraValues := get .Values.frontend "extraEnv" | default (list) }}
+{{- $frontendExtraEnv := concat $frontendExtraValues $legacyFrontendExtraValues }}
 {{- $frontendUserDefaults := dict
   "GOOGLE_TRACKING_ID" "-"
   "ENABLE_SSO" false
@@ -137,7 +140,7 @@ spec:
             {{- end }}
             - name: API_URL
               value: {{ default (printf "https://%s" (index .Values.backend.ingress.hosts 0).host) .Values.env.frontend.auto.API_URL | quote }}
-            {{- with .Values.frontend.extraEnv }}
+            {{- with $frontendExtraEnv }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
           envFrom:
